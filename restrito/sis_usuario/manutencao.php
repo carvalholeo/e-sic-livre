@@ -94,11 +94,11 @@
 		//verifica se ja existe registro cadastrado com a informaçao passada ---
 		
 		if ($acao=="Incluir")
-			$sql = "select * from sis_usuario where cpfusuario = '$cpfusuario'";
+			$sql = "SELECT * FROM sis_usuario WHERE cpfusuario = '$cpfusuario'";
 		else
-			$sql = "select * from sis_usuario where cpfusuario = '$cpfusuario' and idusuario <> $idusuario";
+			$sql = "SELECT * FROM sis_usuario WHERE cpfusuario = '$cpfusuario' AND idusuario <> $idusuario";
 			
-		if(mysql_num_rows(execQuery($sql)) > 0)
+		if(mysqli_num_rows(execQuery($sql)) > 0)
 		{
 			//$erro = "Já existe usuario cadastrado com o login informado";
 			$erro = "Já existe usuario cadastrado com o CPF informados";
@@ -106,22 +106,22 @@
 		}
 
 		if ($acao=="Incluir")
-			$sql = "select * from sis_usuario where login = '$login'";
+			$sql = "SELECT * FROM sis_usuario WHERE login = '$login'";
 		else
-			$sql = "select * from sis_usuario where login = '$login' and idusuario <> $idusuario";
+			$sql = "SELECT * FROM sis_usuario WHERE login = '$login' AND idusuario <> $idusuario";
 			
-		if(mysql_num_rows(execQuery($sql)) > 0)
+		if(mysqli_num_rows(execQuery($sql)) > 0)
 		{
 			$erro = "Já existe usuario cadastrado com o login informado";
 			return false;
 		}
 
 		if ($acao=="Incluir")
-			$sql = "select * from sis_usuario where matricula = '$matricula'";
+			$sql = "SELECT * FROM sis_usuario WHERE matricula = '$matricula'";
 		else
-			$sql = "select * from sis_usuario where matricula = '$matricula' and idusuario <> $idusuario";
+			$sql = "SELECT * FROM sis_usuario WHERE matricula = '$matricula' AND idusuario <> $idusuario";
 			
-		if(mysql_num_rows(execQuery($sql)) > 0)
+		if(mysqli_num_rows(execQuery($sql)) > 0)
 		{
 			$erro = "Já existe usuario cadastrado com a matricula informada";
 			return false;
@@ -141,10 +141,10 @@
 	{
 		$acao	= "Alterar";
 				
-		$sql = "select * from sis_usuario where idusuario = $codigo";
+		$sql = "SELECT * FROM sis_usuario WHERE idusuario = $codigo";
 
 		$resultado = execQuery($sql);
-		$registro  = mysql_fetch_array($resultado);
+		$registro  = mysqli_fetch_array($resultado);
 
 		$idusuario      = $registro['idusuario'];
 		$nome 		= $registro['nome'];
@@ -154,24 +154,24 @@
 		$matricula 	= $registro['matricula'];
 		$cpfusuario     = $registro['cpfusuario'];
              
-                $sql = "select nome from sis_grupousuario gu, sis_grupo g 
-                        where gu.idgrupo = g.idgrupo 
-                              and gu.idusuario = $codigo";
+                $sql = "SELECT nome FROM sis_grupousuario gu, sis_grupo g 
+                        WHERE gu.idgrupo = g.idgrupo 
+                              AND gu.idusuario = $codigo";
                 
                 $i=0;
 		$resultado = execQuery($sql);
-                while($registro = mysql_fetch_array($resultado))
+                while($registro = mysqli_fetch_array($resultado))
                 {
                     $gruposselecionados[$i] = $registro['nome'];
                     $i++;
                 }	
                 
             
-                $sql = "select idsecretaria from sis_usuariosecretaria where idusuario = $idusuario";
+                $sql = "SELECT idsecretaria FROM sis_usuariosecretaria WHERE idusuario = $idusuario";
 
                 $i=0;
                 $resultado = execQuery($sql);
-                while($registro = mysql_fetch_array($resultado))
+                while($registro = mysqli_fetch_array($resultado))
                 {
                     $sicselecionados[$i] = $registro['idsecretaria'];
                     $i++;
@@ -206,8 +206,8 @@
                         $con = db_open_trans();
                         $all_query_ok=true;
                         
-			$sql = "insert into sis_usuario(nome, login, cpfusuario, matricula, status, idsecretaria, idusuarioinclusao, datainclusao, chave)
-				  values
+			$sql = "INSERT INTO sis_usuario(nome, login, cpfusuario, matricula, status, idsecretaria, idusuarioinclusao, datainclusao, chave)
+				  VALUES
 				  ('$nome','$login','$cpfusuario','$matricula','$status','$idsecretaria', ".getSession('uid').", NOW(), md5('$chave'))";
 
                         $con->query($sql) ? null : $all_query_ok=false;
@@ -219,13 +219,13 @@
                                 
                                 foreach ($gruposselecionados as $grupo)
                                 {
-                                    $sql = "select idgrupo from sis_grupo where nome = '$grupo'";
-                                    $rs = execQuery($sql);
-                                    $row = mysql_fetch_array($rs);
+                                    $sql = "SELECT idgrupo FROM sis_grupo WHERE nome = '$grupo'";
+                                    $result = execQuery($sql);
+                                    $row = mysqli_fetch_array($result);
                                     $idgrupo = $row['idgrupo'];
                                     
-                                    $sql = "insert into sis_grupousuario (idgrupo, idusuario)
-                                            values ('$idgrupo', $idusuario)";
+                                    $sql = "INSERT INTO sis_grupousuario (idgrupo, idusuario)
+                                            VALUES ('$idgrupo', $idusuario)";
                                         
                                     if (!$con->query($sql)) 
                                     {
@@ -240,8 +240,8 @@
                                 //insere usuario no sic
                                 foreach ($sicselecionados as $sic)
                                 {
-                                    $sql = "insert into sis_usuariosecretaria (idsecretaria, idusuario)
-                                            values ($sic, $idusuario)";
+                                    $sql = "INSERT INTO sis_usuariosecretaria (idsecretaria, idusuario)
+                                            VALUES ($sic, $idusuario)";
 
                                     if (!$con->query($sql)) 
                                     {
@@ -285,7 +285,7 @@
 		
 		if(validaDados())
 		{
-			$sql = "UPDATE sis_usuario set 
+			$sql = "UPDATE sis_usuario SET 
 					nome				='$nome', 
 					login				='$login',
 					matricula			='$matricula',
@@ -304,20 +304,20 @@
 			if ($all_query_ok)
 			{
                                 //exclui grupos do usuario para posterior inclusao
-                                $sql = "delete from sis_grupousuario where idusuario=$idusuario";
+                                $sql = "DELETE FROM sis_grupousuario WHERE idusuario=$idusuario";
                                 
                                 $con->query($sql) ? null : $all_query_ok=false;
                                 
                                 //insere email no alias
                                 foreach ($gruposselecionados as $grupo)
                                 {
-                                    $sql = "select idgrupo from sis_grupo where nome = '$grupo'";
-                                    $rs = execQuery($sql);
-                                    $row = mysql_fetch_array($rs);
+                                    $sql = "SELECT idgrupo FROM sis_grupo WHERE nome = '$grupo'";
+                                    $result = execQuery($sql);
+                                    $row = mysql_fetch_array($result);
                                     $idgrupo = $row['idgrupo'];
                                     
-                                    $sql = "insert into sis_grupousuario (idgrupo, idusuario)
-                                            values ('$idgrupo', $idusuario)";
+                                    $sql = "INSERT INTO sis_grupousuario (idgrupo, idusuario)
+                                            VALUES ('$idgrupo', $idusuario)";
                                     
                                     if (!$con->query($sql)) 
                                     {
@@ -329,15 +329,15 @@
                                 }
                                 
                                 //exclui sics do usuario para posterior inclusao
-                                $sql = "delete from sis_usuariosecretaria where idusuario=$idusuario";
+                                $sql = "DELETE FROM sis_usuariosecretaria WHERE idusuario=$idusuario";
                                 
                                 $con->query($sql) ? null : $all_query_ok=false;
                                 
                                 //insere usuario no sic
                                 foreach ($sicselecionados as $sic)
                                 {
-                                    $sql = "insert into sis_usuariosecretaria (idsecretaria, idusuario)
-                                            values ($sic, $idusuario)";
+                                    $sql = "INSERT INTO sis_usuariosecretaria (idsecretaria, idusuario)
+                                            VALUES ($sic, $idusuario)";
 
                                     if (!$con->query($sql)) 
                                     {

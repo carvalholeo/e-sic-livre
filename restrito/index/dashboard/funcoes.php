@@ -9,15 +9,15 @@
 function getSolTotal($status = "", $origem = "", $opc = 1, $sicCentral_) {
 		
 	if ($opc == 1) {
-		$sqlTmp	= "select count(*) as total ";
+		$sqlTmp	= "SELECT COUNT(*) AS total ";
 		$group	= "";
 	}
 	else if ($opc == 2){
-		$sqlTmp	= "select count(*) as total, origem, situacao ";
+		$sqlTmp	= "SELECT COUNT(*) AS total, origem, situacao ";
 		$group	= " GROUP BY origem, situacao ";	
 	}
 	else if ($opc == 3){
-		$sqlTmp	= "select origem, month(datasolicitacao) as mesSol, month(dataresposta) as mesRes ";
+		$sqlTmp	= "SELECT origem, month(datasolicitacao) AS mesSol, month(dataresposta) AS mesRes ";
 		$group	= "";
 	}
 	
@@ -40,50 +40,50 @@ function getSolTotal($status = "", $origem = "", $opc = 1, $sicCentral_) {
 		}
 		
 		if (empty($sicVincTmp)) 
-			$filtro .= " and (mov.idsecretariadestino = $idSicUsuario or mov.idsecretariaorigem = $idSicUsuario) ";
+			$filtro .= " AND (mov.idsecretariadestino = $idSicUsuario OR mov.idsecretariaorigem = $idSicUsuario) ";
 		else
-			$filtro .= " and (mov.idsecretariadestino IN ($idSicUsuario, $sicVincTmp) or mov.idsecretariaorigem IN ($idSicUsuario, $sicVincTmp) ";
+			$filtro .= " AND (mov.idsecretariadestino IN ($idSicUsuario, $sicVincTmp) OR mov.idsecretariaorigem IN ($idSicUsuario, $sicVincTmp) ";
 		
 	}
 	//Critica status 
 	if (!empty($status))
-		$filtro .= " and situacao IN ($status) ";
+		$filtro .= " AND situacao IN ($status) ";
 	
 	//Critica o sistema de origem da demanda
 	if (!empty($origem))
-		$filtro .= " and origem = $origem ";
+		$filtro .= " AND origem = $origem ";
 	
 	$sql = $sqlTmp .
-			"from 
+			"FROM
 				lda_solicitacao sol			
-			left join 
+			LEFT JOIN 
 				lda_movimentacao mov on mov.idmovimentacao = (select max(m.idmovimentacao) from lda_movimentacao m where m.idsolicitacao = sol.idsolicitacao)
-			left join 
+			LEFT JOIN
 				sis_secretaria secDestino on secDestino.idsecretaria = mov.idsecretariadestino				
-			where 
+			WHERE 
 				1=1
 				$filtro
 			$group";
 
-	$rs = execQuery($sql);	
+	$result = execQuery($sql);	
 
 	if ($opc == 1) {
-		$ret = mysql_fetch_assoc($rs);
+		$ret = mysqli_fetch_assoc($result);
 		return $ret;
 	} else
-		return $rs;
+		return $result;
 }
 
 
 /*
 	Retorna resumo de demandas por sistema e situacao formatado em uma table
 */
-function getSolResSis($rs) {
+function getSolResSis($result) {
 	
 	$ret = "";
 	$resumo = array();
 		
-	while ($reg = mysql_fetch_array($rs)) {	
+	while ($reg = mysqli_fetch_array($result)) {	
 		
 		$situacao = $reg["situacao"];									
 		$total = $reg["total"];
@@ -160,21 +160,21 @@ function formatSolSis($resumo) {
 	Retorna total de demandas por Diretoria e Origem
 */
 function getSolResDir() {
-	$sql = "select                               
+	$sql = "SELECT                               
 				sec.idsecretaria, 
-				sec.nome as nome,
-				sol.situacao as situacao,
-				count(sec.nome) as total,
-				sol.origem as origem
+				sec.nome AS nome,
+				sol.situacao AS situacao,
+				count(sec.nome) AS total,
+				sol.origem AS origem
 
-			from 
+			FROM 
 				lda_solicitacao sol
 			
-			left join lda_movimentacao mov on mov.idmovimentacao = (select max(m.idmovimentacao) from lda_movimentacao m where m.idsolicitacao = sol.idsolicitacao)						
-			left join sis_secretaria sec on sec.idsecretaria = mov.idsecretariadestino
+			LEFT JOIN lda_movimentacao mov ON mov.idmovimentacao = (SELECT MAX(m.idmovimentacao) FROM lda_movimentacao m WHERE m.idsolicitacao = sol.idsolicitacao)						
+			LEFT JOIN sis_secretaria sec ON sec.idsecretaria = mov.idsecretariadestino
 			
-			where  
-				sol.situacao not in('R','N')
+			WHERE  
+				sol.situacao NOT IN('R','N')
 		
 			GROUP BY
 				sec.idsecretaria,
@@ -186,10 +186,10 @@ function getSolResDir() {
 				sec.nome;
 			";
 						
-	$rs = execQuery($sql);	
+	$result = execQuery($sql);	
 	$ret = "";
 	
-	while ($reg = mysql_fetch_array($rs)) {	
+	while ($reg = mysqlI_fetch_array($result)) {	
 		
 		if (empty($reg["nome"])) 
 			$nome = 'Ouvidoria TCE-RN';
@@ -240,44 +240,44 @@ function getDemandas($filtro_ = "", $limit = 0) {
 		}
 		
 		if (empty($sicVincTmp)) 
-			$filtro_ .= " and (mov.idsecretariadestino = $idSicUsuario or mov.idsecretariaorigem = $idSicUsuario) ";
+			$filtro_ .= " AND (mov.idsecretariadestino = $idSicUsuario OR mov.idsecretariaorigem = $idSicUsuario) ";
 		else
-			$filtro_ .= " and (mov.idsecretariadestino IN ($idSicUsuario, $sicVincTmp) or mov.idsecretariaorigem IN ($idSicUsuario, $sicVincTmp) ";
+			$filtro_ .= " AND (mov.idsecretariadestino IN ($idSicUsuario, $sicVincTmp) OR mov.idsecretariaorigem IN ($idSicUsuario, $sicVincTmp) ";
 	}	
 	
 	if ($limit > 0)
 		$qryLimit = "LIMIT $limit";
 	
 	
-	$sql = "select sol.*, 
-               pes.nome as solicitante,
-               ifnull(secOrigem.sigla,'Solicitante') as secretariaorigem, 
-               ifnull(secDestino.sigla,'SIC Central') as secretariadestino, 
+	$sql = "SELECT sol.*, 
+               pes.nome AS solicitante,
+               IFNULL(secOrigem.sigla,'Solicitante') AS secretariaorigem, 
+               IFNULL(secDestino.sigla,'SIC Central') AS secretariadestino, 
                mov.idsecretariadestino,
                mov.datarecebimento,
                mov.idmovimentacao,
                c.*,
-               DATEDIFF(sol.dataprevisaoresposta, NOW()) as prazorestante,
-               tip.nome as tiposolicitacao
+               DATEDIFF(sol.dataprevisaoresposta, NOW()) AS prazorestante,
+               tip.nome AS tiposolicitacao
 
-        from lda_solicitacao sol
-        join lda_tiposolicitacao tip on tip.idtiposolicitacao = sol.idtiposolicitacao
-        join lda_solicitante pes on pes.idsolicitante = sol.idsolicitante
-        left join lda_movimentacao mov on mov.idmovimentacao = (select max(m.idmovimentacao) from lda_movimentacao m where m.idsolicitacao = sol.idsolicitacao)
-        left join sis_secretaria secOrigem on secOrigem.idsecretaria = mov.idsecretariaorigem
-        left join sis_secretaria secDestino on secDestino.idsecretaria = mov.idsecretariadestino
-        join lda_configuracao c
-        where  1=1
+        FROM lda_solicitacao sol
+        JOIN lda_tiposolicitacao tip ON tip.idtiposolicitacao = sol.idtiposolicitacao
+        JOIN lda_solicitante pes ON pes.idsolicitante = sol.idsolicitante
+        LEFT JOIN lda_movimentacao mov ON mov.idmovimentacao = (SELECT MAX(m.idmovimentacao) FROM lda_movimentacao m WHERE m.idsolicitacao = sol.idsolicitacao)
+        LEFT JOIN sis_secretaria secOrigem ON secOrigem.idsecretaria = mov.idsecretariaorigem
+        LEFT JOIN sis_secretaria secDestino ON secDestino.idsecretaria = mov.idsecretariadestino
+        JOIN lda_configuracao c
+        WHERE  1=1
             $filtro_ 
 		ORDER BY sol.idsolicitacao DESC
 		$qryLimit";
 	//print($sql);
 	if ($limit > 0 )
-		$rs__ = execQuery($sql);
+		$result__ = execQuery($sql);
 	else
-		$rs__ = execQueryPag($sql);
+		$result__ = execQueryPag($sql);
 	
-	return $rs__;	
+	return $result__;	
 }
 
 
@@ -286,10 +286,10 @@ function getDemandas($filtro_ = "", $limit = 0) {
 */
 function getDemandaMes($sicCentral_) {
 
-	$rs_ = getSolTotal("", "", 3, $sicCentral_); // total, origem, mes, situacao
+	$result_ = getSolTotal("", "", 3, $sicCentral_); // total, origem, mes, situacao
 	$total;
 
-	while ($reg = mysql_fetch_array($rs_)) {
+	while ($reg = mysqli_fetch_array($result_)) {
 		
 		$somaAberta 	= 0;
 		$somaRespondido	= 0;
@@ -349,9 +349,9 @@ function getEnquete() {
 				lda_enquete 
 			";
 	
-	$rs = execQuery($sql);
+	$result = execQuery($sql);
 	
-	while ($reg = mysql_fetch_array($rs)) {
+	while ($reg = mysqli_fetch_array($rs)) {
 		
 		if ($reg['resposta']  == 'U')
 			$resposta = 'Ruim';
@@ -398,9 +398,9 @@ function getFiltroVinculo() {
 		}
 		
 		if (empty($sicVincTmp)) 
-			$filtroVinc = " and (mov.idsecretariadestino = $idSicUsuario or mov.idsecretariaorigem = $idSicUsuario) ";
+			$filtroVinc = " AND (mov.idsecretariadestino = $idSicUsuario OR mov.idsecretariaorigem = $idSicUsuario) ";
 		else
-			$filtroVinc = " and (mov.idsecretariadestino IN ($idSicUsuario, $sicVincTmp) or mov.idsecretariaorigem IN ($idSicUsuario, $sicVincTmp) ";
+			$filtroVinc = " AND (mov.idsecretariadestino IN ($idSicUsuario, $sicVincTmp) OR mov.idsecretariaorigem IN ($idSicUsuario, $sicVincTmp) ";
 	}	
 		
 	return $filtroVinc;

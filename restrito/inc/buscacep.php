@@ -12,15 +12,15 @@
   
   $f = $_REQUEST['f'];
 
-  $sql = "select cep, logradouro, 
+  $sql = "SELECT cep, logradouro, 
 				 tipologradouro, bairro, 
 				 cidade, uf
-		  from vw_cep
-		  where cep = '$f' 
+		  FROM vw_cep
+		  WHERE cep = '$f' 
 		  ";
 
   $resultado = execQuery($sql);
-  $row = mysql_fetch_array($resultado);
+  $row = mysqli_fetch_array($resultado);
    
   ?>
 <script>

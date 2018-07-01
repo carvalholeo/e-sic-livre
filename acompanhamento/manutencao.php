@@ -23,7 +23,7 @@
         //-----
         
 	//se for passado código para edição e nao tiver sido postado informação do formulario busca dados do banco
-	if(!$_POST['acao'] and !empty($codigo))
+	if(!$_POST['acao'] AND !empty($codigo))
 	{
 		$acao = "Alterar";
                 

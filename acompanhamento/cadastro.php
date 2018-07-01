@@ -232,7 +232,7 @@
 		<td width="100%" colspan="4">
                         <table align="center" width="100%" cellpadding="0" cellspacing="1" class="tabListaDetalhe">
                         <?php
-                        $rsAnexo = execQuery("select * from lda_anexo where idsolicitacao=$idsolicitacao order by idanexo");
+                        $rsAnexo = execQuery("SELECT * FROM lda_anexo WHERE idsolicitacao=$idsolicitacao ORDER BY idanexo");
                         $i=0;
                         while($row = mysql_fetch_array($rsAnexo)){
                             $i++;
@@ -261,7 +261,7 @@
                         <?php
                         $rsMov = Solicitacao::getMovimentacao($idsolicitacao);
                         
-                        while($row = mysql_fetch_array($rsMov)){
+                        while($row = mysqli_fetch_array($rsMov)){
                             ?>
                             <tr>
                                 <td><?php echo bdToDate($row["dataenvio"]);?></td>
@@ -281,7 +281,7 @@
         if($instancia == "I") { //se for solicitação inicial, mostra os recursos se houver
             
                 $existerecurso = true;
-                $rsRec = Solicitacao::getRecursos($idsolicitacao);
+                $resultRecurso = Solicitacao::getRecursos($idsolicitacao);
 
 
 
@@ -292,7 +292,7 @@
 
 
 
- if(mysql_num_rows($rsRec) > 0)
+ if(mysqli_num_rows($resultRecurso) > 0)
                 {
                     $permiterecurso = false;
                     ?>
@@ -310,7 +310,7 @@
                                         <th>Data Resposta</th>
                                     </tr>
                                     <?php
-                                    while($row = mysql_fetch_array($rsRec)){
+                                    while($row = mysqli_fetch_array($resultRecurso)){
                                         ?>
                                         <tr>
                                             <td><?php echo bdToDate($row["datasolicitacao"]);?></td>

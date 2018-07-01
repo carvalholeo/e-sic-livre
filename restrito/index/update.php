@@ -24,8 +24,8 @@ return;
 			{
 
 				//Consulta idsecretaria do usuario
-				$qryTmp	= "SELECT idsecretaria from sis_secretaria WHERE sigla = '" . trim($itens[4]) . "'";
-				$rs		= mysqli_query($mysqli, $qryTmp);
+				$qryTmp	= "SELECT idsecretaria FROM sis_secretaria WHERE sigla = '" . trim($itens[4]) . "'";
+				$result		= mysqli_query($mysqli, $qryTmp);
 				$idsecretaria = null;
 				
 				if(mysqli_num_rows($rs)>0)
@@ -38,8 +38,8 @@ return;
 				}
 				
 				//Define se é atualização ou inserção
-				$qryTmp	= "SELECT idusuario from sis_usuario WHERE login = '$itens[0]'";
-				$rs		= mysqli_query($mysqli, $qryTmp);
+				$qryTmp	= "SELECT idusuario FROM sis_usuario WHERE login = '$itens[0]'";
+				$result		= mysqli_query($mysqli, $qryTmp);
 				
 				if(mysqli_num_rows($rs)>0)
 				{
@@ -72,12 +72,12 @@ return;
 			else if ($_POST['opcao'] == '3')
 			{		
 				//Consulta idsecretaria do usuario
-				$qryTmp	= "SELECT idsecretaria from sis_secretaria WHERE idorigem = '" . trim($itens[4]) . "'";
-				$rs		= mysqli_query($mysqli, $qryTmp);
+				$qryTmp	= "SELECT idsecretaria FROM sis_secretaria WHERE idorigem = '" . trim($itens[4]) . "'";
+				$result		= mysqli_query($mysqli, $qryTmp);
 		
 				if(mysqli_num_rows($rs)>0)
 				{
-					$row = mysqli_fetch_array($rs);
+					$row = mysqli_fetch_array($result);
 					$idvinculado = $row["idsecretaria"];
                 }
 				
@@ -85,7 +85,7 @@ return;
 					
 			}
 			
-			if (!mysql_query($qry,$con)) 
+			if (!mysqli_query($con,$qry)) 
 				echo mysql_error() . '<br>';
 			else {
 				if ($qryTipo == 1)

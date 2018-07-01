@@ -12,57 +12,54 @@ require_once("config.php");
 
 function db_open() {
 
-    $conn = mysql_connect(DBHOST, DBUSER, DBPASS) or die('nao pode conectar ao banco');
-    mysql_select_db(DBNAME) or die("nao pode selecionar o banco");
-
-    return $conn;
+    $mysqli =  new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
+    if($mysqli->connect_error) {
+        die('Erro de conexão (' . $mysqli->connect_errno . ')'
+                . $mysqli->connect_error);
+    }
+    return $mysqli;
 }
 
-function db_close($conn) {
-    mysql_close($conn) or die ("nao pode fechar a conexao");
+function db_close($mysqli) {
+    $mysqli->close();
 }
 
 //retorna objeto de conexao com o banco para transações
 function db_open_trans()
 {
 	//conecta ao mysqli
-	$mysqli = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
-	
-	/* check connection */
-	if (mysqli_connect_errno()) {
-		die("Falha na conexao: ". mysqli_connect_error());
-	}		
+	$mysqli = db_open();	
 
 	$mysqli->autocommit(false);
 	
 	return $mysqli;
-
 }
 
 
 
 function execQuery($query) {
-    $conn = db_open();
+    $mysqli = db_open();
 
-    $rs = mysql_query($query, $conn); // or die (mysql_error());
+    $result = $mysqli->query($query); // or die (mysql_error());
 
-    db_close($conn);
-    return $rs;
+    db_close($mysqli);
+    return $result;
 }
 
-function rs_to_array($result, $numass=MYSQL_BOTH) {
+function result_to_array($result, $numass=MYSQL_BOTH) {
     $got = array();
 
-    if(mysql_num_rows($result) == 0)
-    return $got;
+    if(mysqli_num_rows($result) == 0){
+        return $got;
+    } else {
+        mysqli_data_seek($result, 0);
 
-    mysql_data_seek($result, 0);
+        while ($row = mysqli_fetch_array($result, $numass)) {
+            array_push($got, $row);
+        }
 
-    while ($row = mysql_fetch_array($result, $numass)) {
-        array_push($got, $row);
+        return $got;
     }
-
-    return $got;
 }
 
 

@@ -21,8 +21,8 @@ $situacao       = $_REQUEST["fltsituacao"];
 
 $parametrosIndex = "fltnumprotocolo=$numprotocolo&fltsituacao=$situacao"; //parametros a ser passado para a pagina de detalhamento, fazendo com que ao voltar para o index traga as informações passadas anteriormente
 
-if (!empty($numprotocolo)) $filtro.= " and concat(sol.numprotocolo,'/',sol.anoprotocolo) = '$numprotocolo'";
-if (!empty($situacao)) $filtro.= " and sol.situacao = '$situacao'";
+if (!empty($numprotocolo)) $filtro.= " AND concat(sol.numprotocolo,'/',sol.anoprotocolo) = '$numprotocolo'";
+if (!empty($situacao)) $filtro.= " AND sol.situacao = '$situacao'";
     
 
 
@@ -30,18 +30,18 @@ if (!empty($situacao)) $filtro.= " and sol.situacao = '$situacao'";
 /*
  * Quando a situação for A ou T, trata da primeira tramitação do processo. 
  */
-$sql = "select sol.*, tip.nome as tiposolicitacao
-        from lda_solicitacao sol, lda_tiposolicitacao tip
-        where tip.idtiposolicitacao = sol.idtiposolicitacao
-            and sol.idsolicitante = $idsolicitante
+$sql = "SELECT sol.*, tip.nome AS tiposolicitacao
+        FROM lda_solicitacao sol, lda_tiposolicitacao tip
+        WHERE tip.idtiposolicitacao = sol.idtiposolicitacao
+            AND sol.idsolicitante = $idsolicitante
             $filtro 
-        order by sol.anoprotocolo, sol.numprotocolo, sol.idsolicitacao";
+        ORDER BY sol.anoprotocolo, sol.numprotocolo, sol.idsolicitacao";
 
 /*if ($_REQUEST['imprimir']) {
     generateReport(array("!PATH" => "ouv_CategoriaProblema.jasper", "@sql" => $sql, "@usuario" => $_SESSION['usuario'], "@titulo" => "Listagem das Categorias dos Problemas"));
 }*/
 
-$rs = execQueryPag($sql);
+$result = execQueryPag($sql);
 
 ?>
 <h1>Consulta de Solicitações Realizadas</h1>

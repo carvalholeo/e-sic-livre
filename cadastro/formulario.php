@@ -63,7 +63,7 @@
 				<td align="left">
                                         <select name="idfaixaetaria" id="idfaixaetaria">
                                                 <option value="">----</option>		
-                                                <?php $rsFxt = execQuery("select * from lda_faixaetaria order by nome"); ?>
+                                                <?php $resultFxt = execQuery("SELECT * FROM lda_faixaetaria ORDER BY nome"); ?>
                                                 <?php while($rowfxt=mysql_fetch_array($rsFxt)){?>
                                                             <option value="<?php echo $rowfxt['idfaixaetaria'];?>" <?php echo $rowfxt['idfaixaetaria']==$idfaixaetaria?"selected":""; ?>><?php echo $rowfxt['nome'];?></option>
                                                 <?php }?>
@@ -76,8 +76,8 @@
 				<td align="left">
                                         <select name="idescolaridade" id="idescolaridade">
                                                 <option value="">----</option>		
-                                                <?php $rsEsc = execQuery("select * from lda_escolaridade order by nome"); ?>
-                                                <?php while($rowesc=mysql_fetch_array($rsEsc)){?>
+                                                <?php $resultEsc = execQuery("SELECT * FROM lda_escolaridade ORDER BY nome"); ?>
+                                                <?php while($rowesc=mysqli_fetch_array($resultEsc)){?>
                                                             <option value="<?php echo $rowesc['idescolaridade'];?>" <?php echo $rowesc['idescolaridade']==$idescolaridade?"selected":""; ?>><?php echo $rowesc['nome'];?></option>
                                                 <?php }?>
                                         </select>
@@ -95,8 +95,8 @@
 				<td align="left">
                                         <select name="idtipotelefone" id="idtipotelefone">
                                                 <option value="">----</option>		
-                                                <?php $rstel = execQuery("select * from lda_tipotelefone order by nome"); ?>
-                                                <?php while($rowtel=mysql_fetch_array($rstel)){?>
+                                                <?php $resultTel = execQuery("SELECT * FROM lda_tipotelefone ORDER BY nome"); ?>
+                                                <?php while($rowtel=mysqli_fetch_array($resultTel)){?>
                                                             <option value="<?php echo $rowtel['idtipotelefone'];?>" <?php echo $rowtel['idtipotelefone']==$idtipotelefone?"selected":""; ?>><?php echo $rowtel['nome'];?></option>
                                                 <?php }?>
                                         </select>
@@ -151,8 +151,8 @@
 					<td><input type="text" name="cidade" onmouseover="this.title=this.value" id="cidade" value="<?php echo $cidade;?>" maxlength="255" size="35">
 						<select name="uf" id="uf">
 							<option value="">- UF -</option>		
-							<?php $rsuf = execQuery("select sigla from gen_estados order by sigla"); ?>
-							<?php while($rowuf=mysql_fetch_array($rsuf)){?>
+							<?php $resultUF = execQuery("SELECT sigla FROM gen_estados ORDER BY sigla"); ?>
+							<?php while($rowuf=mysqli_fetch_array($resultUF)){?>
 								  <option value="<?php echo $rowuf['sigla'];?>" <?php echo $rowuf['sigla']==$uf?"selected":""; ?>><?php echo $rowuf['sigla'];?></option>
 							<?php }?>
 						</select>

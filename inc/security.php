@@ -25,10 +25,10 @@ function LocalSendMail($to, $subject,$body,$from="",$fromname="")
                 //se nao for informado o remetente, recupera das configurações do sistema
 		if(empty($from))
                 {
-                    $sql = "select nomeremetenteemail, emailremetente from lda_configuracao";
-                    $rs = execQuery($sql);
+                    $sql = "SELECT nomeremetenteemail, emailremetente FROM lda_configuracao";
+                    $result = execQuery($sql);
 
-                    $row = mysql_fetch_array($rs);
+                    $row = mysqli_fetch_array($result);
                     
                     $from = $row['emailremetente'];
                     $fromname = $row['nomeremetenteemail'];
@@ -73,8 +73,8 @@ function PHPMailerSendMail($to, $subject, $body, $from="", $fromname=""){
 	}
     if(empty($from)){
         $sql = "SELECT nomeremetenteemail, emailremetente FROM lda_configuracao"; 
-        $rs = execQuery($sql);
-        $row = mysql_fetch_array($rs);
+        $result = execQuery($sql);
+        $row = mysqli_fetch_array($result);
          $mail->From = $row['emailremetente'];
          $mail->FromName = $row['nomeremetenteemail'];
     }else{
@@ -108,10 +108,10 @@ function sendMailAnexo($to, $subject,$body,$arquivos=array(),$from="",$fromname=
                 //se nao for informado o remetente, recupera das configurações do sistema
 		if(empty($from))
                 {
-                    $sql = "select nomeremetenteemail, emailremetente from lda_configuracao";
-                    $rs = execQuery($sql);
+                    $sql = "SELECT nomeremetenteemail, emailremetente FROM lda_configuracao";
+                    $result = execQuery($sql);
 
-                    $row = mysql_fetch_array($rs);
+                    $row = mysqli_fetch_array($rs);
                     
                     $from = $row['emailremetente'];
                     $fromname = $row['nomeremetenteemail'];
@@ -179,7 +179,7 @@ function setTentativaLogin($usuario)
 {
 	 $ipaddr = $_SERVER["REMOTE_ADDR"];
 	 $sistema = SISTEMA_CODIGO;
-	 $query = "insert into sis_errologin (sistema, usuario,ip) values('$sistema','$usuario','$ipaddr')";
+	 $query = "INSERT INTO sis_errologin (sistema, usuario,ip) VALUES ('$sistema','$usuario','$ipaddr')";
 	 execQuery($query) or die("Ocorreu um erro inesperado ao logar erro de entrada");
 }
 
@@ -187,7 +187,7 @@ function setTentativaLogin($usuario)
 function delTentativaLogin($usuario)
 {
 	 $sistema = SISTEMA_CODIGO;
-	 $query = "delete from sis_errologin  where usuario='$usuario' and sistema = '$sistema'";
+	 $query = "DELETE FROM sis_errologin WHERE usuario='$usuario' AND sistema = '$sistema'";
 	 execQuery($query) or die("Ocorreu um erro inesperado ao excluir tentativas de acesso");
 }
 
@@ -201,13 +201,13 @@ function usaRecaptcha($usuario)
 	
 	$sistema = SISTEMA_CODIGO;
 	
-	$query = "select * from sis_errologin
-                  where usuario='$usuario' and sistema = '$sistema'";
+	$query = "SELECT * FROM sis_errologin
+                  WHERE usuario='$usuario' and SISTEMA = '$sistema'";
 
-	$rs = execQuery($query);
+	$result = execQuery($query);
 
 	//se houver tentativas registradas retorna true para exibir o controle recaptcha
-	return (mysql_num_rows($rs) >0) ;
+	return (mysql_num_rows($result) >0) ;
 	
 }
 
@@ -223,15 +223,15 @@ function autentica($login, $pwd, $tipo)
 	}
 	
 	
-        $query = "select idsolicitante as id, nome, confirmado, email
-                            from lda_solicitante
-                            where cpfcnpj='$login' and chave = '".md5($pwd)."' ";
+        $query = "SELECT idsolicitante AS id, nome, confirmado, email
+                            FROM lda_solicitante
+                            WHERE cpfcnpj='$login' AND chave = '".md5($pwd)."' ";
 
-        $rs = execQuery($query);
+        $result = execQuery($query);
 
-        if (mysql_num_rows($rs) !=0) 
+        if (mysql_num_rows($result) !=0) 
         {
-                $row = mysql_fetch_array($rs);
+                $row = mysql_fetch_array($result);
         }
         else
         {
@@ -266,13 +266,13 @@ $sis = sistema para busca do diretorio na tabela de parametros
 */
 function getDiretorio($sis = "lda"){
 	
-	$query = "select diretorioarquivos from lda_configuracao";
+	$query = "SELECT diretorioarquivos FROM lda_configuracao";
 
-	$rs = execQuery($query);
+	$result = execQuery($query);
 
-	if (mysql_num_rows($rs) !=0) 
+	if (mysqli_num_rows($result) !=0) 
 	{
-		$row = mysql_fetch_array($rs);
+		$row = mysqli_fetch_array($rs);
 		$retorno = $row['diretorioarquivos'];
 	}
 	
@@ -284,13 +284,13 @@ $sis = sistema para busca do diretorio na tabela de parametros
 */
 function getURL($sis = "alb"){
 	
-	$query = "select urlarquivos from lda_configuracao";
+	$query = "SELECT urlarquivos FROM lda_configuracao";
 
-	$rs = execQuery($query);
+	$result = execQuery($query);
 
-	if (mysql_num_rows($rs) !=0) 
+	if (mysqli_num_rows($rs) !=0) 
 	{
-		$row = mysql_fetch_array($rs);
+		$row = mysqli_fetch_array($result);
 		$retorno = $row['urlarquivos'];
 	}
 	
@@ -305,7 +305,7 @@ function prepData($var) {
     $var = stripslashes($var);
   }
   
-  $retorno = mysql_real_escape_string($var);
+  $retorno = mysqli_real_escape_string($var);
   
   db_close($conn);
   
@@ -326,7 +326,7 @@ function logger($msg) {
  $dados_session = prepData(serialize($_SESSION));
  $ipaddr = $_SERVER["REMOTE_ADDR"];
 
- $query = "insert into sis_log (usuario,mensagem,datahora,dados_get,dados_post,ipaddr) values('$usuario','$mensagem',$datahora,'$dados_get','$dados_post','$ipaddr')";
+ $query = "INSERT INTO sis_log (usuario,mensagem,datahora,dados_get,dados_post,ipaddr) VALUES('$usuario','$mensagem',$datahora,'$dados_get','$dados_post','$ipaddr')";
  execQuery($query) or die("Erro logando");
 }
 

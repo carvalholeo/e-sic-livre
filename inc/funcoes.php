@@ -176,11 +176,11 @@ $extensoes - pode ser passado uma ou mais extensoes separadas por virgua e dentr
 */
 function validaTipoArquivo($mime, $extensoes = "'.jpg','.png'")
 {
-	$sql = "select * from sis_mime where extensao in($extensoes) and mime = '$mime'";
+	$sql = "SELECT * FROM sis_mime WHERE extensao IN($extensoes) AND mime = '$mime'";
 	
-	$rs = execQuery($sql);
+	$result = execQuery($sql);
 	
-	if(mysql_num_rows($rs)>0)
+	if(mysql_num_rows($result)>0)
 		return true;
 	else
 		return false;

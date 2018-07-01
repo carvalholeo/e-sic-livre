@@ -13,16 +13,16 @@
   
   $q = $_REQUEST['q'];
 
-  $sql = "select cep, logradouro, bairro, cidade as municipio, uf as estado
-		  from vw_cep
-		  where cep like '$q%'
-		  and cidade = 'Natal'
-		  and uf = 'RN'
-		  limit 0,10";
+  $sql = "SELECT cep, logradouro, bairro, cidade AS municipio, uf AS estado
+		  FROM vw_cep
+		  WHERE cep LIKE '$q%'
+		  AND cidade = 'Natal'
+		  AND uf = 'RN'
+		  LIMIT 0,10";
 
   $resultado = execQuery($sql);
   $codigos = "";
-  while ($row = mysql_fetch_array($resultado)){
+  while ($row = mysqli_fetch_array($resultado)){
 	
 	$codigos .= '"'.$row['cep'].'",' ;
 	$nomes .= '"'.htmlentities($row['logradouro']).' - '.htmlentities($row['bairro']).', '.htmlentities($row['municipio']).'/'.$row['estado'].'",' ;

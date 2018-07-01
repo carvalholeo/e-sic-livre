@@ -21,9 +21,9 @@
                                                                         $sql = "SELECT siglasecretaria, idsecretaria FROM vw_secretariausuario
                                                                                 WHERE idusuario = '".getSession('uid')."'";
 
-                                                                        $rs = execQuery($sql);
+                                                                        $result = execQuery($sql);
                                                                         
-                                                                        while($row = mysql_fetch_array($rs)){
+                                                                        while($row = mysqli_fetch_array($result)){
                                                                             ?><option value="<?php echo md5($row['idsecretaria']);?>" <?php echo (getSession('idsecretaria') == $row['idsecretaria'])?"selected":"";?>><?php echo $row['siglasecretaria'];?></option><?php 
                                                                         }?>
 						
@@ -48,27 +48,27 @@
 
 function getMenu() {	
 	
-	$sql = "select  distinct m.nome as menu, t.nome as tela, t.pasta
-				from    sis_tela t 
-				join    sis_menu m on m.idmenu = t.idmenu
-				join    sis_acao a on a.idtela = t.idtela
-				join    sis_permissao p on p.idacao = a.idacao
-				join    sis_grupo g on g.idgrupo = p.idgrupo
-				join    sis_grupousuario gu on gu.idgrupo = g.idgrupo
-				where 
+	$sql = "SELECT  distinct m.nome AS menu, t.nome as tela, t.pasta
+				FROM    sis_tela t 
+				JOIN    sis_menu m ON m.idmenu = t.idmenu
+				JOIN    sis_acao a ON a.idtela = t.idtela
+				JOIN    sis_permissao p ON p.idacao = a.idacao
+				JOIN    sis_grupo g ON g.idgrupo = p.idgrupo
+				JOIN    sis_grupousuario gu ON gu.idgrupo = g.idgrupo
+				WHERE 
 						t.ativo = 1 
-						and a.status = 'A'
-						and gu.idusuario = 16
-				order by 
+						AND a.status = 'A'
+						AND gu.idusuario = 16
+				ORDER BY 
 						m.ordem, menu, t.nome";
 
-	$rs = execQuery($sql);
+	$result = execQuery($sql);
 
 	$menuTmp = array();	
 	$agrupaMenu = "";
 	$menu = "";
 	
-	while($row = mysql_fetch_array($rs)){
+	while($row = mysqli_fetch_array($result)){
 
 		if (empty($agrupaMenu)) {
 			$agrupaMenu .= $row['menu'];
@@ -117,9 +117,9 @@ function getSics() {
                                                                         $sql = "SELECT siglasecretaria, idsecretaria FROM vw_secretariausuario
                                                                                 WHERE idusuario = '".getSession('uid')."'";
 
-                                                                        $rs = execQuery($sql);
+                                                                        $result = execQuery($sql);
                                                                         
-                                                                        while($row = mysql_fetch_array($rs)){
+                                                                        while($row = mysqli_fetch_array($result)){
                                                                            echo "<option value="; echo md5($row['idsecretaria']);  
 																		   echo (getSession('idsecretaria') == $row['idsecretaria'])?"selected":">";
 																		   echo $row['siglasecretaria']; 

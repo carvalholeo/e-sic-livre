@@ -232,9 +232,9 @@
 		<td width="100%" colspan="4">
                         <table align="center" width="100%" cellpadding="0" cellspacing="1" class="tabListaDetalhe">
                         <?php
-                        $rsAnexo = execQuery("SELECT * FROM lda_anexo WHERE idsolicitacao=$idsolicitacao ORDER BY idanexo");
+                        $resultAnexo = execQuery("SELECT * FROM lda_anexo WHERE idsolicitacao=$idsolicitacao ORDER BY idanexo");
                         $i=0;
-                        while($row = mysql_fetch_array($rsAnexo)){
+                        while($row = mysqli_fetch_array($resultAnexo)){
                             $i++;
                             ?>
                             <tr>
@@ -283,16 +283,7 @@
                 $existerecurso = true;
                 $resultRecurso = Solicitacao::getRecursos($idsolicitacao);
 
-
-
-
-
-
-
-
-
-
- if(mysqli_num_rows($resultRecurso) > 0)
+                if(mysqli_num_rows($resultRecurso) > 0)
                 {
                     $permiterecurso = false;
                     ?>

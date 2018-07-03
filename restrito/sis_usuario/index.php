@@ -23,21 +23,21 @@ if (($_REQUEST['acao']))
 	$idsecretaria   = $_REQUEST["idsecretaria"];
 	$status 		= $_REQUEST["status"];
 
-	if(!empty($nome)) $filtro.= " and usuario.nome like '%$nome%'";
-	if(!empty($login)) $filtro.= " and usuario.login like '%$login%'";
-	if(!empty($matricula)) $filtro.= " and usuario.matricula = '$matricula'";
-	if(!empty($cpfusuario)) $filtro.= " and usuario.cpfusuario = '$cpfusuario'";
-	if(!empty($status)) $filtro.= " and usuario.status = '$status'";
-	if(!empty($idsecretaria)) $filtro.= " and usuario.idsecretaria = '$idsecretaria'";		
+	if(!empty($nome)) $filtro.= " AND usuario.nome LIKE '%$nome%'";
+	if(!empty($login)) $filtro.= " AND usuario.login LIKE '%$login%'";
+	if(!empty($matricula)) $filtro.= " AND usuario.matricula = '$matricula'";
+	if(!empty($cpfusuario)) $filtro.= " AND usuario.cpfusuario = '$cpfusuario'";
+	if(!empty($status)) $filtro.= " AND usuario.status = '$status'";
+	if(!empty($idsecretaria)) $filtro.= " AND usuario.idsecretaria = '$idsecretaria'";		
 }			
 
-$sql = "select usuario.*, sigla		  
-	  from sis_usuario usuario
-	  left outer join sis_secretaria secretaria on usuario.idsecretaria = secretaria.idsecretaria
-	  where 1=1 $filtro ";
+$sql = "SELECT usuario.*, sigla		  
+	  FROM sis_usuario usuario
+	  LEFT OUTER JOIN sis_secretaria secretaria ON usuario.idsecretaria = secretaria.idsecretaria
+	  WHERE 1=1 $filtro ";
 
 
-$rs = execQueryPag($sql);
+$result = execQueryPag($sql);
 ?>
 
 <script>
@@ -128,7 +128,7 @@ $rs = execQueryPag($sql);
 			
 				<?php
                 $cor = false;
-                while($registro = mysql_fetch_array($rs)){
+                while($registro = mysqli_fetch_array($result)){
 	               $click = "javascript:document.location='?sis_usuario&p=cadastro&codigo=".$registro["idusuario"]."'";
                 if($cor)
                   $corLinha = "#dddddd";

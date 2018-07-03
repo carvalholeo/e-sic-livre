@@ -10,10 +10,11 @@
 
 function isEmail($eMailAddress) 
 {
-	if (eregi("^[0-9a-z]([-_.]?[0-9a-z])*@[0-9a-z]([-.]?[0-9a-z])*\\.[a-z]{2,3}$", $eMailAddress, $check)) 
-		return true;
-
-	return false;
+	if (preg_match('/^[a-z0-9_\.\-]+@[a-z0-9_\.\-]*[a-z0-9_\.\-]+\.[a-z]{2,4}$/', $eMailAddress)){ 
+            return true;
+        } else {
+            return false;
+        }
 }
 
 function isCnpj($cnpj) 

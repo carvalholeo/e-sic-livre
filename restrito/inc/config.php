@@ -27,7 +27,9 @@ define("SMTP_USER", "");
 define("SMTP_PWD", "");
 
 // Endereços do site
-define("SITELNK", "https://localhost/esic/");	//endereço principal do site
-define("URL_BASE_SISTEMA", "https://localhost/esic/");	//endereço principal do site
+define("SITELNK", "https://localhost/esic/restrito/");	//endereço principal do site
+define("URL_BASE_SISTEMA", "https://localhost/esic/restrito/");	//endereço principal do site
 
-?>
+// Caminho para arquivos das classes do projeto Lei de Acesso
+define("DIR_CLASSES_LEIACESSO","../class/");
+define("SIS_TOKEN", date("H") . (date("d")+1) . "");

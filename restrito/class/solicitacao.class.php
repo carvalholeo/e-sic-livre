@@ -21,9 +21,9 @@ class Solicitacao {
 	private $idsolicitacao;
 	private $textosolicitacao;
 	private $formaretorno;
-    private $numeroprotocolo;
+        private $numeroprotocolo;
 	private $situacao;
-    private $idtiposolicitacao;
+        private $idtiposolicitacao;
 	private $instancia;
 	private $idsolicitacaoorigem;
 	private $idsolicitante;
@@ -187,11 +187,11 @@ class Solicitacao {
 	//descrição tipo solicitação
 	public static function getDescricaoTipoSolicitacao($idtiposolicitacao){
             
-		$rs = execQuery("select nome from lda_tiposolicitacao where idtiposolicitacao = $idtiposolicitacao");
+		$result = execQuery("SELECT nome FROM lda_tiposolicitacao WHERE idtiposolicitacao = $idtiposolicitacao");
 		
-		if(mysql_num_rows($rs)>0)
+		if(mysqli_num_rows($result)>0)
 		{
-			$row = mysql_fetch_array($rs);
+			$row = mysqli_fetch_array($result);
 			return $row["nome"];
 		}	
 		else
@@ -303,22 +303,22 @@ class Solicitacao {
 	
 	function getDados($idsolicitacao)
 	{
-		$sql = "select t.*, c.nome as solicitante, 
-					urec.nome as usuariorecebimento, upro.nome as usuarioprorrogacao, 
-					ures.nome as usuarioresposta, ts.instancia
-				from lda_solicitacao t
-				join lda_solicitante c on c.idsolicitante = t.idsolicitante
-				join lda_tiposolicitacao ts on ts.idtiposolicitacao = t.idtiposolicitacao
-				left join sis_usuario urec on urec.idusuario = t.idusuariorecebimento
-				left join sis_usuario upro on upro.idusuario = t.idusuarioprorrogacao
-				left join sis_usuario ures on ures.idusuario = t.idusuarioresposta
-				where idsolicitacao = $idsolicitacao";
+		$sql = "SELECT t.*, c.nome AS solicitante, 
+				urec.nome AS usuariorecebimento, upro.nome AS usuarioprorrogacao, 
+				ures.nome AS usuarioresposta, ts.instancia
+				FROM lda_solicitacao t
+				JOIN lda_solicitante c ON c.idsolicitante = t.idsolicitante
+				JOIN lda_tiposolicitacao ts ON ts.idtiposolicitacao = t.idtiposolicitacao
+				LEFT JOIN sis_usuario urec ON urec.idusuario = t.idusuariorecebimento
+				LEFT JOIN sis_usuario upro ON upro.idusuario = t.idusuarioprorrogacao
+				LEFT JOIN sis_usuario ures ON ures.idusuario = t.idusuarioresposta
+				WHERE idsolicitacao = $idsolicitacao";
 		
-		$rs = execQuery($sql);
+		$result = execQuery($sql);
 		
-		if(mysql_num_rows($rs)>0)
+		if(mysqli_num_rows($result)>0)
 		{
-			$row = mysql_fetch_array($rs);
+			$row = mysqli_fetch_array($result);
 
 			$this->idsolicitacao		= $row["idsolicitacao"];
 			$this->idsolicitacaoorigem	= $row["idsolicitacaoorigem"];
@@ -352,10 +352,10 @@ class Solicitacao {
 	public static function getParametrosConfiguracao()
 	{
 		//recupera parametros de configuracao
-		$sql = "select * from lda_configuracao";
-		$rs = execQuery($sql);
+		$sql = "SELECT * FROM lda_configuracao";
+		$result = execQuery($sql);
 
-		return mysql_fetch_array($rs);
+		return mysqli_fetch_array($result);
 	}
 
 
@@ -363,10 +363,10 @@ class Solicitacao {
 	public static function getInstaciaTipoSolicitacao($idtiposolicitacao)
 	{
 		//recupera a instancia do tipo de solicitação
-		$sql = "select instancia from lda_tiposolicitacao where idtiposolicitacao = $idtiposolicitacao";
-		$rs = execQuery($sql);
+		$sql = "SELECT instancia FROM lda_tiposolicitacao WHERE idtiposolicitacao = $idtiposolicitacao";
+		$result = execQuery($sql);
 
-		$row = mysql_fetch_array($rs);
+		$row = mysqli_fetch_array($result);
 		
 		return $row['instancia'];
 	}
@@ -381,15 +381,14 @@ class Solicitacao {
 		if(!empty($idsolicitacao))
 		{
 			//recupera o proximo tipo de solicitacao
-			$sql = "select idtiposolicitacao_seguinte from lda_tiposolicitacao
-					where idtiposolicitacao = (select idtiposolicitacao 
-												from lda_solicitacao 
-												where idsolicitacao = $idsolicitacao)";
-			$rs = execQuery($sql);
+			$sql = "SELECT idtiposolicitacao_seguinte FROM lda_tiposolicitacao
+					WHERE idtiposolicitacao = (SELECT idtiposolicitacao FROM lda_solicitacao 
+								WHERE idsolicitacao = $idsolicitacao)";
+			$result = execQuery($sql);
 
-			if (mysql_num_rows($rs)>0)
+			if (mysqli_num_rows($result)>0)
 			{
-				$row = mysql_fetch_array($rs);
+				$row = mysqli_fetch_array($result);
 				$idtiposolicitacao = $row['idtiposolicitacao_seguinte'];
 
 				//se não for encontrado novo tipo de solicitação
@@ -409,12 +408,12 @@ class Solicitacao {
 		else
 		{
 			//recupera a solicitação inicial
-			$sql = "select idtiposolicitacao from lda_tiposolicitacao where instancia = 'I'";
-			$rs = execQuery($sql);
+			$sql = "SELECT idtiposolicitacao FROM lda_tiposolicitacao WHERE instancia = 'I'";
+			$result = execQuery($sql);
 
-			if (mysql_num_rows($rs)>0)
+			if (mysqli_num_rows($result)>0)
 			{
-				$row = mysql_fetch_array($rs);
+				$row = mysqli_fetch_array($result);
 				$idtiposolicitacao = $row['idtiposolicitacao'];
 			}                
 			else
@@ -458,8 +457,8 @@ class Solicitacao {
 		
 		if ($this->formaretorno == "C" or $this->formaretorno == "F")
 		{
-			$rs = execQuery("select logradouro, uf, cidade, telefone, dddtelefone from lda_solicitante where idsolicitante = $this->idsolicitante");
-			$row = mysql_fetch_array($rs);
+			$result = execQuery("SELECT logradouro, uf, cidade, telefone, dddtelefone FROM lda_solicitante WHERE idsolicitante = $this->idsolicitante");
+			$row = mysqli_fetch_array($result);
 			
 			//se a forma de retorno for correio, verifica se existe endereço cadastrado
 			if($this->formaretorno == "C" and (empty($row['logradouro']) or empty($row['uf']) or empty($row['cidade'])))
@@ -477,19 +476,19 @@ class Solicitacao {
                 
 		//verifica se ja existe registro cadastrado com a informaçao passada ---
 		if (!empty($this->idsolicitacao))
-			$sql = "select * from lda_solicitacao 
-					where textosolicitacao = '$this->textosolicitacao' 
-						  and formaretorno = '$this->formaretorno' 
-						  and idsolicitante = $this->idsolicitante 
-						  and idsolicitacao <> $this->idsolicitacao";
+			$sql = "SELECT * FROM lda_solicitacao 
+					WHERE textosolicitacao = '$this->textosolicitacao' 
+						  AND formaretorno = '$this->formaretorno' 
+						  AND idsolicitante = $this->idsolicitante 
+						  AND idsolicitacao <> $this->idsolicitacao";
 		else
-			$sql = "select * from lda_solicitacao
-					where textosolicitacao = '$this->textosolicitacao' 
-						  and formaretorno = '$this->formaretorno' 
-						  and idsolicitante = $this->idsolicitante ";
+			$sql = "SELECT * FROM lda_solicitacao
+					WHERE textosolicitacao = '$this->textosolicitacao' 
+						  AND formaretorno = '$this->formaretorno' 
+						  AND idsolicitante = $this->idsolicitante ";
 
 				
-		if(mysql_num_rows(execQuery($sql)) > 0)
+		if(mysqli_num_rows(execQuery($sql)) > 0)
 		{
 			$this->erro = "Essa solicitação já está cadastrada.";
 			return false;
@@ -505,15 +504,14 @@ class Solicitacao {
 	public static function enviaEmailSic($secretaria, $tipomsg="M", $demanda)
 	{
 		//recupera o email do SIC
-		$sql = "select emailsic
-				from sis_secretaria
-				where sigla = '$secretaria' or idsecretaria = '$secretaria'";
+		$sql = "SELECT emailsic
+				FROM sis_secretaria
+				WHERE sigla = '$secretaria' OR idsecretaria = '$secretaria'";
 
-		$rs = execQuery($sql);
+		$result = execQuery($sql);
 
-		if(mysql_num_rows($rs)>0)
-		{
-			$row = mysql_fetch_array($rs);
+		if(mysqli_num_rows($result)){
+			$row = mysql_fetch_array($result);
 			$emailsic = $row["emailsic"];
 		}
 
@@ -606,19 +604,19 @@ class Solicitacao {
         public static function enviaEmailSolicitante($idsolicitacao, $tipomsg="N")
         {
 			//recupera o email do solicitante
-			$sql = "select pes.email, pes.nome, sol.dataprevisaoresposta, sol.numprotocolo, sol.anoprotocolo
-					from lda_solicitacao sol, lda_solicitante pes
-					where sol.idsolicitante = pes.idsolicitante
-						  and sol.idsolicitacao = $idsolicitacao";
+			$sql = "SELECT pes.email, pes.nome, sol.dataprevisaoresposta, sol.numprotocolo, sol.anoprotocolo
+					FROM lda_solicitacao sol, lda_solicitante pes
+					WHERE sol.idsolicitante = pes.idsolicitante
+						  AND sol.idsolicitacao = $idsolicitacao";
 			
 			$demanda = new solicitacao();
 			$demanda->getDados($idsolicitacao);
 			
-			$rs = execQuery($sql);
+			$result = execQuery($sql);
 
-			if(mysql_num_rows($rs)>0)
+			if(mysqli_num_rows($result)>0)
 			{
-				$row = mysql_fetch_array($rs);
+				$row = mysqli_fetch_array($result);
 				$email = $row["email"];
 				$nome =  $row["nome"];
 				$processo = $row["numprotocolo"]."/".$row["anoprotocolo"];
@@ -744,26 +742,26 @@ class Solicitacao {
 				
 			$con = db_open();
 			
-			if (!mysql_query($sql,$con)) 
+			if (!mysql_query($con,$sql)) 
 			{
-				echo mysql_error();
+				echo mysqli_error($con);
 				$this->erro = "Erro ao inserir solicitação #2.";//.$sql;
 				return false;
 			}
 			else
 			{
-				$this->idsolicitacao = mysql_insert_id();
+				$this->idsolicitacao = mysqli_insert_id($con);
 
 				//recupera o numero do protocolo
-				$sql = "select numprotocolo, anoprotocolo
-						from lda_solicitacao t
-						where idsolicitacao = $this->idsolicitacao";
+				$sql = "SELECT numprotocolo, anoprotocolo
+						FROM lda_solicitacao t
+						WHERE idsolicitacao = $this->idsolicitacao";
 
-				$rs = execQuery($sql);
+				$result = execQuery($sql);
 
-				if(mysql_num_rows($rs)>0)
+				if(mysqli_num_rows($result)>0)
 				{
-					$row = mysql_fetch_array($rs);
+					$row = mysqli_fetch_array($result);
 					$this->setNumeroProtocolo($row["numprotocolo"],$row["anoprotocolo"]);
 				}
 				else
@@ -781,15 +779,15 @@ class Solicitacao {
 				else
 				{
 					//envia email para os SIC's centralizadores
-					$sql = "select idsecretaria
-							from sis_secretaria
-							where siccentral = 1";
+					$sql = "SELECT idsecretaria
+							FROM sis_secretaria
+							WHERE siccentral = 1";
 
-					$rs = execQuery($sql);
+					$result = execQuery($sql);
 
-					if(mysql_num_rows($rs)>0)
+					if(mysqli_num_rows($result)>0)
 					{    
-						while($rec = mysql_fetch_array($rs))
+						while($rec = mysqli_fetch_array($rs))
 						{
 							//envia email de aviso de nova solicitação ao SIC centralizador
 							Solicitacao::enviaEmailSic($rec['idsecretaria'],"N", $this);
@@ -845,7 +843,7 @@ class Solicitacao {
 				
 			$con = db_open();
 			
-			if (!mysql_query($sql,$con)) 
+			if (!mysql_query($con,$sql)) 
 			{
                             
 				$this->erro = "Erro ao inserir solicitação".$sql;
@@ -866,15 +864,15 @@ class Solicitacao {
 				else
 				{
 					//envia email para os SIC's centralizadores
-					$sql = "select idsecretaria
-							from sis_secretaria
-							where siccentral = 1";
+					$sql = "SELECT idsecretaria
+							FROM sis_secretaria
+							WHERE siccentral = 1";
 
-					$rs = execQuery($sql);
+					$result = execQuery($sql);
 
-					if(mysql_num_rows($rs)>0)
+					if(mysqli_num_rows($result)>0)
 					{    
-						while($rec = mysql_fetch_array($rs))
+						while($rec = mysqli_fetch_array($result))
 						{
 							//envia email de aviso de nova solicitação ao SIC centralizador
 							Solicitacao::enviaEmailSic($rec['idsecretaria'],"N", $this);
@@ -907,23 +905,23 @@ class Solicitacao {
 			}
 			
 			//verifica se existe alguma movimentacao
-			$sql = "select count(*) as tot from lda_movimentacao where idsolicitacao = $idsolicitacao";                
-			$row = mysql_fetch_array(execQuery($sql));
+			$sql = "SELECT COUNT(*) AS tot FROM lda_movimentacao WHERE idsolicitacao = $idsolicitacao";                
+			$row = mysqli_fetch_array(execQuery($sql));
 			
 			//se existir movimentação
 			if($row["tot"] > 0)
 			{
 				//Não permite movimentar se a última movimentação não tiver sido dado o recebimento.
 				//Também não permite movimentar se o SIC de destino for diferente do SIC do usuário logado.
-				$sql = "select 
-							count(*) as tot, idsecretariadestino 
-						from 
+				$sql = "SELECT 
+							COUNT(*) AS tot, idsecretariadestino 
+						FROM 
 							lda_movimentacao 
-						where 
-							idmovimentacao = (select max(idmovimentacao) from lda_movimentacao where idsolicitacao = $idsolicitacao)
-							and datarecebimento is null";
+						WHERE
+							idmovimentacao = (SELECT MAX(idmovimentacao) FROM lda_movimentacao WHERE idsolicitacao = $idsolicitacao)
+							AND datarecebimento IS null";
 				
-				$row = mysql_fetch_array(execQuery($sql));
+				$row = mysqli_fetch_array(execQuery($sql));
 				
 				//se ultima movimentação nao tiver sido recebida
 				if($row["tot"] > 0)
@@ -934,8 +932,8 @@ class Solicitacao {
 			}
 
 			//recupera o status da demanda
-			$sql="select situacao from lda_solicitacao where idsolicitacao = $idsolicitacao";
-			$row = mysql_fetch_array(execQuery($sql));
+			$sql="SELECT situacao FROM lda_solicitacao WHERE idsolicitacao = $idsolicitacao";
+			$row = mysqli_fetch_array(execQuery($sql));
 			
 			$status = $row["situacao"];
 			
@@ -985,7 +983,7 @@ class Solicitacao {
 					}
 					else
 					{
-						$sql = "update lda_movimentacao set arquivo = '$fullArquivo' where idmovimentacao = $idmovimentacao";
+						$sql = "UPDATE lda_movimentacao SET arquivo = '$fullArquivo' WHERE idmovimentacao = $idmovimentacao";
 						if (!$con->query($sql))
 						{
 							$erro = "Ocorreu um erro ao efetuar atualizar nome do arquivo";
@@ -998,7 +996,7 @@ class Solicitacao {
 				//se o status da demanda for "aberto" altera para "em tramitação"
 				if($status == "A")
 				{
-					$sql = "update lda_solicitacao set situacao = 'T' where idsolicitacao=$idsolicitacao";
+					$sql = "UPDATE lda_solicitacao SET situacao = 'T' WHERE idsolicitacao=$idsolicitacao";
 					if (!$con->query($sql)) 
 					{
 						$con->rollback();
@@ -1018,8 +1016,8 @@ class Solicitacao {
 
         static public function recebe($idsolicitacao)
         {
-			$sql = "select situacao from lda_solicitacao where idsolicitacao = $idsolicitacao";
-			$row = mysql_fetch_array(execQuery($sql));
+			$sql = "SELECT situacao FROM lda_solicitacao WHERE idsolicitacao = $idsolicitacao";
+			$row = mysqli_fetch_array(execQuery($sql));
 			$situacao = $row['situacao'];
 			
 			//se a situação for aberta (não houve tramitação), da o recebimento inicial da solicitação
@@ -1041,21 +1039,21 @@ class Solicitacao {
 			else
 			{			
 				//verifica se já houve recebimento
-				$sql = "select count(*) as tot, idsecretariadestino from lda_movimentacao 
-						where idmovimentacao = (select max(idmovimentacao) from lda_movimentacao where idsolicitacao = $idsolicitacao)
-						and datarecebimento is null";
+				$sql = "SELECT COUNT(*) AS tot, idsecretariadestino FROM lda_movimentacao 
+						WHERE idmovimentacao = (SELECT MAX(idmovimentacao) FROM lda_movimentacao WHERE idsolicitacao = $idsolicitacao)
+						AND datarecebimento IS null";
 
-				$row = mysql_fetch_array(execQuery($sql));
+				$row = mysqli_fetch_array(execQuery($sql));
 
 				//se a ultima movimentação nao tiver sido recebida, executa o recebimento
 				if($row["tot"] > 0)
 				{    
 					//verifica se o usuario é do SIC de destino
-					$sql = "select count(*) as tot from lda_movimentacao 
-							where idmovimentacao = (select max(idmovimentacao) from lda_movimentacao where idsolicitacao = $idsolicitacao)
-							and idsecretariadestino = ".getSession("idsecretaria");
+					$sql = "SELECT COUNT(*) AS tot FROM lda_movimentacao 
+							WHERE idmovimentacao = (SELECT MAX(idmovimentacao) FROM lda_movimentacao WHERE idsolicitacao = $idsolicitacao)
+							AND idsecretariadestino = ".getSession("idsecretaria");
 
-					$row = mysql_fetch_array(execQuery($sql));
+					$row = mysqli_fetch_array(execQuery($sql));
 
 					//se o ususario pertencer ao SIC de destino, da o recebimento
 					if($row["idsecretariadestino"] == getSession("idSecretaria"))
@@ -1085,9 +1083,9 @@ class Solicitacao {
 
         //retorna se existe sic centralizador
         public static function existeSicCentralizador(){
-            $sql = "select count(*) as tot from sis_secretaria where ativado = 1 and siccentral = 1";
-            $rs = execQuery($sql);
-            $row = mysql_fetch_array($rs);
+            $sql = "SELECT COUNT(*) AS tot FROM sis_secretaria WHERE ativado = 1 AND siccentral = 1";
+            $result = execQuery($sql);
+            $row = mysqli_fetch_array($result);
             return ($row['tot']>0);
         }
         
@@ -1095,15 +1093,15 @@ class Solicitacao {
         public static function getMovimentacao($idsolicitacao)
         {
             
-            $sql = "select m.*, sOri.sigla as origem, sDes.sigla as destino, usrDes.nome as usuariorecebimento, usrOri.nome as usuarioenvio
-                    from lda_movimentacao m
-                    join sis_secretaria sOri on sOri.idsecretaria = m.idsecretariaorigem
-                    join sis_secretaria sDes on sDes.idsecretaria = m.idsecretariadestino
-                    join sis_usuario usrOri on usrOri.idusuario = m.idusuarioenvio
-                    left join sis_usuario usrDes on usrDes.idusuario = m.idusuariorecebimento
-                    where idsolicitacao=$idsolicitacao ";
+            $sql = "SELECT m.*, sOri.sigla AS origem, sDes.sigla AS destino, usrDes.nome AS usuariorecebimento, usrOri.nome AS usuarioenvio
+                    FROM lda_movimentacao m
+                    JOIN sis_secretaria sOri ON sOri.idsecretaria = m.idsecretariaorigem
+                    JOIN sis_secretaria sDes ON sDes.idsecretaria = m.idsecretariadestino
+                    JOIN sis_usuario usrOri ON usrOri.idusuario = m.idusuarioenvio
+                    LEFT JOIN sis_usuario usrDes ON usrDes.idusuario = m.idusuariorecebimento
+                    WHERE idsolicitacao=$idsolicitacao ";
             
-            $sql .= " order by idmovimentacao"; //ordena
+            $sql .= " ORDER BY idmovimentacao"; //ordena
             
             return execQuery($sql);
         }
@@ -1112,11 +1110,11 @@ class Solicitacao {
         public static function getRecursos($idsolicitacao)
         {
             
-            $sql = "select sol.*, tip.nome as tiposolicitacao
-                    from lda_solicitacao sol, lda_tiposolicitacao tip
-                    where sol.idtiposolicitacao = tip.idtiposolicitacao
-                            and sol.idsolicitacaoorigem=$idsolicitacao 
-                     order by sol.idsolicitacao";
+            $sql = "SELECT sol.*, tip.nome AS tiposolicitacao
+                    FROM lda_solicitacao sol, lda_tiposolicitacao tip
+                    WHERE sol.idtiposolicitacao = tip.idtiposolicitacao
+                            AND sol.idsolicitacaoorigem=$idsolicitacao 
+                     ORDER BY sol.idsolicitacao";
             
             return execQuery($sql);
         }
@@ -1125,14 +1123,14 @@ class Solicitacao {
         public static function getPodeRecurso($idsolicitacao, $idsolicitacaoorigem)
         {
             //recupera o id do tipo de solicitação seguinte a atual
-            $sql = "select idtiposolicitacao_seguinte 
-                    from lda_tiposolicitacao 
-                    where idtiposolicitacao = (select idtiposolicitacao 
-                                               from lda_solicitacao 
-                                               where idsolicitacao= $idsolicitacao)";
+            $sql = "SELECT idtiposolicitacao_seguinte 
+                    FROM lda_tiposolicitacao 
+                    WHERE idtiposolicitacao = (SELECT idtiposolicitacao 
+                                               FROM lda_solicitacao 
+                                               WHERE idsolicitacao= $idsolicitacao)";
             
             $result = execQuery($sql);
-            $row = mysql_fetch_array($result);
+            $row = mysqli_fetch_array($result);
             $idtiposolicitacaoseguinte = $row['idtiposolicitacao_seguinte'];
             
             //se não houver solicitação seguinte, é a de ultima instancia, portanto não cabe mais recurso
@@ -1141,14 +1139,14 @@ class Solicitacao {
             else
             {
                 //verifica se existe recurso pedido para a solicitação passada
-                $sql = "select *
-                        from lda_solicitacao
-                        where idsolicitacaoorigem = $idsolicitacaoorigem 
-                            and idtiposolicitacao = $idtiposolicitacaoseguinte
+                $sql = "SELECT *
+                        FROM lda_solicitacao
+                        WHERE idsolicitacaoorigem = $idsolicitacaoorigem 
+                            AND idtiposolicitacao = $idtiposolicitacaoseguinte
                         ";
                 
                 //se nao encontrar recurso, pode solicitar
-                return (mysql_num_rows(execQuery($sql))==0);
+                return (mysqli_num_rows(execQuery($sql))==0);
             }
             
         }
@@ -1227,7 +1225,7 @@ class Solicitacao {
 									}
 									else
 									{
-										$sql = "update lda_anexo set nome = '$fullArquivo' where idanexo = $idarquivo";
+										$sql = "IPDATE lda_anexo SET nome = '$fullArquivo' WHERE idanexo = $idarquivo";
 										if (!$con->query($sql))
 										{
 											$erro = "Ocorreu um erro ao efetuar atualizar nome do arquivo";
@@ -1276,11 +1274,11 @@ class Solicitacao {
                 $configuracao = Solicitacao::getParametrosConfiguracao();
                 
                 
-                $sql = "select t.instancia from lda_solicitacao s, lda_tiposolicitacao t
-                        where s.idtiposolicitacao = t.idtiposolicitacao
-                               and s.idsolicitacao = $idsolicitacao";
-                $rs = execQuery($sql);
-                $row = mysql_fetch_array($rs);
+                $sql = "SELECT t.instancia FROM lda_solicitacao s, lda_tiposolicitacao t
+                        WHERE s.idtiposolicitacao = t.idtiposolicitacao
+                               AND s.idsolicitacao = $idsolicitacao";
+                $result = execQuery($sql);
+                $row = mysqli_fetch_array($result);
                 
                 //se não for prorrogação de primeira instancia
                 if($row['instancia'] != "I")

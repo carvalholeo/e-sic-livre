@@ -111,7 +111,7 @@ function sendMailAnexo($to, $subject,$body,$arquivos=array(),$from="",$fromname=
                     $sql = "SELECT nomeremetenteemail, emailremetente FROM lda_configuracao";
                     $result = execQuery($sql);
 
-                    $row = mysqli_fetch_array($rs);
+                    $row = mysqli_fetch_array($result);
                     
                     $from = $row['emailremetente'];
                     $fromname = $row['nomeremetenteemail'];
@@ -207,7 +207,7 @@ function usaRecaptcha($usuario)
 	$result = execQuery($query);
 
 	//se houver tentativas registradas retorna true para exibir o controle recaptcha
-	return (mysql_num_rows($result) >0) ;
+	return false; //(mysqli_num_rows($result) >0) ;
 	
 }
 
@@ -229,9 +229,9 @@ function autentica($login, $pwd, $tipo)
 
         $result = execQuery($query);
 
-        if (mysql_num_rows($result) !=0) 
+        if (mysqli_num_rows($result) !=0) 
         {
-                $row = mysql_fetch_array($result);
+                $row = mysqli_fetch_array($result);
         }
         else
         {
@@ -272,7 +272,7 @@ function getDiretorio($sis = "lda"){
 
 	if (mysqli_num_rows($result) !=0) 
 	{
-		$row = mysqli_fetch_array($rs);
+		$row = mysqli_fetch_array($result);
 		$retorno = $row['diretorioarquivos'];
 	}
 	
@@ -288,7 +288,7 @@ function getURL($sis = "alb"){
 
 	$result = execQuery($query);
 
-	if (mysqli_num_rows($rs) !=0) 
+	if (mysqli_num_rows($result) !=0) 
 	{
 		$row = mysqli_fetch_array($result);
 		$retorno = $row['urlarquivos'];
@@ -357,5 +357,3 @@ function isauth($tipo="consumidor") {
 }
 
 session_start();
-
-?>

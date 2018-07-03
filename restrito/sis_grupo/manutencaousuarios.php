@@ -58,7 +58,7 @@
                         $con = db_open_trans();
                         $all_query_ok=true;
                         
-                        $sql = "delete from sis_grupousuario where idgrupo = $idgrupo";
+                        $sql = "DELETE FROM sis_grupousuario WHERE idgrupo = $idgrupo";
                         
                         if (!$con->query($sql)) 
                         {
@@ -69,13 +69,13 @@
                         {
                             foreach ($selecionados as $usr)
                             {
-                                $sql = "select idusuario from sis_usuario where login = '$usr'";
-                                $rs = execQuery($sql);
-                                $row = mysql_fetch_array($rs);
+                                $sql = "SELECT idusuario FROM sis_usuario WHERE login = '$usr'";
+                                $result = execQuery($sql);
+                                $row = mysqli_fetch_array($result);
                                 $idusuario = $row['idusuario'];
 
-                                $sql = "insert into sis_grupousuario (idgrupo, idusuario)
-                                        values ('$idgrupo', $idusuario)";
+                                $sql = "INSERT INTO sis_grupousuario (idgrupo, idusuario)
+                                        VALUES ('$idgrupo', $idusuario)";
 
                                 if (!$con->query($sql)) 
                                 {
@@ -107,18 +107,18 @@
         else
         {
             $idgrupo = $_GET["idgrupo"];
-            $sql = "select nome from sis_grupo where idgrupo = $idgrupo";
+            $sql = "SELECT nome FROM sis_grupo WHERE idgrupo = $idgrupo";
             $result = execQuery($sql);
-            $row = mysql_fetch_array($result);
+            $row = mysqli_fetch_array($result);
             
             $nomegrupo = $row["nome"];
             
-            $sql = "select login from sis_grupousuario gu, sis_usuario u
-                        where gu.idusuario = u.idusuario and gu.idgrupo = $idgrupo";
+            $sql = "SELECT login FROM sis_grupousuario gu, sis_usuario u
+                        WHERE gu.idusuario = u.idusuario AND gu.idgrupo = $idgrupo";
 
             $i=0;
             $resultado = execQuery($sql);
-            while($registro = mysql_fetch_array($resultado))
+            while($registro = mysqli_fetch_array($resultado))
             {
                 $selecionados[$i] = $registro['login'];
                 $i++;

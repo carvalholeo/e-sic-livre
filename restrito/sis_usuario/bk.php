@@ -44,12 +44,12 @@
                 <select name="idsecretaria" id="idsecretaria">
                     <option value="">-- Selecione o SIC --</option>
                     <?php
-            $sql = "select * from sis_secretaria order by sigla";
+            $sql = "SELECT * FROM sis_secretaria ORDER BY sigla";
             
-            $resultado = execQuery($sql);
-            $num = mysql_num_rows($resultado);
+            $result = execQuery($sql);
+            $num = mysqli_num_rows($result);
         
-            while($registro = mysql_fetch_array($resultado)){
+            while($registro = mysqli_fetch_array($result)){
                         ?>
                         <option value="<?php echo $registro[" idsecretaria "]; ?>" <?php echo ($idsecretaria==$registro[ "idsecretaria"])? "selected": ""; ?>>
                             <?php echo $registro["sigla"]; ?>
@@ -69,11 +69,11 @@
                             <br>
                             <select name="gruposdisponiveis" id="gruposdisponiveis" title="Dê um duplo clique para selecionar todos" ondblclick="selecionatudo(this.id);" multiple="multiple" style="height: 300px; width: 300px; font-size:10">
                                 <?php
-                            $sql="select nome, descricao from sis_grupo g order by nome";
+                            $sql="SELECT nome, descricao FROM sis_grupo g ORDER BY nome";
                             
-                            $rs = execQuery($sql);
+                            $result = execQuery($sql);
 
-                            while ($row = mysql_fetch_array($rs)) { 
+                            while ($row = mysqli_fetch_array($result)) { 
                                 if(!estaSelecionado($row['nome']))
                                 {
                                     ?>
@@ -99,11 +99,11 @@
                             <br>
                             <select name="gruposselecionados[]" id="gruposselecionados" title="Dê um duplo clique para selecionar todos" ondblclick="selecionatudo(this.id);" multiple="multiple" style="height: 300px; width: 300px; font-size:10">
                                 <?php
-                            $sql="select nome, descricao from sis_grupo g order by nome";
+                            $sql="SELECT nome, descricao FROM sis_grupo g ORDER BY nome";
                             
-                            $rs = execQuery($sql);
+                            $result = execQuery($sql);
 
-                            while ($row = mysql_fetch_array($rs)) { 
+                            while ($row = mysqli_fetch_array($result)) { 
                                 if(estaSelecionado($row['nome']))
                                 {
                                     ?>
@@ -129,10 +129,10 @@
                             <br>
                             <select name="sics" id="sics" multiple="multiple" title="Dê um duplo clique para selecionar todos" ondblclick="selecionatudo(this.id);" style="height: 300px; width: 300px; font-size:10">
                                 <?php
-                            $sql="select nome, sigla, idsecretaria from sis_secretaria order by sigla";
-                            $rs = execQuery($sql);
+                            $sql="SELECT nome, sigla, idsecretaria FROM sis_secretaria ORDER BY sigla";
+                            $result = execQuery($sql);
 
-                            while ($row = mysql_fetch_array($rs)) { 
+                            while ($row = mysqli_fetch_array($result)) { 
                                 if(!estaSelecionadoSIC($row['idsecretaria']))
                                 {
                                     ?>
@@ -158,10 +158,10 @@
                             <br>
                             <select name="sicselecionados[]" id="sicselecionados" title="Dê um duplo clique para selecionar todos" ondblclick="selecionatudo(this.id);" multiple="multiple" style="height: 300px; width: 300px; font-size:10">
                                 <?php
-                            $sql="select nome, sigla, idsecretaria from sis_secretaria order by sigla";
-                            $rs = execQuery($sql);
+                            $sql="SELECT nome, sigla, idsecretaria FROM sis_secretaria ORDER BY sigla";
+                            $result = execQuery($sql);
 
-                            while ($row = mysql_fetch_array($rs)) { 
+                            while ($row = mysqli_fetch_array($result)) { 
                                 if(estaSelecionadoSIC($row['idsecretaria']))
                                 {
                                     ?>

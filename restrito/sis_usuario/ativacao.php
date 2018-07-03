@@ -15,7 +15,7 @@
   $idusuario  = $_REQUEST["idusuario"];
   $status  = $_REQUEST["status"];
 	
-  $sql = "UPDATE sis_usuario set 
+  $sql = "UPDATE sis_usuario SET 
             status='$status', 
             idusuarioalteracao = ".getSession('uid').", 
             dataalteracao = NOW() 

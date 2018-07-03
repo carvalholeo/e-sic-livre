@@ -13,8 +13,8 @@
     
     function captcha($largura,$altura,$tamanho_fonte,$quantidade_letras){
         $imagem = imagecreate($largura,$altura); // define a largura e a altura da imagem
-        $fonte = "./times.ttf"; //voce deve ter essa ou outra fonte de sua preferencia em sua pasta
-        $preto  = imagecolorallocate($imagem,0,0,0); // define a cor preta
+        $fonte = "../inc/arial.ttf"; //voce deve ter essa ou outra fonte de sua preferencia em sua pasta
+        $preto  = imagecolorallocate($imagem,0,255,150); // define a cor preta
         $branco = imagecolorallocate($imagem,255,255,255); // define a cor branca
         
         // define a palavra conforme a quantidade de letras definidas no parametro $quantidade_letras

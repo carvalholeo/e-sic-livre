@@ -35,11 +35,11 @@
 
 		//verifica se ja existe registro cadastrado com a informaçao passada ---
 		if ($acao=="Incluir")
-			$sql = "select * from sis_grupo where nome = '$nome'";
+			$sql = "SELECT * FROM sis_grupo WHERE nome = '$nome'";
 		else
-			$sql = "select * from sis_grupo where nome = '$nome' and idgrupo <> $idgrupo";
+			$sql = "SELECT * FROM sis_grupo WHERE nome = '$nome' AND idgrupo <> $idgrupo";
 			
-		if(mysql_num_rows(execQuery($sql)) > 0)
+		if(mysqli_num_rows(execQuery($sql)) > 0)
 		{
 			$erro = "Nome do perfil já existe no cadastro.";
 			return false;
@@ -108,7 +108,7 @@
 				
 				if(validaDados())
 				{
-					$sql = "UPDATE sis_grupo set 
+					$sql = "UPDATE sis_grupo SET 
                                                     nome='$nome',
                                                     descricao = '$descricao',
                                                     ativo=".(($ativo=="2")?"0":"1").",

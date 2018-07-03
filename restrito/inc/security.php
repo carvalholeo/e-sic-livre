@@ -78,8 +78,8 @@ function PHPMailerSendMail($to, $subject, $body, $from="", $fromname=""){
     if(empty($from)){
 		
         $sql	= "SELECT nomeremetenteemail, emailremetente FROM lda_configuracao"; 
-        $rs		= execQuery($sql);
-        $row	= mysqli_fetch_array($rs);
+        $result		= execQuery($sql);
+        $row	= mysqli_fetch_array($result);
 		
         $mail->From 	= $row['emailremetente'];
         $mail->FromName	= $row['nomeremetenteemail'];
@@ -125,9 +125,9 @@ function sendMailAnexo($to, $subject,$body,$arquivos=array(),$from="",$fromname=
 		if(empty($from))
                 {
                     $sql = "SELECT nomeremetenteemail, emailremetente FROM lda_configuracao";
-                    $rs = execQuery($sql);
+                    $result = execQuery($sql);
 
-                    $row = mysql_fetch_array($rs);
+                    $row = mysqli_fetch_array($result);
                     
                     $from = $row['emailremetente'];
                     $fromname = $row['nomeremetenteemail'];
@@ -407,7 +407,7 @@ function checkPerm($operacao,$retornapag=true) {
 					
 	$result = execQuery($query);
 
-	if (mysqlI_num_rows($result) !=0) {
+	if (mysqli_num_rows($result) !=0) {
 		return true;
 	} else {
 		//se for passado o parametro false, nao retorna pagina de acesso negado, e sim o valor false.

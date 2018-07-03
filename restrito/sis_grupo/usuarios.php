@@ -110,11 +110,11 @@
 	                            <header>Usuários</header>
 	                            <select name="usuarios" id="usuarios" title="Dê um duplo clique para selecionar todos" ondblclick="selecionatudo(this.id);" multiple="multiple" style="height: 300px; width: 300px; font-size:10">
 	                                <?php
-	                            $sql="select login from sis_usuario u where status = 'A' order by login";
+	                            $sql="SELECT login FROM sis_usuario u WHERE status = 'A' ORDER BY login";
 	                            
-	                            $rs = execQuery($sql);
+	                            $result = execQuery($sql);
 
-	                            while ($row = mysql_fetch_array($rs)) { 
+	                            while ($row = mysqli_fetch_array($result)) { 
 	                                if(!estaSelecionado($row['login']))
 	                                {
 	                                    ?>

@@ -112,8 +112,8 @@
 				<td align="left" width="100%">
 					<select name="idsecretaria" id="idsecretaria"  onchange="preencheCombo('idcategoriaproblema','imgCarregandoCategoria','buscacategoriaproblema',this.value);">
 						<option value="">-- selecione --</option>		
-						<?php $rsCat = execQuery("select * from sis_secretaria order by nome"); ?>
-						<?php while($row=mysql_fetch_array($rsCat)){?>
+						<?php $resultCat = execQuery("SELECT * FROM sis_secretaria ORDER BY nome"); ?>
+						<?php while($row=mysqlI_fetch_array($resultCat)){?>
 							  <option value="<?php echo $row['idsecretaria'];?>" <?php echo $row['idsecretaria']==$idsecretaria?"selected":""; ?>><?php echo $row['nome'];?></option>
 						<?php }?>
 					</select>
@@ -124,8 +124,8 @@
 				<td align="left" width="100%">
 					<select name="idcategoriaproblema" id="idcategoriaproblema" onchange="preencheCombo('idproblema','imgCarregandoProblema','buscaproblema',this.value);">
 						<option value="">-- selecione --</option>		
-						<?php $rsCat = execQuery("select * from ouv_categoriaproblema where status = 1 and idsecretaria = '$idsecretaria' order by descricao"); ?>
-						<?php while($row=mysql_fetch_array($rsCat)){?>
+						<?php $rsCat = execQuery("SELECT * FROM ouv_categoriaproblema WHERE status = 1 AND idsecretaria = '$idsecretaria' ORDER BY descricao"); ?>
+						<?php while($row=mysqli_fetch_array($resultCat)){?>
 							  <option value="<?php echo $row['idcategoriaproblema'];?>" <?php echo $row['idcategoriaproblema']==$idcategoriaproblema?"selected":""; ?>><?php echo $row['descricao'];?></option>
 						<?php }?>
 					</select>
@@ -137,8 +137,8 @@
 				<td align="left" width="100%">
 					<select name="idproblema" id="idproblema">
 						<option value="">-- selecione --</option>		
-						<?php $rsCat = execQuery("select * from ouv_problema where statusproblema = 1 and idcategoria = '$idcategoriaproblema' order by tituloproblema"); ?>
-						<?php while($row=mysql_fetch_array($rsCat)){?>
+						<?php $resultCat = execQuery("SELECT * FROM ouv_problema WHERE statusproblema = 1 AND idcategoria = '$idcategoriaproblema' ORDER BY tituloproblema"); ?>
+						<?php while($row=mysqli_fetch_array($resultCat)){?>
 							  <option value="<?php echo $row['idproblema'];?>" <?php echo $row['idproblema']==$idproblema?"selected":""; ?>><?php echo $row['tituloproblema'];?></option>
 						<?php }?>
 					</select>
@@ -162,8 +162,8 @@
 				<td align="left">
 					<select name="idbairroservico" id="idbairroservico" onchange="preencheCombo('idcomunidadeservico','imgCarregando','buscacomunidade',this.value);">
 						<option value="">- Bairro -</option>		
-						<?php $rsBai = execQuery("select * from gen_bairros where municipio_id = 7221 order by nome"); ?>
-						<?php while($row=mysql_fetch_array($rsBai)){?>
+						<?php $resultBairro = execQuery("SELECT * FROM gen_bairros WHERE municipio_id = 7221 ORDER BY nome"); ?>
+						<?php while($row=mysqli_fetch_array($resultBairro)){?>
 							  <option value="<?php echo $row['id'];?>" <?php echo $row['id']==$idbairroservico?"selected":""; ?>><?php echo $row['nome'];?></option>
 						<?php }?>
 					</select>
@@ -174,8 +174,8 @@
 				<td align="left">
 					<select name="idcomunidadeservico" id="idcomunidadeservico" >
 						<option value="">- Comunidade -</option>		
-						<?php $rsCom = execQuery("select * from gen_conjuntohabitacional where idbairro = $idbairroservico order by descricaoconjuntohabitacional"); ?>
-						<?php while($row=mysql_fetch_array($rsCom)){?>
+						<?php $resultCom = execQuery("SELECT * FROM gen_conjuntohabitacional WHERE idbairro = $idbairroservico ORDER BY descricaoconjuntohabitacional"); ?>
+						<?php while($row=mysqli_fetch_array($resultCom)){?>
 							  <option value="<?php echo $row['idconjuntohabitacional'];?>" <?php echo $row['idconjuntohabitacional']==$idcomunidadeservico?"selected":""; ?>><?php echo $row['descricaoconjuntohabitacional'];?></option>
 						<?php }?>
 					</select>
@@ -228,9 +228,9 @@
                         <table align="center" width="100%" cellpadding="0" cellspacing="1">
                         <tr><th>Arquivos enviados</th></tr>
                         <?php
-                        $rsAnexo = execQuery("select * from ouv_demandaanexo where iddemanda=$iddemanda order by idanexodemanda");
+                        $resultAnexo = execQuery("SELECT * FROM ouv_demandaanexo WHERE iddemanda=$iddemanda ORDER BY idanexodemanda");
                         $i=0;
-                        while($row = mysql_fetch_array($rsAnexo)){
+                        while($row = mysqli_fetch_array($resultAnexo)){
                             $i++;
                             ?>
                             <tr>
@@ -298,8 +298,8 @@
 					<input type="text" name="cidadesolicitante" onmouseover="this.title=this.value" id="cidade" value="<?php echo $cidadesolicitante;?>" maxlength="255" size="38">
 					<select name="estadosolicitante" id="uf">
 						<option value="">- UF -</option>		
-						<?php $rsuf = execQuery("select * from gen_estados order by sigla"); ?>
-						<?php while($row=mysql_fetch_array($rsuf)){?>
+						<?php $resultuf = execQuery("SELECT * FROM gen_estados ORDER BY sigla"); ?>
+						<?php while($row=mysqli_fetch_array($resultuf)){?>
 							  <option value="<?php echo $row['sigla'];?>" <?php echo $row['sigla']==$estadosolicitante?"selected":""; ?>><?php echo $row['sigla'];?></option>
 						<?php }?>
 					</select>

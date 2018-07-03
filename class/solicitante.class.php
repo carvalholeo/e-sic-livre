@@ -235,21 +235,21 @@ class Solicitante {
 	
 	function getDados($idsolicitante)
 	{
-		$sql = "select s.*, 
-                               tt.nome as tipotelefone,
-                               fe.nome as faixaetaria,
-                               e.nome as escolaridade
-                        from lda_solicitante s
-                        left join lda_tipotelefone tt on tt.idtipotelefone = s.idtipotelefone
-                        left join lda_faixaetaria fe on fe.idfaixaetaria = s.idfaixaetaria
-                        left join lda_escolaridade e on e.idescolaridade = s.idescolaridade
-                        where idsolicitante = $idsolicitante";
+		$sql = "SELECT s.*, 
+                               tt.nome AS tipotelefone,
+                               fe.nome AS faixaetaria,
+                               e.nome AS escolaridade
+                        FROM lda_solicitante s
+                        LEFT JOIN lda_tipotelefone tt ON tt.idtipotelefone = s.idtipotelefone
+                        LEFT JOIN lda_faixaetaria fe ON fe.idfaixaetaria = s.idfaixaetaria
+                        LEFT JOIN lda_escolaridade e ON e.idescolaridade = s.idescolaridade
+                        WHERE idsolicitante = $idsolicitante";
 		
-		$rs = execQuery($sql);
+		$result = execQuery($sql);
 		
-		if(mysql_num_rows($rs)>0)
+		if(mysqli_num_rows($result)>0)
 		{
-			$row = mysql_fetch_array($rs);
+			$row = mysqli_fetch_array($result);
 	
 			$this->idsolicitante		= $row["idsolicitante"];
 			$this->nome 			= $row["nome"];
@@ -402,11 +402,11 @@ class Solicitante {
 		
 		//verifica se ja existe registro cadastrado com o cpfcnpj ---
 		if (!empty($this->idsolicitante))
-			$sql = "select * from lda_solicitante where cpfcnpj = '$this->cpfcnpj' and tipopessoa = '$this->tipopessoa' and idsolicitante <> $this->idsolicitante";
+			$sql = "SELECT * FROM lda_solicitante WHERE cpfcnpj = '$this->cpfcnpj' AND tipopessoa = '$this->tipopessoa' AND idsolicitante <> $this->idsolicitante";
 		else
-			$sql = "select * from lda_solicitante where cpfcnpj = '$this->cpfcnpj' and tipopessoa = '$this->tipopessoa'";
+			$sql = "SELECT * FROM lda_solicitante WHERE cpfcnpj = '$this->cpfcnpj' AND tipopessoa = '$this->tipopessoa'";
 				
-		if(mysql_num_rows(execQuery($sql)) > 0)
+		if(mysqli_num_rows(execQuery($sql)) > 0)
 		{
 			$this->erro = "Cadastro já realizado.";
 			return false;
@@ -509,9 +509,9 @@ class Solicitante {
 
         public function reenvioConfirmacao(){
                 
-                $sql="select nome, email from lda_solicitante where idsolicitante = $this->idsolicitante";
+                $sql="SELECT nome, email FROM lda_solicitante WHERE idsolicitante = $this->idsolicitante";
                 $result = execQuery($sql);
-                $row = mysql_fetch_array($result);
+                $row = mysqli_fetch_array($result);
             
                 $body="Prezado(a) ".$row['nome'].",<br> <br>
 
@@ -577,12 +577,12 @@ class Solicitante {
 	
 	function confirmaCadastro($idsolicitantecripto)
 	{
-		$sql = "select idsolicitante, nome, email, telefone,tipopessoa, cpfcnpj from lda_solicitante where md5(idsolicitante) = '$idsolicitantecripto' and dataconfirmacao is null";
-		$rs = execQuery($sql);
+		$sql = "SELECT idsolicitante, nome, email, telefone,tipopessoa, cpfcnpj FROM lda_solicitante WHERE md5(idsolicitante) = '$idsolicitantecripto' AND dataconfirmacao IS null";
+		$result = execQuery($sql);
 		
-		if (mysql_num_rows($rs)>0)
+		if (mysqli_num_rows($result)>0)
 		{
-			$row = mysql_fetch_array($rs);
+			$row = mysqli_fetch_array($result);
 			$nome = ucwords2($row['nome']);
 			$email = $row['email'];
 			$this->cpfcnpj = $row['cpfcnpj'];
@@ -642,12 +642,12 @@ class Solicitante {
 			return false;
 		}
 		
-		$sql = "select idsolicitante, nome, email, cpfcnpj, confirmado from lda_solicitante where cpfcnpj = '$cpfcnpj'";
-		$rs = execQuery($sql);
+		$sql = "SELECT idsolicitante, nome, email, cpfcnpj, confirmado FROM lda_solicitante WHERE cpfcnpj = '$cpfcnpj'";
+		$result = execQuery($sql);
 		
-		if (mysql_num_rows($rs)>0)
+		if (mysqli_num_rows($result)>0)
 		{
-			$row = mysql_fetch_array($rs);
+			$row = mysqli_fetch_array($result);
 			$nome = ucwords2($row['nome']);
 			$chave = substr(md5($row['cpfcnpj']),0,8);
 			$cpfcnpj = $row['cpfcnpj'];
@@ -734,17 +734,17 @@ class Solicitante {
 			return false;
 		}
 		
-		$sql = "select chave from lda_solicitante where idsolicitante = $idsolicitante";
-		$rs = execQuery($sql);
+		$sql = "SELECT chave FROM lda_solicitante WHERE idsolicitante = $idsolicitante";
+		$result = execQuery($sql);
 		
-		if(mysql_num_rows($rs) == 0)
+		if(mysqli_num_rows($result) == 0)
 		{
 			$this->erro = "Solicitante nao encontrado";
 			return false;
 		}
 		else
 		{
-			$row = mysql_fetch_array($rs);
+			$row = mysqli_fetch_array($result);
 			$chave = $row['chave'];
 			
 			if(md5($senhaatual) != $chave)

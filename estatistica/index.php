@@ -18,9 +18,9 @@
 			GROUP BY anoprotocolo
 			ORDER BY anoprotocolo";
 			
-	$rs = execQuery($sql);
+	$result = execQuery($sql);
 	
-	$numRegistros = mysql_num_rows($rs);
+	$numRegistros = mysqli_num_rows($result);
 	
 	if ($numRegistros>0) 
 	{
@@ -28,16 +28,16 @@
 		$anos="";
 		$dados="";
 		$maiornumero = 0;
-        while ($row = mysql_fetch_assoc($rs)) {
+        while ($row = mysqli_fetch_assoc($result)) {
 			$i++;	
 
 			//recupera o quantitativo de solicitações no ano da iteração que foram respondidas
-			$sql="select count(*) as tot from lda_solicitacao where anoprotocolo = ".$row['ano']." and situacao in('R')";
-			$rsResp = execQuery($sql);
-			$rowResp = mysql_fetch_array($rsResp);
-			$sql="select count(*) as tot from lda_solicitacao where anoprotocolo = ".$row['ano']." and situacao in('N')";
-			$rsResp2 = execQuery($sql);
-			$rowResp2 = mysql_fetch_array($rsResp2);
+			$sql="SELECT COUNT(*) AS tot FROM lda_solicitacao WHERE anoprotocolo = ".$row['ano']." AND situacao IN('R')";
+			$resultResp = execQuery($sql);
+			$rowResp = mysql_fetch_array($resultResp);
+			$sql="SELECT COUNT(*) AS tot FROM lda_solicitacao WHERE anoprotocolo = ".$row['ano']." AND situacao IN('N')";
+			$resultResp2 = execQuery($sql);
+			$rowResp2 = mysql_fetch_array($resultResp2);
 			
 			//se for o ultimo registro nao imprime a virgula no final
 			if ($i==$numRegistros)

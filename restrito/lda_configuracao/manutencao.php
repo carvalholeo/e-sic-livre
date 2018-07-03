@@ -98,9 +98,9 @@
 	}
         else
         {
-            $sql = "select * from lda_configuracao";
-            $rs = execQuery($sql);
-            $row = mysql_fetch_array($rs);
+            $sql = "SELECT * FROM lda_configuracao";
+            $result = execQuery($sql);
+            $row = mysqli_fetch_array($result);
             $prazoresposta              = $row["prazoresposta"];
             $qtdprorrogacaoresposta     = $row["qtdprorrogacaoresposta"];
             $prazosolicitacaorecurso    = $row["prazosolicitacaorecurso"];

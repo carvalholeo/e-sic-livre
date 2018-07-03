@@ -15,12 +15,11 @@ if (empty($varAreaRestrita))
 }
 
 include_once("../inc/funcoes.php");
-include('../solicitacao/upload.php');
+include_once('../solicitacao/upload.php');
 
 
 class Solicitacao {
-	
-	
+		
 	private $idsolicitacao;
 	private $textosolicitacao;
 	private $formaretorno;
@@ -50,8 +49,7 @@ class Solicitacao {
         private $despacho;
         //campos de finalização
         private $tiporesposta;
-        
-        
+                
 	//instancia
 	public function getInstancia(){
 		return $this->instancia;
@@ -175,7 +173,7 @@ class Solicitacao {
             
                 $result = execQuery("SELECT nome FROM lda_tiposolicitacao WHERE idtiposolicitacao = $idtiposolicitacao");
 		
-		if(mysqli_num_rows($rs)>0)
+		if(mysqli_num_rows($result)>0)
 		{
                         $row = mysqli_fetch_array($result);
                         return $row["nome"];
@@ -405,7 +403,7 @@ class Solicitacao {
 
                 if (mysqli_num_rows($result)>0)
                 {
-                    $row = mysqli_fetch_array($rs);
+                    $row = mysqli_fetch_array($result);
                     $idtiposolicitacao = $row['idtiposolicitacao'];
                 }                
                 else
@@ -666,7 +664,7 @@ class Solicitacao {
 			}
 			//-----------------------
 			
-			if (!$con->query($sql))) 
+			if (!$con->query($sql)) 
 			{
                             
 				$this->erro = "Erro ao inserir solicitação".$sql;
@@ -683,7 +681,7 @@ class Solicitacao {
 
                                 $result = execQuery($sql);
 
-                                if(mysql_num_rows($result)>0)
+                                if(mysqli_num_rows($result)>0)
                                 {
                                     $row = mysqli_fetch_array($result);
                                     $this->setNumeroProtocolo($row["numprotocolo"],$row["anoprotocolo"]);
@@ -706,7 +704,7 @@ class Solicitacao {
 
                                     if(mysqli_num_rows($result)>0)
                                     {    
-                                        while($rec = mysqlI_fetch_array($result))
+                                        while($rec = mysqli_fetch_array($result))
                                         {
                                             //envia email de aviso de nova solicitação ao SIC centralizador
                                             Solicitacao::enviaEmailSic($rec['idsecretaria'],"N");

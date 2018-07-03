@@ -14,7 +14,7 @@
   
   $codigo = $_REQUEST["codigo"];
 
-  $sql = "DELETE from sis_usuario where idusuario = $codigo ";
+  $sql = "DELETE FROM sis_usuario WHERE idusuario = $codigo ";
   
   if(!execQuery($sql))
   {

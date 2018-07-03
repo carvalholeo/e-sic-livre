@@ -9,7 +9,7 @@
 ***********************************************************************************/
 		
 	    include_once("../inc/security.php");
-		include_once("../class/solicitacao.class.php");
+            include_once("../class/solicitacao.class.php");
 		
 	
 	

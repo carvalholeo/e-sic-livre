@@ -39,9 +39,9 @@
 		//verifica se ja existe registro cadastrado com a informaçao passada ---
 		if ($acao=="Incluir")
 		{
-			$sql = "select * from sis_param where sistema = '$sistema'";
+			$sql = "SELECT * FROM sis_param WHERE sistema = '$sistema'";
 			
-			if(mysql_num_rows(execQuery($sql)) > 0)
+			if(mysqli_num_rows(execQuery($sql)) > 0)
 			{
 				$erro = "Nome do Sistema já existe no cadastro.";
 				return false;
@@ -109,7 +109,7 @@
 				
 				if(validaDados())
 				{
-					$sql = "UPDATE sis_param set 
+					$sql = "UPDATE sis_param SET 
 								diretorioarquivos = '$diretorioarquivos',
 								urlarquivos='$urlarquivos'
 							WHERE sistema = '$sistema' ";

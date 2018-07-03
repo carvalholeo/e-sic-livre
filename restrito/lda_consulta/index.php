@@ -30,26 +30,26 @@ $abeRes			= $_REQUEST["fltAbeRes"];
 $parametrosIndex = "fltnumprotocolo=$numprotocolo&fltsolicitante=$solicitante&fltsituacao=$situacao&fltorigem=$origem"; //parametros a ser passado para a pagina de detalhamento, fazendo com que ao voltar para o index traga as informações passadas anteriormente
 
 if (!empty($numprotocolo))
-    $filtro.= " and concat(sol.numprotocolo,'/',sol.anoprotocolo) = '$numprotocolo'";
+    $filtro.= " AND concat(sol.numprotocolo,'/',sol.anoprotocolo) = '$numprotocolo'";
 if (!empty($solicitante))
-    $filtro.= " and pes.nome like '%$solicitante%'";
+    $filtro.= " AND pes.nome LIKE '%$solicitante%'";
 if (!empty($situacao))
-    $filtro.= " and sol.situacao IN ($situacao)";
+    $filtro.= " AND sol.situacao IN ($situacao)";
 if (!empty($origem))
-    $filtro.= " and sol.origem = '$origem'";
+    $filtro.= " AND sol.origem = '$origem'";
 if (!empty($sicDestino))
-    $filtro.= " and mov.idsecretariadestino = '$sicDestino'";
+    $filtro.= " AND mov.idsecretariadestino = '$sicDestino'";
 if (!empty($month) && !empty($abeRes))
 	if ($abeRes == 'A')
-		$filtro.= " and month(sol.datasolicitacao) = $month";
+		$filtro.= " AND month(sol.datasolicitacao) = $month";
 	else if ($abeRes == 'R')
-		$filtro.= " and month(sol.dataresposta) = $month";
+		$filtro.= " AND month(sol.dataresposta) = $month";
 
 //seleciona as solicitações
 /*
  * Quando a situação for A ou T, trata da primeira tramitação do processo. 
  */
-$rs		= getDemandas($filtro);
+$result		= getDemandas($filtro);
 
 ?>
 <div class="container-fluid">
@@ -72,13 +72,13 @@ $rs		= getDemandas($filtro);
                     <div class="col-md-2 col-xs-12">
                         <div class="form-group">
                             <label for="protocolo" class="input-label"><i class="material-icons">insert_drive_file</i></label>
-                            <input placeholder="Nº do protocolo" class="form-control icon awesomplete" type="text" name="fltnumprotocolo" id="protocolo" value="<?php echo $numprotocolo; ?>" maxlength="50" data-list="<?php while ($registro = mysql_fetch_array($rs)) { ?><?=$registro["numprotocolo"] . '/' . $registro["anoprotocolo"] . ', ';?><?php }; mysql_data_seek ($rs,0); ?>">
+                            <input placeholder="Nº do protocolo" class="form-control icon awesomplete" type="text" name="fltnumprotocolo" id="protocolo" value="<?php echo $numprotocolo; ?>" maxlength="50" data-list="<?php while ($registro = mysqli_fetch_array($result)) { ?><?=$registro["numprotocolo"] . '/' . $registro["anoprotocolo"] . ', ';?><?php }; mysqli_data_seek ($result,0); ?>">
                         </div>
                     </div>
                     <div class="col-md-2 col-xs-12">
                         <div class="form-group">
                             <label for="solicitante" class="input-label"><i class="material-icons">account_circle</i></label>
-                            <input placeholder="Solicitante" class="form-control icon awesomplete" type="text" name="fltsolicitante" id="solicitante" value="<?php echo $solicitante; ?>" maxlength="50" data-list="<?php while ($registro = mysql_fetch_array($rs)) { ?><?=$registro["solicitante"] . ', ';?><?php }; mysql_data_seek ($rs,0); ?>">
+                            <input placeholder="Solicitante" class="form-control icon awesomplete" type="text" name="fltsolicitante" id="solicitante" value="<?php echo $solicitante; ?>" maxlength="50" data-list="<?php while ($registro = mysqli_fetch_array($result)) { ?><?=$registro["solicitante"] . ', ';?><?php }; mysqli_data_seek ($result,0); ?>">
                         </div>
                     </div>
                     <div class="col-md-2 col-xs-12">
@@ -139,7 +139,7 @@ $rs		= getDemandas($filtro);
                     </tr>
                 </thead>
                 <?php  $cor = false;
-                while ($registro = mysql_fetch_array($rs)) {
+                while ($registro = mysqli_fetch_array($result)) {
 					$corLinha = "#fff";	
 					
 					if($cor)

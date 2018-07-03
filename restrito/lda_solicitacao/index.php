@@ -24,24 +24,24 @@ $idSicUsuario	= getSession('idsecretaria');
 
 $parametrosIndex = "fltnumprotocolo=$numprotocolo&fltsolicitante=$solicitante&fltsituacao=$situacao"; //parametros a ser passado para a pagina de detalhamento, fazendo com que ao voltar para o index traga as informações passadas anteriormente
 
-if (!empty($numprotocolo)) $filtro.= " and concat(sol.numprotocolo,'/',sol.anoprotocolo) = '$numprotocolo'";
-if (!empty($solicitante)) $filtro.= " and pes.nome like '%$solicitante%'";
+if (!empty($numprotocolo)) $filtro.= " AND concat(sol.numprotocolo,'/',sol.anoprotocolo) = '$numprotocolo'";
+if (!empty($solicitante)) $filtro.= " AND pes.nome LIKE '%$solicitante%'";
 
 //verifica se a secretaria do usuario é um SIC central
-$sql="select sigla from sis_secretaria where siccentral = 1 and idsecretaria = '$idSicUsuario'";
-$rs=  execQuery($sql);
-$visibilidadeSICcentral = mysql_num_rows($rs)>0;
+$sql="SELECT sigla FROM sis_secretaria WHERE siccentral = 1 AND idsecretaria = '$idSicUsuario'";
+$result=  execQuery($sql);
+$visibilidadeSICcentral = mysqli_num_rows($result)>0;
 
 //se usuario pertencer a um SIC central
 if($visibilidadeSICcentral)
-    $filtro.= " and ifnull(secDestino.idsecretaria,'$idSicUsuario') = '$idSicUsuario' ";
+    $filtro.= " AND IFNULL(secDestino.idsecretaria,'$idSicUsuario') = '$idSicUsuario' ";
 else
 {
     //caso exista SIC centralizador, só mostra as solicitações do SIC do usuario
     if(Solicitacao::existeSicCentralizador())
-        $filtro.= " and secDestino.idsecretaria = '$idSicUsuario'"; //filtra so as que a ultima movimentação tem como destino a secretaria do usuario
+        $filtro.= " AND secDestino.idsecretaria = '$idSicUsuario'"; //filtra so as que a ultima movimentação tem como destino a secretaria do usuario
     else
-        $filtro.= " and (secDestino.idsecretaria = '$idSicUsuario' or (sol.idsecretariaselecionada = '$idSicUsuario' and sol.situacao = 'A'))"; //filtra so as que a ultima movimentação tem como destino a secretaria do usuario ou que a secretaria selecionada tenha sido a do usuario e o status esteja em aberto
+        $filtro.= " AND (secDestino.idsecretaria = '$idSicUsuario' OR (sol.idsecretariaselecionada = '$idSicUsuario' AND sol.situacao = 'A'))"; //filtra so as que a ultima movimentação tem como destino a secretaria do usuario ou que a secretaria selecionada tenha sido a do usuario e o status esteja em aberto
 }
 
 
@@ -50,36 +50,36 @@ else
 /*
  * Quando a situação for A ou T, trata da primeira tramitação do processo. 
  */
-$sql = "select sol.*, 
-               pes.nome as solicitante,
-               ifnull(secOrigem.sigla,'Solicitante') as secretariaorigem, 
-               case when secDestino.sigla is null then
-                        ifnull(secSelecionada.sigla,'SIC Central')
-               else 'SIC Central'
-               end as secretariadestino, 
+$sql = "SELECT sol.*, 
+               pes.nome AS solicitante,
+               IFNULL(secOrigem.sigla,'Solicitante') AS secretariaorigem, 
+               CASE WHEN secDestino.sigla IS null THEN
+                        IFNULL(secSelecionada.sigla,'SIC Central')
+               ELSE 'SIC Central'
+               END AS secretariadestino, 
                mov.idsecretariadestino,
                mov.datarecebimento,
                mov.idmovimentacao,
                c.*,
-               DATEDIFF(sol.dataprevisaoresposta, NOW()) as prazorestante,
-               tip.nome as instancia
+               DATEDIFF(sol.dataprevisaoresposta, NOW()) AS prazorestante,
+               tip.nome AS instancia
 
-        from lda_solicitacao sol
-        join lda_tiposolicitacao tip on tip.idtiposolicitacao = sol.idtiposolicitacao
-        join lda_solicitante pes on pes.idsolicitante = sol.idsolicitante
-        left join lda_movimentacao mov on mov.idmovimentacao = (select max(m.idmovimentacao) from lda_movimentacao m where m.idsolicitacao = sol.idsolicitacao)
-        left join sis_secretaria secOrigem on secOrigem.idsecretaria = mov.idsecretariaorigem
-        left join sis_secretaria secDestino on secDestino.idsecretaria = mov.idsecretariadestino
-        left join sis_secretaria secSelecionada on secSelecionada.idsecretaria = sol.idsecretariaselecionada
-        join lda_configuracao c
-        where  
-            sol.situacao not in('R','N')
+        FROM lda_solicitacao sol
+        JOIN lda_tiposolicitacao tip ON tip.idtiposolicitacao = sol.idtiposolicitacao
+        JOIN lda_solicitante pes ON pes.idsolicitante = sol.idsolicitante
+        LEFT JOIN lda_movimentacao mov ON mov.idmovimentacao = (SELECT MAX(m.idmovimentacao) FROM lda_movimentacao m WHERE m.idsolicitacao = sol.idsolicitacao)
+        LEFT JOIN sis_secretaria secOrigem ON secOrigem.idsecretaria = mov.idsecretariaorigem
+        LEFT JOIN sis_secretaria secDestino ON secDestino.idsecretaria = mov.idsecretariadestino
+        LEFT JOIN sis_secretaria secSelecionada ON secSelecionada.idsecretaria = sol.idsecretariaselecionada
+        JOIN lda_configuracao c
+        WHERE  
+            sol.situacao NOT IN('R','N')
             $filtro ";
 
 
-$rs		= execQueryPag($sql);
-$rs2 	= execQueryPag($sql);
-$rs3 	= execQueryPag($sql);
+$result1	= execQueryPag($sql);
+$result2 	= execQueryPag($sql);
+$result3 	= execQueryPag($sql);
 
 ?>
 <div class="container-fluid">
@@ -102,13 +102,13 @@ $rs3 	= execQueryPag($sql);
                     <div class="col-md-2 col-xs-12">
                         <div class="form-group">
                             <label for="protocolo" class="input-label"><i class="material-icons">insert_drive_file</i></label>
-                            <input type="text" class="form-control icon awesomplete" name="fltnumprotocolo" value="<?php echo $numprotocolo; ?>" maxlength="50" size="30" placeholder="N° do protocolo"  data-list="<?php while ($registro = mysql_fetch_array($rs2)) { ?><?=$registro["numprotocolo"] . '/' . $registro["anoprotocolo"] . ', ';?><?php } ?>" />
+                            <input type="text" class="form-control icon awesomplete" name="fltnumprotocolo" value="<?php echo $numprotocolo; ?>" maxlength="50" size="30" placeholder="N° do protocolo"  data-list="<?php while ($registro = mysqli_fetch_array($result2)) { ?><?=$registro["numprotocolo"] . '/' . $registro["anoprotocolo"] . ', ';?><?php } ?>" />
                         </div>
                     </div>
                     <div class="col-md-2 col-xs-12">
                         <div class="form-group">
                             <label for="solicitante" class="input-label"><i class="material-icons">account_circle</i></label>
-                            <input type="text" class="form-control icon awesomplete" name="fltsolicitante" value="<?php echo $solicitante; ?>" maxlength="50" size="30" placeholder="Solicitante" data-list="<?php while ($registro = mysql_fetch_array($rs3)) { ?><?=$registro["solicitante"] . ', ';?><?php } ?>" />
+                            <input type="text" class="form-control icon awesomplete" name="fltsolicitante" value="<?php echo $solicitante; ?>" maxlength="50" size="30" placeholder="Solicitante" data-list="<?php while ($registro = mysqli_fetch_array($result3)) { ?><?=$registro["solicitante"] . ', ';?><?php } ?>" />
                         </div>
                     </div>
                     <div class="col-md-2 col-xs-12">
@@ -145,7 +145,7 @@ $rs3 	= execQueryPag($sql);
                 </thead>
                 <?php
     $cor = false;
-    while ($registro = mysql_fetch_array($rs)) {
+    while ($registro = mysqli_fetch_array($result1)) {
 
             if($cor)
                 $corLinha = "#dddddd";

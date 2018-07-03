@@ -13,7 +13,7 @@
   
   $codigo = $_REQUEST["codigo"];
 
-  $sql = "delete from lda_tiposolicitacao where idtiposolicitacao = '$codigo'";
+  $sql = "DELETE FROM lda_tiposolicitacao WHERE idtiposolicitacao = '$codigo'";
 
   if(!execQuery($sql))
   {

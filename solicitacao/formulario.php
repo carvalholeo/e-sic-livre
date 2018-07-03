@@ -19,8 +19,8 @@
                                     Destino:
                                     <select name="idsecretariaselecionada" id="idsecretaria">
                                             <option value="">----</option>		
-                                            <?php $rsSic = execQuery("select idsecretaria, nome from sis_secretaria where ativado = 1 order by nome"); ?>
-                                            <?php while($rowSic=mysql_fetch_array($rsSic)){?>
+                                            <?php $resultSic = execQuery("SELECT idsecretaria, nome FROM sis_secretaria WHERE ativado = 1 ORDER BY nome"); ?>
+                                            <?php while($rowSic=mysqli_fetch_array($resultSic)){?>
                                                         <option value="<?php echo $rowSic['idsecretaria'];?>" <?php echo $rowSic['idsecretaria']==$idsecretariaselecionada?"selected":""; ?>><?php echo $rowSic['nome'];?></option>
                                             <?php }?>
                                     </select>

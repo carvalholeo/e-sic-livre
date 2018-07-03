@@ -314,8 +314,8 @@ $resumoSis = getSolResSis($rs_);
 							</tr>
 						</thead>
 						<?php
-						$rs_ = getDemandas("",6);
-						while ($registro = mysql_fetch_array($rs_)) {
+						$result_ = getDemandas("",6);
+						while ($registro = mysqli_fetch_array($result_)) {
 							$corLinha = "#fff";
 								
 							//se foi respondida marca verde

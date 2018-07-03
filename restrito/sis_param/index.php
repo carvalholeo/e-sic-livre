@@ -12,7 +12,7 @@ include "manutencao.php";
 include "../inc/topo.php";
 //include "../inc/paginacaoIni.php";	
 
-$sql = "select * from sis_param";
+$sql = "SELECT * FROM sis_param";
 
 if ($_REQUEST['imprimir'])
 {
@@ -22,7 +22,7 @@ if ($_REQUEST['imprimir'])
 $x = iniciaGrid("edita('%Sistema%','%diretorioarquivos%','%urlarquivos%')",null,"novo()"); 
 
 // Set the query
-$x->setQuery("sistema as Sistema, diretorioarquivos, urlarquivos", "sis_param","sistema");
+$x->setQuery("sistema AS Sistema, diretorioarquivos, urlarquivos", "sis_param","sistema");
 
 //$rs = execQueryPag($sql);
 

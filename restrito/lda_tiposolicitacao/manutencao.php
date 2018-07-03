@@ -36,11 +36,11 @@
 
 		//verifica se ja existe registro cadastrado com a informaçao passada ---
 		if ($acao=="Incluir")
-			$sql = "select * from lda_tiposolicitacao where nome = '$nome'";
+			$sql = "SELECT * FROM lda_tiposolicitacao WHERE nome = '$nome'";
 		else
-			$sql = "select * from lda_tiposolicitacao where nome = '$nome' and idtiposolicitacao <> $idtiposolicitacao";
+			$sql = "SELECT * FROM lda_tiposolicitacao WHERE nome = '$nome' AND idtiposolicitacao <> $idtiposolicitacao";
 			
-		if(mysql_num_rows(execQuery($sql)) > 0)
+		if(mysqli_num_rows(execQuery($sql)) > 0)
 		{
 			$erro = "Nome do tipo de instancia já existe no cadastro.";
 			return false;
@@ -50,11 +50,11 @@
 		if($instancia == "I")
 		{
 			if ($acao=="Incluir")
-				$sql = "select * from lda_tiposolicitacao where instancia = 'I'";
+				$sql = "SELECT * FROM lda_tiposolicitacao WHERE instancia = 'I'";
 			else
-				$sql = "select * from lda_tiposolicitacao where instancia = 'I' and idtiposolicitacao <> $idtiposolicitacao";
+				$sql = "SELECT * FROM lda_tiposolicitacao WHERE instancia = 'I' AND idtiposolicitacao <> $idtiposolicitacao";
 				
-			if(mysql_num_rows(execQuery($sql)) > 0)
+			if(mysqli_num_rows(execQuery($sql)) > 0)
 			{
 				$erro = "Só pode existir uma instância cadastrada como inicial.";
 				return false;
@@ -124,7 +124,7 @@
 				
 				if(validaDados())
 				{
-					$sql = "UPDATE lda_tiposolicitacao set 
+					$sql = "UPDATE lda_tiposolicitacao SET 
                                                     nome='$nome',
                                                     instancia='$instancia',
                                                     idusuarioalteracao = ".getSession('uid').",
@@ -150,7 +150,7 @@
             //se for uma ordenação
             checkPerm("UPTTIPOSOL");	
 
-            $sql = "UPDATE lda_tiposolicitacao set 
+            $sql = "UPDATE lda_tiposolicitacao SET 
                         idtiposolicitacao_seguinte = ".(empty($idtiposolicitacao_seguinte)?"null":$idtiposolicitacao_seguinte).",
                         idusuarioalteracao = ".getSession('uid').",
                         dataalteracao = NOW()

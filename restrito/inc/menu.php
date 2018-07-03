@@ -19,8 +19,8 @@ $_SESSION['idmenu'] = $idmenu;
 
 include("../inc/topo.php"); 
 
-$rs = execQuery("SELECT nome FROM sis_menu WHERE idmenu = '$idmenu'");
-$row = mysql_fetch_array($rs);
+$result = execQuery("SELECT nome FROM sis_menu WHERE idmenu = '$idmenu'");
+$row = mysqli_fetch_array($result);
 
 
 ?>

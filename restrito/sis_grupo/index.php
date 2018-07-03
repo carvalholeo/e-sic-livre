@@ -15,16 +15,16 @@ include "../inc/paginacaoIni.php";
 $filtro = "";
 
 
-if(!empty($nome)) $filtro .= " and sis_grupo.nome like '%$nome%' ";
-if(!empty($descricao)) $filtro .= " and sis_grupo.descricao like '%$descricao%' ";
-if(!empty($ativo)) $filtro .= " and sis_grupo.ativo = ".(($ativo=="2")?"0":"1")." ";
+if(!empty($nome)) $filtro .= " AND sis_grupo.nome LIKE '%$nome%' ";
+if(!empty($descricao)) $filtro .= " AND sis_grupo.descricao LIKE '%$descricao%' ";
+if(!empty($ativo)) $filtro .= " AND sis_grupo.ativo = ".(($ativo=="2")?"0":"1")." ";
 
 
-$sql = "select *
-        from sis_grupo
-	where 1=1 $filtro order by nome";
+$sql = "SELECT *
+        FROM sis_grupo
+	WHERE 1=1 $filtro ORDER BY nome";
 
-$rs = execQueryPag($sql);
+$result = execQueryPag($sql);
 
 ?>
 <div class="container-fluid">
@@ -63,7 +63,7 @@ $rs = execQueryPag($sql);
 			  
   <?php
   $cor = false;
-  while($registro = mysql_fetch_array($rs)){
+  while($registro = mysqli_fetch_array($result)){
 	$click = "edita('".$registro["idgrupo"]."','".$registro["nome"]."','".$registro["descricao"]."','".$registro["idsecretaria"]."','".$registro["ativo"]."')";
         
         if($cor)

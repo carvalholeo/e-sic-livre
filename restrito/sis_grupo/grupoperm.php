@@ -17,24 +17,24 @@ if ($_GET["idgrupo"] and !$_POST["updt"]) {
 	$idgrupo = $_GET["idgrupo"];
         $nomegrupo = $_GET["nomegrupo"];
         
-	$query = "select a.idacao, 
+	$query = "SELECT a.idacao, 
                         a.denominacao, 
                         p.idpermissao,
                         t.nome as tela,
                         m.nome as menu,
                         t.idtela,
                         m.idmenu
-                    from 
+                    FROM 
                           sis_acao a
-                    join  sis_tela t on t.idtela = a.idtela
-                    join  sis_menu m on m.idmenu = t.idmenu
-                    left join sis_permissao p on a.idacao = p.idacao and p.idgrupo = $idgrupo
-                    where a.status = 'A'
-                          and t.ativo = 1
-                          and m.ativo = 1
-                    order by m.idmenu, t.idtela, a.denominacao";
+                    JOIN  sis_tela t on t.idtela = a.idtela
+                    JOIN  sis_menu m on m.idmenu = t.idmenu
+                    LEFT JOIN sis_permissao p on a.idacao = p.idacao and p.idgrupo = $idgrupo
+                    WHERE a.status = 'A'
+                          AND t.ativo = 1
+                          AND m.ativo = 1
+                    ORDER BY m.idmenu, t.idtela, a.denominacao";
 	
-	$rs = execQuery($query);
+	$result = execQuery($query);
 	
 	?>
 	
@@ -85,7 +85,7 @@ if ($_GET["idgrupo"] and !$_POST["updt"]) {
 	$tela = "";
 	$cont = 0;
 	$contAcao = 0;
-	while($row = mysql_fetch_array($rs)){
+	while($row = mysqli_fetch_array($result)){
 
 		if($cont>0){
 			if($menu <> $row['idmenu']){
@@ -173,13 +173,13 @@ if ($_GET["idgrupo"] and !$_POST["updt"]) {
 	$idgrupo = $_GET["idgrupo"];
 	$login = $_GET["login"];
 	$acao = $_POST["acao"];
-	$query = "delete from sis_permissao where idgrupo='$idgrupo'";
+	$query = "DELETE FROM sis_permissao WHERE idgrupo='$idgrupo'";
 	execQuery($query) or die("Erro atualizando as permissoes");
 
 	if (!empty($acao)) {
 		foreach ($acao as $valor) {
 			if (ctype_digit($valor)) {
-				$query = "insert into sis_permissao(idacao,idgrupo) values('$valor','$idgrupo')";
+				$query = "INSERT INTO sis_permissao(idacao,idgrupo) VALUES('$valor','$idgrupo')";
 				execQuery($query) or die("Erro ao atualizar as permissoes");
 			} else {
 				die("Valor inv&aacute;lido.".$valor);

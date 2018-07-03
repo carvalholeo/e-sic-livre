@@ -13,7 +13,7 @@
   
   $codigo = $_REQUEST["codigo"];
 
-  $sql = "delete from sis_secretaria where idsecretaria = '$codigo'";
+  $sql = "DELETE FROM sis_secretaria WHERE idsecretaria = '$codigo'";
 
   if(!execQuery($sql))
   {

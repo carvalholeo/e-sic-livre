@@ -406,9 +406,9 @@ $urlArquivo=getURL("lda");
             <td width="100%" colspan="4">
                 <table align="center" width="100%" cellpadding="0" cellspacing="1">
                     <?php
-                            $rsAnexo = execQuery("select * from lda_anexo where idsolicitacao=$idsolicitacao order by idanexo");
+                            $resultAnexo = execQuery("SELECT * FROM lda_anexo WHERE idsolicitacao=$idsolicitacao ORDER BY idanexo");
                             $i=0;
-                            while($row = mysql_fetch_array($rsAnexo)){
+                            while($row = mysqli_fetch_array($resultAnexo)){
                                 $i++;
                                 ?>
                         <tr>
@@ -425,8 +425,8 @@ $urlArquivo=getURL("lda");
         </tr>
         <?php if($instancia == "I") { //se for solicitação inicial, mostra os recursos se houver
                 
-                    $rsRec = Solicitacao::getRecursos($idsolicitacao);
-                    if(mysql_num_rows($rsRec) > 0)
+                    $resultRec = Solicitacao::getRecursos($idsolicitacao);
+                    if(mysqli_num_rows($resultRec) > 0)
                     {
                         ?>
         <tr>
@@ -443,7 +443,7 @@ $urlArquivo=getURL("lda");
                         <th>Data Resposta</th>
                     </tr>
                     <?php
-                                        while($row = mysql_fetch_array($rsRec)){
+                                        while($row = mysqli_fetch_array($resultRec)){
                                             ?>
                         <tr>
                             <td>
@@ -486,9 +486,9 @@ $urlArquivo=getURL("lda");
                             <th>Anexo</th>
                         </tr>
                         <?php
-                            $rsMov = Solicitacao::getMovimentacao($idsolicitacao);
+                            $resultMov = Solicitacao::getMovimentacao($idsolicitacao);
                             
-                            while($row = mysql_fetch_array($rsMov)){
+                            while($row = mysqli_fetch_array($resultMov)){
                                 ?>
                             <tr>
                                 <td>
@@ -532,8 +532,8 @@ $urlArquivo=getURL("lda");
                                 <select name="idsecretariadestino" id="idsecretariadestino">
                                     <option value="">-- selecione --</option>
 									
-									    <?php $rsCat = execQuery("select sigla, idsecretaria from sis_secretaria where ativado = 1 and idsecretaria <> '".getSession('idsecretaria')."' order by sigla"); ?>
-                                        <?php while($row=mysql_fetch_array($rsCat)){?>
+									    <?php $resultCat = execQuery("SELECT sigla, idsecretaria FROM sis_secretaria WHERE ativado = 1 AND idsecretaria <> '".getSession('idsecretaria')."' ORDER BY sigla"); ?>
+                                        <?php while($row=mysqli_fetch_array($resultCat)){?>
                                             <option value="<?php echo $row['idsecretaria'];?>" <?php echo $row['idsecretaria']==$idsecretariadestino?"selected":""; ?>><?php echo $row['sigla'];?></option>
                                         <?php }?>
                                 </select>

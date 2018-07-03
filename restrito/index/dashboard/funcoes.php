@@ -189,7 +189,7 @@ function getSolResDir() {
 	$result = execQuery($sql);	
 	$ret = "";
 	
-	while ($reg = mysqlI_fetch_array($result)) {	
+	while ($reg = mysqli_fetch_array($result)) {	
 		
 		if (empty($reg["nome"])) 
 			$nome = 'Ouvidoria TCE-RN';
@@ -351,7 +351,7 @@ function getEnquete() {
 	
 	$result = execQuery($sql);
 	
-	while ($reg = mysqli_fetch_array($rs)) {
+	while ($reg = mysqli_fetch_array($result)) {
 		
 		if ($reg['resposta']  == 'U')
 			$resposta = 'Ruim';

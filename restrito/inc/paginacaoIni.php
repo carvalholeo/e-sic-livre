@@ -25,8 +25,8 @@
 		$row = mysql_fetch_assoc($resultado);
 		$total = $row["total"];*/
 		
-		$rs = execQuery($consulta);
-		$total = mysql_num_rows($rs);
+		$result = execQuery($consulta);
+		$total = mysqli_num_rows($result);
 		
 		return execQuery($consulta.$limit);
 		

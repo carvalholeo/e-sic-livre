@@ -143,8 +143,8 @@
 				
 		$sql = "SELECT * FROM sis_usuario WHERE idusuario = $codigo";
 
-		$resultado = execQuery($sql);
-		$registro  = mysqli_fetch_array($resultado);
+		$result = execQuery($sql);
+		$registro  = mysqli_fetch_array($result);
 
 		$idusuario      = $registro['idusuario'];
 		$nome 		= $registro['nome'];
@@ -159,8 +159,8 @@
                               AND gu.idusuario = $codigo";
                 
                 $i=0;
-		$resultado = execQuery($sql);
-                while($registro = mysqli_fetch_array($resultado))
+		$result = execQuery($sql);
+                while($registro = mysqli_fetch_array($result))
                 {
                     $gruposselecionados[$i] = $registro['nome'];
                     $i++;
@@ -170,8 +170,8 @@
                 $sql = "SELECT idsecretaria FROM sis_usuariosecretaria WHERE idusuario = $idusuario";
 
                 $i=0;
-                $resultado = execQuery($sql);
-                while($registro = mysqli_fetch_array($resultado))
+                $result = execQuery($sql);
+                while($registro = mysqli_fetch_array($result))
                 {
                     $sicselecionados[$i] = $registro['idsecretaria'];
                     $i++;
@@ -313,7 +313,7 @@
                                 {
                                     $sql = "SELECT idgrupo FROM sis_grupo WHERE nome = '$grupo'";
                                     $result = execQuery($sql);
-                                    $row = mysql_fetch_array($result);
+                                    $row = mysqli_fetch_array($result);
                                     $idgrupo = $row['idgrupo'];
                                     
                                     $sql = "INSERT INTO sis_grupousuario (idgrupo, idusuario)
@@ -372,4 +372,3 @@
                         $con->close();                        
 		}
 	}
-?>

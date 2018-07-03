@@ -41,11 +41,11 @@
 		//verifica se ja existe registro cadastrado com a informaçao passada ---
 		
 		if ($acao=="Incluir")
-			$sql = "select * from sis_secretaria where sigla = '$sigla'";
+			$sql = "SELECT * FROM sis_secretaria WHERE sigla = '$sigla'";
 		else
-			$sql = "select * from sis_secretaria where sigla = '$sigla' and idsecretaria <> $idsecretaria";
+			$sql = "SELECT * FROM sis_secretaria WHERE sigla = '$sigla' AND idsecretaria <> $idsecretaria";
 			
-		if(mysql_num_rows(execQuery($sql)) > 0)
+		if(mysqli_num_rows(execQuery($sql)) > 0)
 		{
 			$erro = "Já existe SIC cadastrada com a sigla informada";
 			return false;
@@ -64,10 +64,10 @@
 	{
 		$acao	= "Alterar";
 
-		$sql = "select * from sis_secretaria where idsecretaria = $codigo";
+		$sql = "SELECT * FROM sis_secretaria WHERE idsecretaria = $codigo";
 
-		$resultado = execQuery($sql);
-		$registro  = mysql_fetch_array($resultado);
+		$result = execQuery($sql);
+		$registro  = mysqli_fetch_array($result);
 
 		$idsecretaria	= $registro["idsecretaria"];
 		$nome			= addslashes($registro["nome"]);
@@ -127,7 +127,7 @@
 		if(validaDados())
 		{
 			
-			$sql = "update sis_secretaria set 
+			$sql = "UPDATE sis_secretaria SET 
 						nome='$nome', 
 						sigla='$sigla', 
 						responsavel='$responsavel', 

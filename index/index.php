@@ -17,7 +17,7 @@ $tipo 		= $_REQUEST['t'];
 $msg 		= "";
 
 if(usaRecaptcha($login))
-	$usarecap = true;
+	$usarecap = false;
 else
 	$usarecap = false;
 
@@ -30,9 +30,9 @@ if ($_POST['btsub'])
 		$error = null;
                 $recaptcha_ok = (strtoupper($_POST["palavra"]) == strtoupper($_SESSION["palavra"]));
 	}
-	else
+	else {
 		$recaptcha_ok = true;
-	
+        }
 	if($recaptcha_ok)
 	{
 		if(autentica($login, $password, $tipo)) 

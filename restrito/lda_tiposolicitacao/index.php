@@ -16,16 +16,16 @@ include "../inc/paginacaoIni.php";
 $filtro = "";
 
 
-if(!empty($nome)) $filtro .= " and nome like '%$nome%' ";
-if(!empty($instancia)) $filtro .= " and instancia = '$instancia'";
+if(!empty($nome)) $filtro .= " AND nome LIKE '%$nome%' ";
+if(!empty($instancia)) $filtro .= " AND instancia = '$instancia'";
 
 
-$sql = "select t.*, prox.nome as proxima
-        from lda_tiposolicitacao t
-        left join lda_tiposolicitacao prox on prox.idtiposolicitacao = t.idtiposolicitacao_seguinte
-	where 1=1 $filtro order by nome";
+$sql = "SELECT t.*, prox.nome AS proxima
+        FROM lda_tiposolicitacao t
+        LEFT JOIN lda_tiposolicitacao prox ON prox.idtiposolicitacao = t.idtiposolicitacao_seguinte
+	WHERE 1=1 $filtro ORDER BY nome";
 
-$rs = execQueryPag($sql);
+$result = execQueryPag($sql);
 
 ?>
 <div class="container-fluid">
@@ -64,7 +64,7 @@ Observa&ccedil;&otilde;es:
 		 </thead>
   <?php
   $cor = false;
-  while($registro = mysql_fetch_array($rs)){
+  while($registro = mysqli_fetch_array($result)){
 	$click = "edita('".$registro["idtiposolicitacao"]."','".$registro["nome"]."','".$registro["instancia"]."')";
         
         if($cor)
@@ -91,16 +91,16 @@ Observa&ccedil;&otilde;es:
                             <option value="-1">Nenhum</option>
                             <?php 
                                 //seleciona as instancias que não seja de inicio e que não esteja sendo utilizada por outro tipo de solicitação
-                                $qry = "select * from lda_tiposolicitacao t
-                                        where instancia != 'I' 
-                                              and idtiposolicitacao != ".$registro['idtiposolicitacao']."
-                                              and not exists(select p.idtiposolicitacao 
-                                                             from lda_tiposolicitacao p 
-                                                             where p.idtiposolicitacao_seguinte = t.idtiposolicitacao
-                                                                   and p.idtiposolicitacao != ".$registro['idtiposolicitacao'].")";
+                                $qry = "SELECT * FROM lda_tiposolicitacao t
+                                        WHERE instancia != 'I' 
+                                              AND idtiposolicitacao != ".$registro['idtiposolicitacao']."
+                                              AND NOT EXISTS(SELECT p.idtiposolicitacao 
+                                                             FROM lda_tiposolicitacao p 
+                                                             WHERE p.idtiposolicitacao_seguinte = t.idtiposolicitacao
+                                                                   AND p.idtiposolicitacao != ".$registro['idtiposolicitacao'].")";
                                 echo $qry;
-                                $rsInst = execQuery($qry);
-                                while($rowInst = mysql_fetch_array($rsInst)){
+                                $resultInst = execQuery($qry);
+                                while($rowInst = mysqli_fetch_array($resultInst)){
                                     ?><option value="<?php echo $rowInst['idtiposolicitacao'];?>" <?php echo ($registro['idtiposolicitacao_seguinte']==$rowInst['idtiposolicitacao'])?"selected":"";?>><?php echo $rowInst['nome'];?></option><?php
                                 }
                             ?>

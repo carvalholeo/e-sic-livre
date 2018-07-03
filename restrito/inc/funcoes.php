@@ -178,9 +178,9 @@ function validaTipoArquivo($mime, $extensoes)
 {
 	$sql = "select * from sis_mime where extensao in($extensoes) and mime = '$mime'";
 	
-	$rs = execQuery($sql);
+	$result = execQuery($sql);
 	
-	if(mysql_num_rows($rs)>0)
+	if(mysqli_num_rows($result)>0)
 		return true;
 	else
 		return false;

@@ -13,7 +13,7 @@
   
   $codigo = $_REQUEST["codigo"];
 
-  $sql = "delete from sis_param where sistema = '$codigo'";
+  $sql = "DELETE FROM sis_param WHERE sistema = '$codigo'";
 
   if(!execQuery($sql))
   {

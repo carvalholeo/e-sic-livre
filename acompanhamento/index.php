@@ -88,7 +88,7 @@ $result = execQueryPag($sql);
     </tr>
     <?php
     $cor=false;
-    while ($registro = mysql_fetch_array($rs)) {
+    while ($registro = mysqli_fetch_array($result)) {
             $click = "editar('".$registro["idsolicitacao"]."&$parametrosIndex','".SITELNK."acompanhamento/cadastro');";
             
             if($cor)

@@ -225,9 +225,9 @@
 		<td width="100%" colspan="6">
                         <table align="center" width="100%" cellpadding="0" cellspacing="1">
                         <?php
-                        $rsAnexo = execQuery("select * from lda_anexo where idsolicitacao=$idsolicitacao order by idanexo");
+                        $resulAnexo = execQuery("SELECT * FROM lda_anexo WHERE idsolicitacao=$idsolicitacao ORDER BY idanexo");
                         $i=0;
-                        while($row = mysql_fetch_array($rsAnexo)){
+                        while($row = mysqli_fetch_array($resulAnexo)){
                             $i++;
                             ?>
                             <tr>
@@ -240,8 +240,8 @@
 	</tr>
         <?php if($instancia == "I") { //se for solicitação inicial, mostra os recursos se houver
             
-                $rsRec = Solicitacao::getRecursos($idsolicitacao);
-                if(mysql_num_rows($rsRec) > 0)
+                $resultRec = Solicitacao::getRecursos($idsolicitacao);
+                if(mysqli_num_rows($resultRec) > 0)
                 {
                     ?>
                     <tr>
@@ -258,7 +258,7 @@
                                         <th>Data Resposta</th>
                                     </tr>
                                     <?php
-                                    while($row = mysql_fetch_array($rsRec)){
+                                    while($row = mysqli_fetch_array($resultRec)){
                                         ?>
                                         <tr>
                                             <td><?php echo bdToDate($row["datasolicitacao"]);?></td>
@@ -292,9 +292,9 @@
                             <th>Anexo</th>
                         </tr>
                         <?php
-                        $rsMov = Solicitacao::getMovimentacao($idsolicitacao);
+                        $resultMov = Solicitacao::getMovimentacao($idsolicitacao);
                         
-                        while($row = mysql_fetch_array($rsMov)){
+                        while($row = mysqli_fetch_array($resultMov)){
                             ?>
                             <tr>
                                 <td><?php echo bdToDate($row["dataenvio"]);?></td>

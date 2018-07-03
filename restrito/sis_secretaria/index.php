@@ -21,17 +21,17 @@ if (($_REQUEST['acao']))
     $sigla = $_REQUEST["sigla"];
     $ativado = $_REQUEST["ativado"];
 		
-    if(!empty($nome)) $filtro.= " and s.nome like '%$nome%'";
-    if(!empty($sigla)) $filtro.= " and s.sigla like '%$sigla%'";
-    if(!empty($ativado)) $filtro.= " and s.ativado = $ativado";
+    if(!empty($nome)) $filtro.= " AND s.nome LIKE '%$nome%'";
+    if(!empty($sigla)) $filtro.= " AND s.sigla LIKE '%$sigla%'";
+    if(!empty($ativado)) $filtro.= " AND s.ativado = $ativado";
 }
 
-$sql = "select * from sis_secretaria s
-	where 1=1
+$sql = "SELECT * FROM sis_secretaria s
+	WHERE 1=1
 	$filtro
-	order by s.nome";
+	ORDER BY s.nome";
 	
-$resultado = execQueryPag($sql);
+$result = execQueryPag($sql);
 //$num = mysql_num_rows($resultado);
 
 ?>
@@ -109,7 +109,7 @@ $resultado = execQueryPag($sql);
 				</thead>
 				<?php
 				$cor = false;
-				while($registro = mysql_fetch_array($resultado)){
+				while($registro = mysqli_fetch_array($rresult)){
 					$click = "javascript:document.location='?sis_secretaria&p=cadastro&codigo=".$registro["idsecretaria"]."'";
 					if($cor)
 						$corLinha = "#dddddd";

@@ -63,8 +63,8 @@
 				<td align="left">
                                         <select name="idfaixaetaria" id="idfaixaetaria">
                                                 <option value="">----</option>		
-                                                <?php $resultFxt = execQuery("SELECT * FROM lda_faixaetaria ORDER BY nome"); ?>
-                                                <?php while($rowfxt=mysql_fetch_array($rsFxt)){?>
+                                                <?php $resultAge = execQuery("SELECT * FROM lda_faixaetaria ORDER BY nome"); ?>
+                                                <?php while($rowfxt=mysqli_fetch_array($resultAge)){?>
                                                             <option value="<?php echo $rowfxt['idfaixaetaria'];?>" <?php echo $rowfxt['idfaixaetaria']==$idfaixaetaria?"selected":""; ?>><?php echo $rowfxt['nome'];?></option>
                                                 <?php }?>
                                         </select>

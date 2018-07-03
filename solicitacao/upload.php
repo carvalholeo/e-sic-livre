@@ -1,4 +1,5 @@
 <?php
+require_once '../inc/database.php';
 
   //tipo de arquivos
   $tiposPermitidos= array('application/pdf', 'image/jpeg' );
@@ -51,18 +52,18 @@ function enviadados(){
 	//###################################
 		//pega diretorio
 		$sql = execQuery("SELECT * FROM `lda_configuracao`");
-		$row = mysql_fetch_array($sql);
+		$row = mysqli_fetch_array($sql);
 		$pasta = $row['diretorioarquivos'];
 		
 		//pega ida da ultima solicitacao possivelmente a que esta sendo realizada
 		$sql = execQuery("SELECT * FROM `lda_solicitacao` ORDER BY `idsolicitacao` DESC LIMIT 1 ");
-		$row = mysql_fetch_array($sql);
+		$row = mysqli_fetch_array($sql);
 		$idsolicitacao = $row['idsolicitacao']; //ida da solicitação para nome do arquivo
 		$iduser = getSession("uid");       //sessao do solicitante 
 		
 		//seleciona id do anexo
 		$sql = execQuery("SELECT * FROM `lda_anexo` ORDER BY `idsolicitacao` DESC LIMIT 1 ");
-		$row = mysql_fetch_array($sql);
+		$row = mysqli_fetch_array($sql);
 		$idanexo = $row['idanexo']+1;
 				
 		//###################################
@@ -76,8 +77,7 @@ function enviadados(){
 			
 		
 		//insere em lda_anexo dados do arquivo 
-		$conect = mysql_connect(DBHOST,DBUSER,DBPASS) or die('Erro ao conectar ao banco de dados');
-		mysql_select_db(DBNAME);
+		$connect = db_open();
 		$sql="INSERT INTO lda_anexo ( idsolicitacao,
 									  nome,
 									  idusuarioinclusao,
@@ -90,7 +90,7 @@ function enviadados(){
 									  )";
 		
 		//mysql_query($conect,$sql) or die ("erro mysql");
-		if (!mysql_query($sql)){
+		if (!$connect->query($sql)){
 			echo '<br>erro ao inserir  ';
 			echo $sql;
 			echo mysql_error();
@@ -108,7 +108,3 @@ function enviadados(){
 
 
 }//fim if post
-
-
-?>
-

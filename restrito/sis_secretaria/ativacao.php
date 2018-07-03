@@ -15,7 +15,7 @@
   $idsecretaria  = $_REQUEST["idsecretaria"];
   $ativado  = $_REQUEST["ativado"];
 	
-  $sql = "UPDATE sis_secretaria set 
+  $sql = "UPDATE sis_secretaria SET 
             ativado='$ativado', 
             idusuarioalteracao = ".getSession('uid').", 
             dataalteracao = NOW() 

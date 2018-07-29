@@ -1,63 +1,65 @@
-# Contributing
+# Contribuindo
 
-First of all, thank you for contributing, you are awesome!
+Antes de mais nada, obrigado por contibuir, você é demais!
 
-Please take a moment to review this document in order to make the contribution process easy
-and effective for everyone involved.
+Por favor, tire um tempo para revisar este documento para fazer o processo de contribuição fácil
+e efetivo para todos os envolvidos.
 
-## Reporting an issue
+## Relatando um problema
 
-1. Make sure you have the latest version of e-SIC Livre and see if the issue still exists.
+1. Tenha certeza de estar com a versão mais recente do e-SIC Livre e veja se o problema ainda existe.
 
-2. Search for similar issues. It's possible somebody has encountered this bug already.
+2. Procure por issues similares. É possível que alguém já tenha encontrado este bug anteriormente.
 
-3. Provide information including: the version of PHP, e-SIC version, the type of
-operating system and Web server, browser type and version.
+3. Descreva informações detalhadas, incluindo: a versão do PHP, versão do e-SIC, o tipo de
+sistema operacional e servidor Web, tipo de navegador e versão.
 
-4. Provide the error call stack if available. A screenshot to explain the issue is very welcome.
+4. Descreva o erro e sua pilha, se possível. Um print para explicar o problema é muito bem-vindo.
 
-5. Describe the steps for reproducing the issue. It would be even better if you could provide code
-to reproduce the issue.
+5. Detalhe cada um dos passos para reprodução da falha.
 
-## Requesting a feature
+## Solictando um recurso
 
-1. Search Issues for similar feature requests. It's possible somebody has
-already asked for this feature or provided a pull request that we're still
-discussing.
+1. Pesquise nas issues por pedidos de recursos similares. É possível que alguém já
+tenha solicitado este recurso antes ou tenha feito uma pull request que ainda está sendo
+analisada.
 
-2. Provide a clear and detailed explanation of the feature you want and why
-it's important to add. Keep in mind that we want features that will be useful
-to the majority of users and not just a small subset.
+2. Faça uma explicação clara e detalhada do recurso que você quer e porquê
+é importante adicionar. Tenha em mente que nós queremos recursos que serão úteis
+para a maioria dos usuários e não somente para um pequeno grupo.
 
-3. If the feature is complex, consider writing some initial documentation for
-it. If we do end up accepting the feature it will need to be documented and
-this will also help us to understand it better ourselves.
+3. Se o recurso for complexo, considere escrever uma documentação inicial para
+ela. Se o pedido for aceito, ele precisará ser documentado e
+isto também vai nos ajudar a nos entendermos melhor.
 
-4. Attempt a Pull Request. If you're at all able, start writing some code. If
-you can write some code then that will speed the process along.
+4. Tente uma Pull Request. Se você é talentoso, comece escrevendo código. Se
+você pudar codar, então isso acelerará o processo como um todo.
 
 ## Pull requests
 
-1. Fork the repo.
+1. Faça um fork do repositório.
 
-2. Install module
+2. Instale no seu ambiente.
 
-3. Add a test for your change. Only refactoring and documentation changes
-require no new tests. If you are adding functionality or fixing a bug, we need
-a test!
+3. Adicione um teste para suas mudanças. Somente refatoração e mudanças na documentação
+não precisam de novos testes. Se você está adicionando funcionalidades ou corringindo bugs, nós precisamos
+de um teste!
 
-4. Make the test pass.
+4. Faça o teste passar.
 
-5. Commit your changes. If your pull request fixes an issue specify it in the commit message.
-Here's an example: `git commit -m "Close #42 – Fix ugly bug"`
+5. Faça o commit de suas mudanças. Se sua pull request corrigir uma issue específica, diga na mensagem do commit.
+Aqui está um exemplo: `git commit -m "Fechando issue #42 – Correção de um bug idiota"`
 
-6. Push to your fork and submit a pull request. Please provide us with some
-explanation of why you made the changes you made. For new features make sure to
-explain a standard use case to us.
+6. Envie para seu fork e solicite uma pull request. Por favor, nos dê alguma
+explicação do porquê você fez as mudanças que fez. Para novos recursos, tenha certeza de
+explicar um caso de uso padrão para nós.
 
-Some things that will increase the chance that your pull request is accepted:
+Algumas coisas que poderão aumentar as chances de que sua pull request seja aceita:
 
-- Including tests
-- Writing the documentation
+- Incluir os testes
+- Escrevendo a documentação
+- Fazer refêrencia para alguma issue aberta anteriormente
+- Conformidade com GPDR (Europa) / LGPDP (Brasil)
+- Conformidade com a Lei de Acesso à Informação
 
-Based and adapted from Yii2-Config, available on [Wiki Yii2-Config](https://github.com/abhi1693/yii2-config/wiki/CONTRIBUTING.md).
+Baseado e adaptado de Yii2-Config, dispoível em [Wiki Yii2-Config](https://github.com/abhi1693/yii2-config/wiki/CONTRIBUTING.md).

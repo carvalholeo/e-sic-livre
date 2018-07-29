@@ -25,7 +25,7 @@ Requisitos Mínimos
    Projeto original: [e-SIC Livre](https://softwarepublico.gov.br/gitlab/e-sic-livre/e-sic-livre)  
      
      
-Para contribuir com o projeto, veja o arquvio CONTRIBUTING GUIDE. Antes de qualquer coisa, veja o CODE OF CONDUCT. Esta é a base
+Para contribuir com o projeto, veja o arquvio CONTRIBUTING. Antes de qualquer coisa, veja o CODE OF CONDUCT. Esta é a base
 da cotinuação do projeto aqui no GitHub.  
   
   Obrigado.

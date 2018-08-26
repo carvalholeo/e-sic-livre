@@ -15,8 +15,8 @@ define("SISTEMA_CODIGO", "esiclivre"); //codigo para definição da lista de sessã
 
 // Configurações de banco de dados
 define("DBHOST", "localhost");
-define("DBUSER", "root");
-define("DBPASS", "");
+define("DBUSER", "general");
+define("DBPASS", "A3trindade");
 define("DBNAME", "esic");
 
 // Definições de e-mail
@@ -27,8 +27,8 @@ define("SMTP_USER", "");
 define("SMTP_PWD", "");
 
 // Endereços do site
-define("SITELNK", "https://localhost/esic/restrito/");	//endereço principal do site
-define("URL_BASE_SISTEMA", "https://localhost/esic/restrito/");	//endereço principal do site
+define("SITELNK", "https://localhost/e-sic-livre/restrito/");	//endereço principal do site
+define("URL_BASE_SISTEMA", "https://localhost/e-sic-livre/restrito/");	//endereço principal do site
 
 // Caminho para arquivos das classes do projeto Lei de Acesso
 define("DIR_CLASSES_LEIACESSO","../class/");

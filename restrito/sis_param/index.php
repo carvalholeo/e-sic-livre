@@ -1,11 +1,11 @@
 <?php
 /**********************************************************************************
- Sistema e-SIC Livre: sistema de acesso a informaÁ„o baseado na lei de acesso.
+ Sistema e-SIC Livre: sistema de acesso a informa√ß√£o baseado na lei de acesso.
  
  Copyright (C) 2014 Prefeitura Municipal do Natal
  
- Este programa È software livre; vocÍ pode redistribuÌ-lo e/ou
- modific·-lo sob os termos da LicenÁa GPL2.
+ Este programa √© software livre; voc√™ pode redistribu√≠-lo e/ou
+ modific√°-lo sob os termos da Licen√ßa GPL2.
 ***********************************************************************************/
 
 include "manutencao.php";
@@ -16,7 +16,7 @@ $sql = "SELECT * FROM sis_param";
 
 if ($_REQUEST['imprimir'])
 {
-	generateReport(array("!PATH" => "sis_Param.jasper", "@sql" => $sql, "@usuario" => $_SESSION['usuario'], "@titulo" => "RelatÛrio de Parametros"));
+	generateReport(array("!PATH" => "sis_Param.jasper", "@sql" => $sql, "@usuario" => $_SESSION['usuario'], "@titulo" => "Relat√≥rio de Parametros"));
 }
 
 $x = iniciaGrid("edita('%Sistema%','%diretorioarquivos%','%urlarquivos%')",null,"novo()"); 

@@ -1,11 +1,11 @@
 <?php
 /**********************************************************************************
- Sistema e-SIC Livre: sistema de acesso a informação baseado na lei de acesso.
+ Sistema e-SIC Livre: sistema de acesso a informaï¿½ï¿½o baseado na lei de acesso.
  
  Copyright (C) 2014 Prefeitura Municipal do Natal
  
- Este programa é software livre; você pode redistribuí-lo e/ou
- modificá-lo sob os termos da Licença GPL2.
+ Este programa ï¿½ software livre; vocï¿½ pode redistribuï¿½-lo e/ou
+ modificï¿½-lo sob os termos da Licenï¿½a GPL2.
 ***********************************************************************************/
 		
 	    include_once("../inc/security.php");
@@ -13,12 +13,12 @@
 		
 	
 	
-	$erro   = "";	//grava o erro, se houver, e exibe por meio de alert (javascript) atraves da funcao getErro() chamada no arquivo do formulario. ps: a função é declara em inc/security.php
+	$erro   = "";	//grava o erro, se houver, e exibe por meio de alert (javascript) atraves da funcao getErro() chamada no arquivo do formulario. ps: a funï¿½ï¿½o ï¿½ declara em inc/security.php
 
         $acao 	= "";
         
 	
-	//se tiver sido postado informação do formulario
+	//se tiver sido postado informaï¿½ï¿½o do formulario
 	if($_POST['acao'])
 	{
 
@@ -34,7 +34,7 @@
 		$solicitacao->setFormaRetorno($formaretorno);
                 $solicitacao->setIdSecretariaSelecionada($idsecretariaselecionada);
 
-        if (!$solicitacao->cadastra()){
+            if (!$solicitacao->cadastra()){
 		$erro = $solicitacao->getErro();
 				
 				if ($upload == 1){
@@ -44,7 +44,7 @@
 		}else{
 		
 				enviadados();
-				echo "<script>alert('Solicitação enviada com sucesso!');location.href='index.php?ok=1';</script>";
+				echo "<script>alert('Solicitaï¿½ï¿½o enviada com sucesso!');location.href='index.php?ok=1';</script>";
 				
 				$solicitante = null;
 		

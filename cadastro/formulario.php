@@ -1,11 +1,11 @@
 <?php
 /**********************************************************************************
- Sistema e-SIC Livre: sistema de acesso a informação baseado na lei de acesso.
+ Sistema e-SIC Livre: sistema de acesso a informaÃ§Ã£o baseado na lei de acesso.
  
  Copyright (C) 2014 Prefeitura Municipal do Natal
  
- Este programa é software livre; você pode redistribuí-lo e/ou
- modificá-lo sob os termos da Licença GPL2.
+ Este programa Ã© software livre; vocÃª pode redistribuÃ­-lo e/ou
+ modificÃ¡-lo sob os termos da LicenÃ§a GPL2.
 ***********************************************************************************/
 ?>
 <script language="JavaScript" src="<?php echo SITELNK;?>js/XmlHttpLookup.js"></script>
@@ -22,7 +22,7 @@
 		}
 		else
 		{
-			document.getElementById('lblNome').innerHTML = "Razão Social";
+			document.getElementById('lblNome').innerHTML = "RazÃ£o Social";
 			document.getElementById('lblCpfcnpj').innerHTML = "CNPJ";
                         document.getElementById('lnEscolaridade').style.display = "none";
                         document.getElementById('lnProfissao').style.display = "none";
@@ -49,7 +49,7 @@
                                 </td>
                         </tr>
 			<tr>
-				<td align="left">*<span id="lblNome"><?php echo ($tipopessoa=="J")?"Razão Social":"Nome"; ?></span>:</td>
+				<td align="left">*<span id="lblNome"><?php echo ($tipopessoa=="J")?"RazÃ£o Social":"Nome"; ?></span>:</td>
 				<td align="left"><input type="text" name="nome" id="nome" value="<?php echo $nome;?>" size="58" maxlength="100" /> </td>
 			</tr>
 			<tr>
@@ -159,7 +159,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td align="left">Número:</td>
+					<td align="left">NÃºmero:</td>
 					<td align="left">
 						<input type="text" name="numero" id="numero" value="<?php echo $numero;?>" maxlength="10" size="10"  />
 						Complemento:

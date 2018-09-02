@@ -1,11 +1,11 @@
 <?php
 /**********************************************************************************
- Sistema e-SIC Livre: sistema de acesso a informaÁ„o baseado na lei de acesso.
+ Sistema e-SIC Livre: sistema de acesso a informa√ß√£o baseado na lei de acesso.
  
  Copyright (C) 2014 Prefeitura Municipal do Natal
  
- Este programa È software livre; vocÍ pode redistribuÌ-lo e/ou
- modific·-lo sob os termos da LicenÁa GPL2.
+ Este programa √© software livre; voc√™ pode redistribu√≠-lo e/ou
+ modific√°-lo sob os termos da Licen√ßa GPL2.
 ***********************************************************************************/
 
 require_once ("database.php");
@@ -22,7 +22,7 @@ function sendMail($to, $subject,$body,$from="",$fromname="")
 
 function LocalSendMail($to, $subject,$body,$from="",$fromname="")
 {
-                //se nao for informado o remetente, recupera das configuraÁıes do sistema
+                //se nao for informado o remetente, recupera das configura√ß√µes do sistema
 		if(empty($from))
                 {
                     $sql = "SELECT nomeremetenteemail, emailremetente FROM lda_configuracao";
@@ -52,7 +52,7 @@ function LocalSendMail($to, $subject,$body,$from="",$fromname="")
 		if (mail($to, $subject, $html, $headers)) {
 			return true;
 		} else {
-			error_log("E-mail de confirmaÁ„o de cadastro n„o enviado. ⁄ltima mensagem de erro:");
+			error_log("E-mail de confirma√ß√£o de cadastro n√£o enviado. √öltima mensagem de erro:");
 			$e = error_get_last();
 			error_log($e["message"]);
 			return false;
@@ -64,9 +64,9 @@ function LocalSendMail($to, $subject,$body,$from="",$fromname="")
 function PHPMailerSendMail($to, $subject, $body, $from="", $fromname=""){
     require_once("../class/PHPMailerAutoload.php");
     $mail = new PHPMailer();
-    $mail->isSMTP();                    // Define que a mensagem ser· SMTP
+    $mail->isSMTP();                    // Define que a mensagem ser√° SMTP
     $mail->Host = MAIL_HOST;          //hostname ou IP do Servidor
-    $mail->SMTPAuth = SMTP_AUTH;      //Caso seu email precise de autenticaÁ„o, no nosso caso n„o.
+    $mail->SMTPAuth = SMTP_AUTH;      //Caso seu email precise de autentica√ß√£o, no nosso caso n√£o.
     if (SMTP_AUTH) {
 		$mail->Username = SMTP_USER;
 		$mail->Password = SMTP_PWD;
@@ -82,7 +82,7 @@ function PHPMailerSendMail($to, $subject, $body, $from="", $fromname=""){
          $mail->FromName = $fromname;
     }
      $mail->addAddress($to);
-    $mail->isHTML(true);                      //Define que o email ser· HTML
+    $mail->isHTML(true);                      //Define que o email ser√° HTML
     $mail->CharSet = "iso-8859-1";       //Charset da mensagem (opcional)
     $mail->Subject = $subject;
     $html = "<html>
@@ -97,7 +97,7 @@ function PHPMailerSendMail($to, $subject, $body, $from="", $fromname=""){
      if($envia){                                    //Retorno do email
         return TRUE;
     }else{
-		error_log("E-mail de confirmaÁ„o de cadastro n„o pÙde ser enviado. DescriÁ„o do erro:");
+		error_log("E-mail de confirma√ß√£o de cadastro n√£o p√¥de ser enviado. Descri√ß√£o do erro:");
 		error_log($mail->ErrorInfo);
         return FALSE;
     }
@@ -105,7 +105,7 @@ function PHPMailerSendMail($to, $subject, $body, $from="", $fromname=""){
 
 function sendMailAnexo($to, $subject,$body,$arquivos=array(),$from="",$fromname="",$cc="")
 {
-                //se nao for informado o remetente, recupera das configuraÁıes do sistema
+                //se nao for informado o remetente, recupera das configura√ß√µes do sistema
 		if(empty($from))
                 {
                     $sql = "SELECT nomeremetenteemail, emailremetente FROM lda_configuracao";
@@ -261,7 +261,7 @@ function autentica($login, $pwd, $tipo)
 
 
 
-/*pega o diretorio padrao para gravaÁ„o de arquivos
+/*pega o diretorio padrao para grava√ß√£o de arquivos
 $sis = sistema para busca do diretorio na tabela de parametros
 */
 function getDiretorio($sis = "lda"){
@@ -279,7 +279,7 @@ function getDiretorio($sis = "lda"){
 	return $retorno;
 }
 
-/*paga o URL padrao para exibiÁ„o de arquivos
+/*paga o URL padrao para exibi√ß√£o de arquivos
 $sis = sistema para busca do diretorio na tabela de parametros
 */
 function getURL($sis = "alb"){
@@ -332,14 +332,14 @@ function logger($msg) {
 
 
 function getErro($msg){
-	//Exibe mensagem de erro passado pelas telas de manutenÁ„o
+	//Exibe mensagem de erro passado pelas telas de manuten√ß√£o
 	if (trim($msg) != "")
 		echo "<script>alert('$msg'); </script>";
 }
 
 function getConfirmacao($msg,$funcaoConfirmacao){
-	//Exibe mensagem de confirmaÁ„o passado pelas telas de manutenÁ„o
-	//funcaoConfirmacao -> funÁ„o javascript com o alert de confirmaÁ„o e procedimentos a serem seguidos.
+	//Exibe mensagem de confirma√ß√£o passado pelas telas de manuten√ß√£o
+	//funcaoConfirmacao -> fun√ß√£o javascript com o alert de confirma√ß√£o e procedimentos a serem seguidos.
 	if (trim($msg) != "")
 		echo "<script> $funcaoConfirmacao('$msg'); </script>";		
 }

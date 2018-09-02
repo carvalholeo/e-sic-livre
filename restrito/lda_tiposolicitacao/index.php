@@ -1,11 +1,11 @@
 <?php
 /**********************************************************************************
- Sistema e-SIC Livre: sistema de acesso a informação baseado na lei de acesso.
+ Sistema e-SIC Livre: sistema de acesso a informaÃ§Ã£o baseado na lei de acesso.
  
  Copyright (C) 2014 Prefeitura Municipal do Natal
  
- Este programa é software livre; você pode redistribuí-lo e/ou
- modificá-lo sob os termos da Licença GPL2.
+ Este programa Ã© software livre; vocÃª pode redistribuÃ­-lo e/ou
+ modificÃ¡-lo sob os termos da LicenÃ§a GPL2.
 ***********************************************************************************/
 
 include "manutencao.php";
@@ -33,8 +33,8 @@ $result = execQueryPag($sql);
 	<h1>Cadastro de Inst&acirc;ncias</h1>
 	<ol class="breadcrumb">
             <li><a href="<?php echo URL_BASE_SISTEMA; ?>index/">Dashboard</a></li>
-            <li><a href="<?php echo URL_BASE_SISTEMA; ?>index/?lda_configuracao">Administração</a></li>
-            <li class="active">Cadastro de Instâncias</li>
+            <li><a href="<?php echo URL_BASE_SISTEMA; ?>index/?lda_configuracao">AdministraÃ§Ã£o</a></li>
+            <li class="active">Cadastro de InstÃ¢ncias</li>
 	</header>
 <br>
 <!-- FORMULARIO -->
@@ -90,7 +90,7 @@ Observa&ccedil;&otilde;es:
                         <select name="proximainsntancia" id="proximainstancia" onchange="ordena(<?php echo $registro['idtiposolicitacao'];?>,this.value)">
                             <option value="-1">Nenhum</option>
                             <?php 
-                                //seleciona as instancias que não seja de inicio e que não esteja sendo utilizada por outro tipo de solicitação
+                                //seleciona as instancias que nÃ£o seja de inicio e que nÃ£o esteja sendo utilizada por outro tipo de solicitaÃ§Ã£o
                                 $qry = "SELECT * FROM lda_tiposolicitacao t
                                         WHERE instancia != 'I' 
                                               AND idtiposolicitacao != ".$registro['idtiposolicitacao']."

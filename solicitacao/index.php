@@ -1,23 +1,23 @@
 <?php
 /**********************************************************************************
- Sistema e-SIC Livre: sistema de acesso a informação baseado na lei de acesso.
+ Sistema e-SIC Livre: sistema de acesso a informaï¿½ï¿½o baseado na lei de acesso.
  
  Copyright (C) 2014 Prefeitura Municipal do Natal
  
- Este programa é software livre; você pode redistribuí-lo e/ou
- modificá-lo sob os termos da Licença GPL2.
+ Este programa ï¿½ software livre; vocï¿½ pode redistribuï¿½-lo e/ou
+ modificï¿½-lo sob os termos da Licenï¿½a GPL2.
 ***********************************************************************************/
 
  require_once("manutencao.php");
  require_once("../inc/topo.php");
 ?>
 
-<h1>Formulário de Solicitação de Informação</h1>
+<h1>FormulÃ¡rio de SolicitaÃ§Ã£o de InformaÃ§Ã£o</h1>
 <br>
 <?php 
 if (empty($_GET['ok'])){
     ?>
-    Descreva de forma detalhada sua solicitação<br>
+    Descreva de forma detalhada sua solicitaÃ§Ã£o<br>
     <form action="<?php echo SITELNK ;?>solicitacao/index.php" id="formulario" method="post"  enctype="multipart/form-data">
     <?php include_once("../solicitacao/formulario.php");?>
     </form>
@@ -26,7 +26,7 @@ if (empty($_GET['ok'])){
 }
 else
 {
-    ?><br>Solitação cadastrada com sucesso.<?php
+    ?><br>SolitaÃ§Ã£o cadastrada com sucesso.<?php
 }
 include("../inc/rodape.php"); 
 ?>

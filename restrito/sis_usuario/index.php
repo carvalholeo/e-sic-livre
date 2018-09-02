@@ -1,11 +1,11 @@
 <?php
 /**********************************************************************************
- Sistema e-SIC Livre: sistema de acesso a informaÁ„o baseado na lei de acesso.
+ Sistema e-SIC Livre: sistema de acesso a informa√ß√£o baseado na lei de acesso.
  
  Copyright (C) 2014 Prefeitura Municipal do Natal
  
- Este programa È software livre; vocÍ pode redistribuÌ-lo e/ou
- modific·-lo sob os termos da LicenÁa GPL2.
+ Este programa √© software livre; voc√™ pode redistribu√≠-lo e/ou
+ modific√°-lo sob os termos da Licen√ßa GPL2.
 ***********************************************************************************/
 
 include("../inc/autenticar.php");  
@@ -50,11 +50,11 @@ $result = execQueryPag($sql);
 
 <div class="container-fluid">
     <header class="header-title">
-        <h1>Cadastro de Usu·rios</h1>
+        <h1>Cadastro de Usu√°rios</h1>
         <ol class="breadcrumb">
-            <li><a href="<?php echo URL_BASE_SISTEMA; ?>index/">InÌcio</a></li>
-            <li><a href="<?php echo URL_BASE_SISTEMA; ?>index/?lda_configuracao">AdministraÁ„o</a></li>
-            <li class="active">Cadastro de Usu·rios</li>
+            <li><a href="<?php echo URL_BASE_SISTEMA; ?>index/">In√≠cio</a></li>
+            <li><a href="<?php echo URL_BASE_SISTEMA; ?>index/?lda_configuracao">Administra√ß√£o</a></li>
+            <li class="active">Cadastro de Usu√°rios</li>
         </ol>
     </header>
 </div>
@@ -88,7 +88,7 @@ $result = execQueryPag($sql);
 				<div class="col-md-2 col-xs-12">
 					<div class="form-group">
 						<label for="matricula" class="input-label"><i class="material-icons">account_circle</i></label>
-						<input type="text" placeholder="MatrÌcula" name="matricula" id="matricula" class="form-control icon" value="<?php echo $matricula?>"  maxlength="6" />
+						<input type="text" placeholder="Matr√≠cula" name="matricula" id="matricula" class="form-control icon" value="<?php echo $matricula?>"  maxlength="6" />
 					</div>
 				</div>
 				<div class="col-md-2 col-xs-12">
@@ -117,7 +117,7 @@ $result = execQueryPag($sql);
 					<tr>
 						<th></th>
 						<th>Codigo</th>
-						<th>Usu·rio</th>
+						<th>Usu√°rio</th>
 						<th>CPF</th>
 						<th>Matricula</th>
 						<th>Login</th>

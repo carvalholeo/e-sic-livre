@@ -1,11 +1,11 @@
 <?php
 /**********************************************************************************
- Sistema e-SIC Livre: sistema de acesso a informação baseado na lei de acesso.
+ Sistema e-SIC Livre: sistema de acesso a informaÃ§Ã£o baseado na lei de acesso.
  
  Copyright (C) 2014 Prefeitura Municipal do Natal
  
- Este programa é software livre; você pode redistribuí-lo e/ou
- modificá-lo sob os termos da Licença GPL2.
+ Este programa Ã© software livre; vocÃª pode redistribuÃ­-lo e/ou
+ modificÃ¡-lo sob os termos da LicenÃ§a GPL2.
 ***********************************************************************************/
 
  include("manutencao.php");
@@ -85,7 +85,7 @@
 
     function executaOperacao(acao)
     {
-        if(confirm("Confirma operação?"))
+        if(confirm("Confirma operaÃ§Ã£o?"))
         {
             document.getElementById("acao").value = acao;
             document.getElementById("formulario").submit();
@@ -130,11 +130,11 @@
                 </td>
                 <td align="left" valign="top">
                     <b>Solicita&ccedil;&atilde;o Recebida em</b> <br>
-                    &nbsp;&nbsp;<?php echo !empty($datarecebimentosolicitacao)?$datarecebimentosolicitacao." por ".$usuariorecebimento:"Não Recebido";?>
+                    &nbsp;&nbsp;<?php echo !empty($datarecebimentosolicitacao)?$datarecebimentosolicitacao." por ".$usuariorecebimento:"NÃ£o Recebido";?>
                 </td>
                 <td align="left" valign="top">
                     <b>Porroga&ccedil;&atilde;o</b> <br>
-                    &nbsp;&nbsp;<?php echo !empty($dataprorrogacao)?"Prorrogado em: ".$dataprorrogacao." por ".$usuarioprorrogacao. "<br>&nbsp;&nbsp;Motivo: ".$motivoprorrogacao:"Não Prorrogado";?>
+                    &nbsp;&nbsp;<?php echo !empty($dataprorrogacao)?"Prorrogado em: ".$dataprorrogacao." por ".$usuarioprorrogacao. "<br>&nbsp;&nbsp;Motivo: ".$motivoprorrogacao:"NÃ£o Prorrogado";?>
                 </td>
         </tr>
         <tr id="lnDemanda3">
@@ -238,7 +238,7 @@
 			</table>
 		</td>
 	</tr>
-        <?php if($instancia == "I") { //se for solicitação inicial, mostra os recursos se houver
+        <?php if($instancia == "I") { //se for solicitaÃ§Ã£o inicial, mostra os recursos se houver
             
                 $resultRec = Solicitacao::getRecursos($idsolicitacao);
                 if(mysqli_num_rows($resultRec) > 0)

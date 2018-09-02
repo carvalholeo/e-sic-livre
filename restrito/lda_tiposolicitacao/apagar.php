@@ -1,11 +1,11 @@
 <?php
 /**********************************************************************************
- Sistema e-SIC Livre: sistema de acesso a informação baseado na lei de acesso.
+ Sistema e-SIC Livre: sistema de acesso a informaÃ§Ã£o baseado na lei de acesso.
  
  Copyright (C) 2014 Prefeitura Municipal do Natal
  
- Este programa é software livre; você pode redistribuí-lo e/ou
- modificá-lo sob os termos da Licença GPL2.
+ Este programa Ã© software livre; vocÃª pode redistribuÃ­-lo e/ou
+ modificÃ¡-lo sob os termos da LicenÃ§a GPL2.
 ***********************************************************************************/
 
   include("../inc/autenticar.php");
@@ -17,11 +17,11 @@
 
   if(!execQuery($sql))
   {
-    echo "<script>alert('Não foi possivel excluir este tipo de solicitação. Esse registro pode estar em uso.');</script>";
+    echo "<script>alert('NÃ£o foi possivel excluir este tipo de solicitaÃ§Ã£o. Esse registro pode estar em uso.');</script>";
   }
   else
   {
-	logger("Tipo de solicitação excluído com sucesso.");
+	logger("Tipo de solicitaÃ§Ã£o excluÃ­do com sucesso.");
   }
 
   echo "<script>document.location='?lda_tiposolicitacao';</script>";

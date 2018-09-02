@@ -1,11 +1,11 @@
 <?php
 /**********************************************************************************
- Sistema e-SIC Livre: sistema de acesso a informação baseado na lei de acesso.
+ Sistema e-SIC Livre: sistema de acesso a informaÃ§Ã£o baseado na lei de acesso.
 
  Copyright (C) 2014 Prefeitura Municipal do Natal
 
- Este programa é software livre; você pode redistribuí-lo e/ou
- modificá-lo sob os termos da Licença GPL2.
+ Este programa Ã© software livre; vocÃª pode redistribuÃ­-lo e/ou
+ modificÃ¡-lo sob os termos da LicenÃ§a GPL2.
  ***********************************************************************************/
 require_once("../inc/security.php");
 
@@ -56,7 +56,7 @@ if ($_POST['btsub'])
 include("../inc/topo.php"); 
 ?>
         <div id="principal">
-		<div id="migalha_de_Pao"> Você está em: Manual; </div>
+		<div id="migalha_de_Pao"> VocÃª estÃ¡ em: Manual; </div>
 <!-- #####################################################################################################################
 parte de codigo aparentemente desnecessaria em manual 
 			<div id="banner">
@@ -141,24 +141,24 @@ parte de codigo aparentemente desnecessaria em manual
 				<table width="100%">
 					<tr>
 						<th width="40%">
-							SIC - Serviço de informação ao Cidadão	
+							SIC - ServiÃ§o de informaÃ§Ã£o ao CidadÃ£o	
 						</th>
 						<th width="30%">
 							Lei de Acesso
 						</th>
 						<th width="30%">
-							Links Úteis
+							Links Ãšteis
 						</th>
 					</tr>
 					<tr>
 						<td>
-							<a href="../manual/informacao.php">Como pedir uma informação</a>
+							<a href="../manual/informacao.php">Como pedir uma informaÃ§Ã£o</a>
 						</td>
 						<td>
 							<a href="../manual/decreto.php">Decreto</a>
 						</td>
 						<td>
-							<a href="http://www.acessoainformacao.gov.br/acessoainformacaogov/">Acesso à informação CGU</a>
+							<a href="http://www.acessoainformacao.gov.br/acessoainformacaogov/">Acesso Ã  informaÃ§Ã£o CGU</a>
 						</td>						
 					</tr>
 					<tr>
@@ -166,10 +166,10 @@ parte de codigo aparentemente desnecessaria em manual
 							<a href="../manual/pedido.php">Como acompanhar seu pedido</a>
 						</td>
 						<td>
-							<a href="../manual/LegislacaoRelacionada.php">Legislação relacionada</a>
+							<a href="../manual/LegislacaoRelacionada.php">LegislaÃ§Ã£o relacionada</a>
 						</td>
 						<td>
-							<a href="http://portal2.tcu.gov.br/portal/page/portal/TCU/transparencia">Acesso à informação TCU</a>
+							<a href="http://portal2.tcu.gov.br/portal/page/portal/TCU/transparencia">Acesso Ã  informaÃ§Ã£o TCU</a>
 						</td>						
 					</tr>
 					<tr>

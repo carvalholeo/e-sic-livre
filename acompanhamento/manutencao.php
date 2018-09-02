@@ -1,11 +1,11 @@
 <?php
 /**********************************************************************************
- Sistema e-SIC Livre: sistema de acesso a informação baseado na lei de acesso.
+ Sistema e-SIC Livre: sistema de acesso a informaÃ§Ã£o baseado na lei de acesso.
  
  Copyright (C) 2014 Prefeitura Municipal do Natal
  
- Este programa é software livre; você pode redistribuí-lo e/ou
- modificá-lo sob os termos da Licença GPL2.
+ Este programa Ã© software livre; vocÃª pode redistribuÃ­-lo e/ou
+ modificÃ¡-lo sob os termos da LicenÃ§a GPL2.
 ***********************************************************************************/
 
 	include_once("../inc/autenticar.php");
@@ -19,10 +19,10 @@
         $fltnumprotocolo   = $_REQUEST["fltnumprotocolo"];
         $fltsituacao       = $_REQUEST["fltsituacao"];
         
-        $parametrosIndex = "fltnumprotocolo=$fltnumprotocolo&fltsituacao=$fltsituacao"; //parametros a ser passado para a pagina de detalhamento, fazendo com que ao voltar para o index traga as informações passadas anteriormente
+        $parametrosIndex = "fltnumprotocolo=$fltnumprotocolo&fltsituacao=$fltsituacao"; //parametros a ser passado para a pagina de detalhamento, fazendo com que ao voltar para o index traga as informaÃ§Ãµes passadas anteriormente
         //-----
         
-	//se for passado código para edição e nao tiver sido postado informação do formulario busca dados do banco
+	//se for passado cÃ³digo para ediÃ§Ã£o e nao tiver sido postado informaÃ§Ã£o do formulario busca dados do banco
 	if(!$_POST['acao'] AND !empty($codigo))
 	{
 		$acao = "Alterar";
@@ -93,14 +93,14 @@
             {
                     $sol = new Solicitacao();
 
-                    //recupera o proximo tipo de solicitação, caso retorne falso, deu erro
+                    //recupera o proximo tipo de solicitaÃ§Ã£o, caso retorne falso, deu erro
                     if(Solicitacao::getProximoTipoSolicitacao($idsolicitacao,$idtiposolicitacaorecurso,$erro))
                     {   
-                        //se nao existir solicitação original
+                        //se nao existir solicitaÃ§Ã£o original
                         if (empty($idsolicitacaoorigem))
-                            $sol->setIdSolicitacaoOrigem($idsolicitacao); //o recurso terá a solicitação atual como original
+                            $sol->setIdSolicitacaoOrigem($idsolicitacao); //o recurso terÃ¡ a solicitaÃ§Ã£o atual como original
                         else
-                            $sol->setIdSolicitacaoOrigem($idsolicitacaoorigem); //o recurso manterá a solicitação original
+                            $sol->setIdSolicitacaoOrigem($idsolicitacaoorigem); //o recurso manterÃ¡ a solicitaÃ§Ã£o original
                         
                         $sol->setTextoSolicitacao($txttextosolicitacao);
                         $sol->setFormaRetorno($txtformaretorno);

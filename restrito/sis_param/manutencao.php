@@ -1,17 +1,17 @@
 <?php
 /**********************************************************************************
- Sistema e-SIC Livre: sistema de acesso a informaÁ„o baseado na lei de acesso.
+ Sistema e-SIC Livre: sistema de acesso a informa√ß√£o baseado na lei de acesso.
  
  Copyright (C) 2014 Prefeitura Municipal do Natal
  
- Este programa È software livre; vocÍ pode redistribuÌ-lo e/ou
- modific·-lo sob os termos da LicenÁa GPL2.
+ Este programa √© software livre; voc√™ pode redistribu√≠-lo e/ou
+ modific√°-lo sob os termos da Licen√ßa GPL2.
 ***********************************************************************************/
 
 	include_once("../inc/autenticar.php");
 	checkPerm("LSTPARAM");
 	
-	//funÁ„o de validaÁ„o dos dados do formulario do cadastro de usuario -------------------
+	//fun√ß√£o de valida√ß√£o dos dados do formulario do cadastro de usuario -------------------
 	function validaDados()
 	{
 		global $erro;
@@ -22,28 +22,28 @@
 				
 		if (empty($sistema))
 		{
-			$erro = "SISTEMA n„o informado.";
+			$erro = "SISTEMA n√£o informado.";
 			return false;
 		}
 		else if (empty($diretorioarquivos))
 		{
-			$erro = "Diretorio de Arquivos n„o informado.";
+			$erro = "Diretorio de Arquivos n√£o informado.";
 			return false;
 		}
 		else if (empty($urlarquivos))
 		{
-			$erro = "URL dos Arquivos n„o informado.";
+			$erro = "URL dos Arquivos n√£o informado.";
 			return false;
 		}
 		
-		//verifica se ja existe registro cadastrado com a informaÁao passada ---
+		//verifica se ja existe registro cadastrado com a informa√ßao passada ---
 		if ($acao=="Incluir")
 		{
 			$sql = "SELECT * FROM sis_param WHERE sistema = '$sistema'";
 			
 			if(mysqli_num_rows(execQuery($sql)) > 0)
 			{
-				$erro = "Nome do Sistema j· existe no cadastro.";
+				$erro = "Nome do Sistema j√° existe no cadastro.";
 				return false;
 			}
 		}
@@ -71,7 +71,7 @@
 	$acao	= "Incluir";
 	$erro	= "";
 	
-	//se tiver sido postado informaÁ„o do formulario
+	//se tiver sido postado informa√ß√£o do formulario
 	if ($_POST['acao'])
 	{
 		//recupera valores do formulario
@@ -80,7 +80,7 @@
 		$diretorioarquivos = $_POST["diretorioarquivos"];
 		$urlarquivos	   = $_POST["urlarquivos"];
 		
-		//verifica aÁ„o do usuario
+		//verifica a√ß√£o do usuario
 		switch ($acao)
 		{
 			//se for uma inclusao
@@ -103,7 +103,7 @@
 					}
 				}
 				break;
-			//se for uma alteraÁ„o
+			//se for uma altera√ß√£o
 			case "Alterar":  		
 				checkPerm("UPTPARAM");	
 				

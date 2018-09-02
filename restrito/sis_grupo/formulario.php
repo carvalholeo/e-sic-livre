@@ -1,15 +1,15 @@
 <?php
 /**********************************************************************************
- Sistema e-SIC Livre: sistema de acesso a informação baseado na lei de acesso.
+ Sistema e-SIC Livre: sistema de acesso a informaÃ§Ã£o baseado na lei de acesso.
  
  Copyright (C) 2014 Prefeitura Municipal do Natal
  
- Este programa é software livre; você pode redistribuí-lo e/ou
- modificá-lo sob os termos da Licença GPL2.
+ Este programa Ã© software livre; vocÃª pode redistribuÃ­-lo e/ou
+ modificÃ¡-lo sob os termos da LicenÃ§a GPL2.
 ***********************************************************************************/
 
 
-//retorna erro de uma ação se houver (em alert do javascript) 
+//retorna erro de uma aÃ§Ã£o se houver (em alert do javascript) 
 getErro($erro);
 
 ?>
@@ -49,7 +49,7 @@ getErro($erro);
 			<div class="col-md-2 col-xs-12">
 				<div class="form-group">
 					<label for="descricao" class="input-label"><i class="material-icons">account_circle</i></label>
-					<input type="text" class="form-control icon" name="descricao" value="<?php echo $descricao;?>" maxlength="70" size="50" id="descricao" placeholder="Descrição"/>
+					<input type="text" class="form-control icon" name="descricao" value="<?php echo $descricao;?>" maxlength="70" size="50" id="descricao" placeholder="DescriÃ§Ã£o"/>
 				</div>
 			</div>	
 			  

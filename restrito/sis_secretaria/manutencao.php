@@ -1,16 +1,16 @@
 <?php
 /**********************************************************************************
- Sistema e-SIC Livre: sistema de acesso a informação baseado na lei de acesso.
+ Sistema e-SIC Livre: sistema de acesso a informaÃ§Ã£o baseado na lei de acesso.
  
  Copyright (C) 2014 Prefeitura Municipal do Natal
  
- Este programa é software livre; você pode redistribuí-lo e/ou
- modificá-lo sob os termos da Licença GPL2.
+ Este programa Ã© software livre; vocÃª pode redistribuÃ­-lo e/ou
+ modificÃ¡-lo sob os termos da LicenÃ§a GPL2.
 ***********************************************************************************/
 
 	include_once("../inc/autenticar.php");
 
-	//função de validação dos dados do formulario do cadastro de usuario -------------------
+	//funÃ§Ã£o de validaÃ§Ã£o dos dados do formulario do cadastro de usuario -------------------
 	function validaDados()
 	{
 		global $erro;
@@ -25,12 +25,12 @@
 				
 		if (empty($nome))
 		{
-			$erro = "Nome não informado.";
+			$erro = "Nome nÃ£o informado.";
 			return false;
 		}
 		elseif (empty($sigla))
 		{
-			$erro = "Sigla não informada.";
+			$erro = "Sigla nÃ£o informada.";
 			return false;
 		}
 		
@@ -38,7 +38,7 @@
 		
                 if(empty($siccentral)) $siccentral = "0";
 		
-		//verifica se ja existe registro cadastrado com a informaçao passada ---
+		//verifica se ja existe registro cadastrado com a informaÃ§ao passada ---
 		
 		if ($acao=="Incluir")
 			$sql = "SELECT * FROM sis_secretaria WHERE sigla = '$sigla'";
@@ -47,7 +47,7 @@
 			
 		if(mysqli_num_rows(execQuery($sql)) > 0)
 		{
-			$erro = "Já existe SIC cadastrada com a sigla informada";
+			$erro = "JÃ¡ existe SIC cadastrada com a sigla informada";
 			return false;
 		}
 		//-----------------------------------------------------------------------
@@ -59,7 +59,7 @@
 	$codigo = $_GET["codigo"];
 	$acao	= "Incluir";
 
-	//se for passado codigo para edição e nao tiver sido postado informação do formulario busca dados do banco
+	//se for passado codigo para ediÃ§Ã£o e nao tiver sido postado informaÃ§Ã£o do formulario busca dados do banco
 	if(!$_POST['Alterar'] and !empty($codigo))
 	{
 		$acao	= "Alterar";
@@ -118,7 +118,7 @@
 			}
 		}
 	}
-	//se for uma alteração
+	//se for uma alteraÃ§Ã£o
 	elseif ($_POST['Alterar'])
 	{
 	   	$acao	= "Alterar";	

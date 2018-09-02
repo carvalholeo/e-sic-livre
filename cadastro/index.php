@@ -1,11 +1,11 @@
 <?php
 /**********************************************************************************
- Sistema e-SIC Livre: sistema de acesso a informação baseado na lei de acesso.
+ Sistema e-SIC Livre: sistema de acesso a informaÃ§Ã£o baseado na lei de acesso.
  
  Copyright (C) 2014 Prefeitura Municipal do Natal
  
- Este programa é software livre; você pode redistribuí-lo e/ou
- modificá-lo sob os termos da Licença GPL2.
+ Este programa Ã© software livre; vocÃª pode redistribuÃ­-lo e/ou
+ modificÃ¡-lo sob os termos da LicenÃ§a GPL2.
 ***********************************************************************************/
 
  require_once("manutencao.php");
@@ -18,7 +18,7 @@
 <br>
 <?php if(!empty($_GET['r'])){?>
           Cadastro Realizado com sucesso! <br><br>
-          Em instantes você receberá uma solicitação de confirmação do cadastro no seu e-mail: <?php echo $_GET['r']?>.<br>
+          Em instantes vocÃª receberÃ¡ uma solicitaÃ§Ã£o de confirmaÃ§Ã£o do cadastro no seu e-mail: <?php echo $_GET['r']?>.<br>
 <?php }else{?>
         <form action="<?php echo SITELNK;?>cadastro/index.php" id="formulario" method="post">
         <?php include_once("../cadastro/formulario.php");?>

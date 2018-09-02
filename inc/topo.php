@@ -1,12 +1,12 @@
 <?php
-header("Content-Type: text/html; charset=ISO-8859-1", true);
+header("Content-Type: text/html; charset=utf-8", true);
 /**********************************************************************************
- Sistema e-SIC Livre: sistema de acesso a informação baseado na lei de acesso.
+ Sistema e-SIC Livre: sistema de acesso a informaÃ§Ã£o baseado na lei de acesso.
  
  Copyright (C) 2014 Prefeitura Municipal do Natal
  
- Este programa é software livre; você pode redistribuí-lo e/ou
- modificá-lo sob os termos da Licença GPL2.
+ Este programa Ã© software livre; vocÃª pode redistribuÃ­-lo e/ou
+ modificÃ¡-lo sob os termos da LicenÃ§a GPL2.
 ***********************************************************************************/
 
 include_once("config.php");
@@ -34,12 +34,12 @@ include_once("config.php");
          <![endif]-->
 	
 
-		<meta name="E-Sic Livre" content="Portal da Prefeitura Municipal do Natal - SEMPLA - Secretaria de Planejamento, Orçamento e Finanças" />
+		<meta name="E-Sic Livre" content="Portal da Prefeitura Municipal do Natal - SEMPLA - Secretaria de Planejamento, OrÃ§amento e FinanÃ§as" />
 		<meta http-equiv="pragma" content="no-cache" />
                 <meta name="revisit-after" content="1" />
 		<meta name="classification" content="Internet" />	
-		<meta name="description" content="Portal da Prefeitura Municipal do Natal - SEMPLA - Secretaria de Planejamento, Orçamento e Finanças" />
-		<meta name="keywords" content="Prefeitura do Natal, natal, rn, sempla, natal, rn, noticias, serviços" />
+		<meta name="description" content="Portal da Prefeitura Municipal do Natal - SEMPLA - Secretaria de Planejamento, OrÃ§amento e FinanÃ§as" />
+		<meta name="keywords" content="Prefeitura do Natal, natal, rn, sempla, natal, rn, noticias, serviÃ§os" />
 		<meta name="robots" content="ALL" />
 		<meta name="distribution" content="Global" />
 		<meta name="rating" content="General" />

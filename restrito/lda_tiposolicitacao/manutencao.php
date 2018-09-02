@@ -1,18 +1,18 @@
 <?php
 /**********************************************************************************
- Sistema e-SIC Livre: sistema de acesso a informaÁ„o baseado na lei de acesso.
+ Sistema e-SIC Livre: sistema de acesso a informa√ß√£o baseado na lei de acesso.
  
  Copyright (C) 2014 Prefeitura Municipal do Natal
  
- Este programa È software livre; vocÍ pode redistribuÌ-lo e/ou
- modific·-lo sob os termos da LicenÁa GPL2.
+ Este programa √© software livre; voc√™ pode redistribu√≠-lo e/ou
+ modific√°-lo sob os termos da Licen√ßa GPL2.
 ***********************************************************************************/
 
 	include_once("../inc/autenticar.php");
         include_once(DIR_CLASSES_LEIACESSO."/solicitacao.class.php");
 	checkPerm("LSTGRP");
 	
-	//funÁ„o de validaÁ„o dos dados do formulario do cadastro de usuario -------------------
+	//fun√ß√£o de valida√ß√£o dos dados do formulario do cadastro de usuario -------------------
 	function validaDados()
 	{
 		global $erro;
@@ -24,17 +24,17 @@
 				
 		if (empty($nome))
 		{
-			$erro = "Nome n„o informado.";
+			$erro = "Nome n√£o informado.";
 			return false;
 		}
 		else if (empty($instancia))
 		{
-			$erro = "Inst‚ncia n„o informada.";
+			$erro = "Inst√¢ncia n√£o informada.";
 			return false;
 		}
 
 
-		//verifica se ja existe registro cadastrado com a informaÁao passada ---
+		//verifica se ja existe registro cadastrado com a informa√ßao passada ---
 		if ($acao=="Incluir")
 			$sql = "SELECT * FROM lda_tiposolicitacao WHERE nome = '$nome'";
 		else
@@ -42,7 +42,7 @@
 			
 		if(mysqli_num_rows(execQuery($sql)) > 0)
 		{
-			$erro = "Nome do tipo de instancia j· existe no cadastro.";
+			$erro = "Nome do tipo de instancia j√° existe no cadastro.";
 			return false;
 		}
 		//-----------------------------------------------------------------------
@@ -56,7 +56,7 @@
 				
 			if(mysqli_num_rows(execQuery($sql)) > 0)
 			{
-				$erro = "SÛ pode existir uma inst‚ncia cadastrada como inicial.";
+				$erro = "S√≥ pode existir uma inst√¢ncia cadastrada como inicial.";
 				return false;
 			}
 		}
@@ -91,11 +91,11 @@
         $idtiposolicitacao_seguinte = ($_POST["idtiposolicitacao_seguinte"]=="-1")?"":$_POST["idtiposolicitacao_seguinte"];
         $instancia                  = $_POST["instancia"];
         
-	//se tiver sido postado informaÁ„o do formulario
+	//se tiver sido postado informa√ß√£o do formulario
 	if ($_POST['acao'])
 	{
 		
-		//verifica aÁ„o do usuario
+		//verifica a√ß√£o do usuario
 		switch ($acao)
 		{
 			//se for uma inclusao
@@ -118,7 +118,7 @@
 					}
 				}
 				break;
-			//se for uma alteraÁ„o
+			//se for uma altera√ß√£o
 			case "Alterar":  		
 				checkPerm("UPTTIPOSOL");	
 				
@@ -133,13 +133,13 @@
 
 					if (execQuery($sql))
 					{
-						logger("Tipo de solicitaÁ„o alterado com sucesso");  
+						logger("Tipo de solicita√ß√£o alterado com sucesso");  
 						limpaDados();
 					}
 					else
 					{
 					
-						$erro = "Ocorreu um erro ao alterar tipo de solicitaÁ„o.";
+						$erro = "Ocorreu um erro ao alterar tipo de solicita√ß√£o.";
 					}
 				}
 				break;
@@ -147,7 +147,7 @@
 	}
         else if($_POST['idtiposolicitacao_seguinte'])
         {
-            //se for uma ordenaÁ„o
+            //se for uma ordena√ß√£o
             checkPerm("UPTTIPOSOL");	
 
             $sql = "UPDATE lda_tiposolicitacao SET 
@@ -159,13 +159,13 @@
             
             if (execQuery($sql))
             {
-                    logger("Ordem do tipo de solicitaÁ„o alterado com sucesso");  
+                    logger("Ordem do tipo de solicita√ß√£o alterado com sucesso");  
                     limpaDados();
             }
             else
             {
 
-                    $erro = "Ocorreu um erro ao alterar tipo de solicitaÁ„o.";
+                    $erro = "Ocorreu um erro ao alterar tipo de solicita√ß√£o.";
             }
 
         }

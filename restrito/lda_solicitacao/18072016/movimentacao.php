@@ -1,11 +1,11 @@
 <?php
 /**********************************************************************************
- Sistema e-SIC Livre: sistema de acesso a informaÁ„o baseado na lei de acesso.
+ Sistema e-SIC Livre: sistema de acesso a informa√ß√£o baseado na lei de acesso.
  
  Copyright (C) 2014 Prefeitura Municipal do Natal
  
- Este programa È software livre; vocÍ pode redistribuÌ-lo e/ou
- modific·-lo sob os termos da LicenÁa GPL2.
+ Este programa √© software livre; voc√™ pode redistribu√≠-lo e/ou
+ modific√°-lo sob os termos da Licen√ßa GPL2.
 ***********************************************************************************/
 
 include("manutencao.php");
@@ -18,11 +18,11 @@ $urlArquivo=getURL("lda");
 <script src="inc/js/functions.js"></script>
 <div class="container-fluid">
     <header class="header-title">
-        <h1>MovimentaÁ„o da SolicitaÁ„o</h1>
+        <h1>Movimenta√ß√£o da Solicita√ß√£o</h1>
         <ol class="breadcrumb">
-            <li><a href="<?php echo URL_BASE_SISTEMA; ?>index/">InÌcio</a></li>
-            <li><a href="<?php echo URL_BASE_SISTEMA; ?>index/?lda_solicitacao">SolicitaÁ„o</a></li>
-            <li class="active">MovimentaÁ„o da SolicitaÁ„o</li>
+            <li><a href="<?php echo URL_BASE_SISTEMA; ?>index/">In√≠cio</a></li>
+            <li><a href="<?php echo URL_BASE_SISTEMA; ?>index/?lda_solicitacao">Solicita√ß√£o</a></li>
+            <li class="active">Movimenta√ß√£o da Solicita√ß√£o</li>
         </ol>
     </header>
 </div>
@@ -57,9 +57,9 @@ $urlArquivo=getURL("lda");
         document.getElementById('lnProrrogar1').style.display = 'none';
         document.getElementById('lnProrrogar2').style.display = 'none';
 
-        //exibe bot„o de reabrir se:  
+        //exibe bot√£o de reabrir se:  
         <?php if(checkPerm("LDAPRORROGAR",false)  //tiver permissao de prorrogar 
-                 and $situacao != "N" and $situacao != "R"    //situaÁ„o for "finalizado"
+                 and $situacao != "N" and $situacao != "R"    //situa√ß√£o for "finalizado"
                  and empty($dataprorrogacao))  { ?>
              document.getElementById('btnProrrogacao').style.display = 'none';
              document.getElementById('btnProrrogar').style.display = 'none';
@@ -133,7 +133,7 @@ $urlArquivo=getURL("lda");
 
     function executaOperacao(acao, id)
     {
-        if(confirm("Confirma operaÁ„o?"))
+        if(confirm("Confirma opera√ß√£o?"))
         {
             document.getElementById(id).disabled = true;
             document.getElementById("acao").value = acao;
@@ -190,9 +190,9 @@ $urlArquivo=getURL("lda");
              document.getElementById('btnFinalizar').style.display = 'none';
         <?php }?>            
 
-        //exibe bot„o de reabrir se:  
+        //exibe bot√£o de reabrir se:  
         <?php if(checkPerm("LDAPRORROGAR",false)  //tiver permissao de prorrogar 
-                 and $situacao != "N" and $situacao != "R"    //situaÁ„o for "finalizado"
+                 and $situacao != "N" and $situacao != "R"    //situa√ß√£o for "finalizado"
                  and empty($dataprorrogacao)) { ?>
              document.getElementById('btnProrrogar').style.display = 'none';
              document.getElementById('btnProrrogacao').style.display = '';
@@ -294,12 +294,12 @@ $urlArquivo=getURL("lda");
             <td align="left" valign="top">
                 <b>Solicita&ccedil;&atilde;o Recebida em</b>
                 <br>
-                <?php echo !empty($datarecebimentosolicitacao)?$datarecebimentosolicitacao." por ".$usuariorecebimento:"N„o Recebido";?>
+                <?php echo !empty($datarecebimentosolicitacao)?$datarecebimentosolicitacao." por ".$usuariorecebimento:"N√£o Recebido";?>
             </td>
             <td align="left" valign="top">
                 <b>Porroga&ccedil;&atilde;o</b>
                 <br>
-                <?php echo !empty($dataprorrogacao)?"Prorrogado em: ".$dataprorrogacao." por ".$usuarioprorrogacao. "<br>Motivo: ".$motivoprorrogacao:"N„o Prorrogado";?>
+                <?php echo !empty($dataprorrogacao)?"Prorrogado em: ".$dataprorrogacao." por ".$usuarioprorrogacao. "<br>Motivo: ".$motivoprorrogacao:"N√£o Prorrogado";?>
             </td>
         </tr>
         <tr id="lnDemanda3">
@@ -423,7 +423,7 @@ $urlArquivo=getURL("lda");
                 </table>
             </td>
         </tr>
-        <?php if($instancia == "I") { //se for solicitaÁ„o inicial, mostra os recursos se houver
+        <?php if($instancia == "I") { //se for solicita√ß√£o inicial, mostra os recursos se houver
                 
                     $rsRec = Solicitacao::getRecursos($idsolicitacao);
                     if(mysql_num_rows($rsRec) > 0)
@@ -636,7 +636,7 @@ $urlArquivo=getURL("lda");
                 <td colspan="4">
                     <br>
                     <?php 
-                        //se tiver permissao de movimentar a demanda, e ela n„o tiver finalizada ([N]egado ou [R]espondido), exibe bot„o de envio
+                        //se tiver permissao de movimentar a demanda, e ela n√£o tiver finalizada ([N]egado ou [R]espondido), exibe bot√£o de envio
                         if(checkPerm("LDAMOVIMENTAR",false) and $situacao != "N" and $situacao != "R") 
                         { 
                             ?>
@@ -644,9 +644,9 @@ $urlArquivo=getURL("lda");
                     <button type="button" value="Enviar" class="btn waves-effect btn-success" name="enviar" id="btnEnviar" onclick="executaOperacao(this.value, this.id);" style="display: none" >Enviar</button>
                     <?php 
                         } 
-                        //exibe bot„o de responder se:  
+                        //exibe bot√£o de responder se:  
                         if(checkPerm("LDARESPONDER",false)  //tiver permissao de responder a demanda
-                           and $situacao != "N" and $situacao != "R"//situaÁ„o nao for finalizada ([N]egado ou [R]espondido)
+                           and $situacao != "N" and $situacao != "R"//situa√ß√£o nao for finalizada ([N]egado ou [R]espondido)
                             ) 
                         { 
                             ?>
@@ -655,13 +655,13 @@ $urlArquivo=getURL("lda");
                     <?php 
                         } 
                             
-                        //exibe bot„o de reabrir se:  
+                        //exibe bot√£o de reabrir se:  
                         if(checkPerm("LDAPRORROGAR",false)  //tiver permissao de prorrogar 
-                            and $situacao != "N" and $situacao != "R"    //situaÁ„o for "finalizado"
+                            and $situacao != "N" and $situacao != "R"    //situa√ß√£o for "finalizado"
                             and empty($dataprorrogacao))
                         { 
                             ?>
-                    <button type="button" value="Prorrogacao" class="btn waves-effect btn-info" name="prorrogacao" id="btnProrrogacao" onclick="preparaProrrogacao();" >ProrrogarÁ„o</button>
+                    <button type="button" value="Prorrogacao" class="btn waves-effect btn-info" name="prorrogacao" id="btnProrrogacao" onclick="preparaProrrogacao();" >Prorrogar√ß√£o</button>
                     <button type="button" value="Prorrogar" class="btn waves-effect btn-info" name="prorrogar" id="btnProrrogar" onclick="executaOperacao(this.value, this.id);" style="display: none" >Prorrogar</button>
                     <?php 
                         } 

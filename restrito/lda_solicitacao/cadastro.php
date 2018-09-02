@@ -1,11 +1,11 @@
 <?php
 /**********************************************************************************
- Sistema e-SIC Livre: sistema de acesso a informação baseado na lei de acesso.
+ Sistema e-SIC Livre: sistema de acesso a informaÃ§Ã£o baseado na lei de acesso.
  
  Copyright (C) 2014 Prefeitura Municipal do Natal
  
- Este programa é software livre; você pode redistribuí-lo e/ou
- modificá-lo sob os termos da Licença GPL2.
+ Este programa Ã© software livre; vocÃª pode redistribuÃ­-lo e/ou
+ modificÃ¡-lo sob os termos da LicenÃ§a GPL2.
 ***********************************************************************************/
 
  include("manutencao.php");
@@ -56,7 +56,7 @@
     //combo  - id do combo a ser preenchido
     //imagem - id da imagem a ser exibida durante o carregamento do combo
     //pagina - pagina que fara a pesquisa para preenchimento do combo
-    //campo  - valor do combo que irá filtrar o preenchimento do combo
+    //campo  - valor do combo que irÃ¡ filtrar o preenchimento do combo
     function preencheCombo(combo,imagem,pagina,campo)
     {
         document.getElementById(combo).style.display='none';
@@ -326,7 +326,7 @@
                             <td align="left"><b>Origem:</b></td>
                             <td align="left" width="100%">
                                 <?php 
-                                //se origem nao for WEB ou for uma inclusao de demanda, exibe seleção de origem
+                                //se origem nao for WEB ou for uma inclusao de demanda, exibe seleÃ§Ã£o de origem
                                 if ($origem != "W" or empty($iddemanda)){
                                     ?>
                                     <select name="origem" id="origem">

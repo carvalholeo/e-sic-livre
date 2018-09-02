@@ -1,11 +1,11 @@
 <?php
 /**********************************************************************************
- Sistema e-SIC Livre: sistema de acesso a informaÁ„o baseado na lei de acesso.
+ Sistema e-SIC Livre: sistema de acesso a informa√ß√£o baseado na lei de acesso.
  
  Copyright (C) 2014 Prefeitura Municipal do Natal
  
- Este programa È software livre; vocÍ pode redistribuÌ-lo e/ou
- modific·-lo sob os termos da LicenÁa GPL2.
+ Este programa √© software livre; voc√™ pode redistribu√≠-lo e/ou
+ modific√°-lo sob os termos da Licen√ßa GPL2.
 ***********************************************************************************/
 
 	include_once "manutencaousuarios.php";
@@ -87,12 +87,12 @@
 
 <div class="container-fluid">
     <header class="header-title">
-        <h1>Usu·rios do Perfil - <span class="group" data-text="grupo"><?php echo $nomegrupo; ?></span></h1>
+        <h1>Usu√°rios do Perfil - <span class="group" data-text="grupo"><?php echo $nomegrupo; ?></span></h1>
        	<ol class="breadcrumb">
             <li><a href="<?php echo URL_BASE_SISTEMA; ?>index/">Dashboard</a></li>
-            <li><a href="<?php echo URL_BASE_SISTEMA; ?>index/?lda_configuracao">AdministraÁ„o</a></li>
+            <li><a href="<?php echo URL_BASE_SISTEMA; ?>index/?lda_configuracao">Administra√ß√£o</a></li>
             <li><a href="<?php echo URL_BASE_SISTEMA; ?>index/?sis_grupo">Perfis</a></li>
-            <li class="active">Usu·rios do Perfil</li>
+            <li class="active">Usu√°rios do Perfil</li>
         </ol>
     </header>
 </div>
@@ -107,8 +107,8 @@
 	                <table border="0" width="100%">
 	                    <tr>
 	                        <td valign="top" align="center">
-	                            <header>Usu·rios</header>
-	                            <select name="usuarios" id="usuarios" title="DÍ um duplo clique para selecionar todos" ondblclick="selecionatudo(this.id);" multiple="multiple" style="height: 300px; width: 300px; font-size:10">
+	                            <header>Usu√°rios</header>
+	                            <select name="usuarios" id="usuarios" title="D√™ um duplo clique para selecionar todos" ondblclick="selecionatudo(this.id);" multiple="multiple" style="height: 300px; width: 300px; font-size:10">
 	                                <?php
 	                            $sql="SELECT login FROM sis_usuario u WHERE status = 'A' ORDER BY login";
 	                            
@@ -136,8 +136,8 @@
 	                            </center>
 	                        </td>
 	                        <td valign="top" align="center">
-	                            <header>Usu·rios do Perfil</header>
-	                            <select name="selecionados[]" id="selecionados" title="DÍ um duplo clique para selecionar todos" ondblclick="selecionatudo(this.id);" multiple="multiple" style="height: 300px; width: 300px; font-size:10">
+	                            <header>Usu√°rios do Perfil</header>
+	                            <select name="selecionados[]" id="selecionados" title="D√™ um duplo clique para selecionar todos" ondblclick="selecionatudo(this.id);" multiple="multiple" style="height: 300px; width: 300px; font-size:10">
 	                                <?php foreach ($selecionados as $user) { ?>
 	                                <option value="<?php echo $user; ?>" selected>
 	                                    <?php echo $user; ?>

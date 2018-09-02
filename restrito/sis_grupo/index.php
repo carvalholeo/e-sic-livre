@@ -1,11 +1,11 @@
 <?php
 /**********************************************************************************
- Sistema e-SIC Livre: sistema de acesso a informação baseado na lei de acesso.
+ Sistema e-SIC Livre: sistema de acesso a informaÃ§Ã£o baseado na lei de acesso.
  
  Copyright (C) 2014 Prefeitura Municipal do Natal
  
- Este programa é software livre; você pode redistribuí-lo e/ou
- modificá-lo sob os termos da Licença GPL2.
+ Este programa Ã© software livre; vocÃª pode redistribuÃ­-lo e/ou
+ modificÃ¡-lo sob os termos da LicenÃ§a GPL2.
 ***********************************************************************************/
 
 include "manutencao.php";
@@ -32,7 +32,7 @@ $result = execQueryPag($sql);
 <h1>Perfis</h1>
 <ol class="breadcrumb">
             <li><a href="<?php echo URL_BASE_SISTEMA; ?>index/">Dashboard</a></li>
-            <li><a href="<?php echo URL_BASE_SISTEMA; ?>index/?lda_configuracao">Administração</a></li>
+            <li><a href="<?php echo URL_BASE_SISTEMA; ?>index/?lda_configuracao">AdministraÃ§Ã£o</a></li>
             <li class="active">Perfis</li>
         </ol>
     </header>

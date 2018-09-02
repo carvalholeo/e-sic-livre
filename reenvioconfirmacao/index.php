@@ -1,11 +1,11 @@
 <?php
 /**********************************************************************************
- Sistema e-SIC Livre: sistema de acesso a informaÁ„o baseado na lei de acesso.
+ Sistema e-SIC Livre: sistema de acesso a informa√ß√£o baseado na lei de acesso.
  
  Copyright (C) 2014 Prefeitura Municipal do Natal
  
- Este programa È software livre; vocÍ pode redistribuÌ-lo e/ou
- modific·-lo sob os termos da LicenÁa GPL2.
+ Este programa √© software livre; voc√™ pode redistribu√≠-lo e/ou
+ modific√°-lo sob os termos da Licen√ßa GPL2.
 ***********************************************************************************/
 
 	require_once("../class/solicitante.class.php");
@@ -17,9 +17,9 @@
         if($solicitante->reenvioConfirmacao())
         {
             $msg = "<br>Prezado(a) ".$solicitante->getNome().", 
-                    <br><br>Seu cadastro precisa ser completado. Foi reenviado um e-mail para o seu endereÁo <b>".$solicitante->getEmail()."</b> solicitando a 
-                        confirmaÁ„o do cadastro. 
-                        <br><br>ApÛs a confirmaÁ„o, seu acesso ser· liberado.";
+                    <br><br>Seu cadastro precisa ser completado. Foi reenviado um e-mail para o seu endere√ßo <b>".$solicitante->getEmail()."</b> solicitando a 
+                        confirma√ß√£o do cadastro. 
+                        <br><br>Ap√≥s a confirma√ß√£o, seu acesso ser√° liberado.";
         }
 
         $_SESSION = array();
@@ -28,7 +28,7 @@
 	
 	include_once("../inc/topo.php");
 
-	echo "<h1>ATEN«√O</h1>";
+	echo "<h1>ATEN√á√ÉO</h1>";
 	
 	echo $msg."<br><br>&nbsp;";
 

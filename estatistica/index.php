@@ -1,17 +1,17 @@
 <?php
 /**********************************************************************************
- Sistema e-SIC Livre: sistema de acesso a informação baseado na lei de acesso.
+ Sistema e-SIC Livre: sistema de acesso a informaÃ§Ã£o baseado na lei de acesso.
  
  Copyright (C) 2014 Prefeitura Municipal do Natal
  
- Este programa é software livre; você pode redistribuí-lo e/ou
- modificá-lo sob os termos da Licença GPL2.
+ Este programa Ã© software livre; vocÃª pode redistribuÃ­-lo e/ou
+ modificÃ¡-lo sob os termos da LicenÃ§a GPL2.
 ***********************************************************************************/
 
 
 	include("../inc/database.php");
     
-	//recupera o quantitativo de solicitações em aberto e respondidas por ano
+	//recupera o quantitativo de solicitaÃ§Ãµes em aberto e respondidas por ano
 	$sql = "SELECT anoprotocolo as ano, 
 				   count(*) as qtde
 			FROM lda_solicitacao 
@@ -31,7 +31,7 @@
         while ($row = mysqli_fetch_assoc($result)) {
 			$i++;	
 
-			//recupera o quantitativo de solicitações no ano da iteração que foram respondidas
+			//recupera o quantitativo de solicitaÃ§Ãµes no ano da iteraÃ§Ã£o que foram respondidas
 			$sql="SELECT COUNT(*) AS tot FROM lda_solicitacao WHERE anoprotocolo = ".$row['ano']." AND situacao IN('R')";
 			$resultResp = execQuery($sql);
 			$rowResp = mysql_fetch_array($resultResp);

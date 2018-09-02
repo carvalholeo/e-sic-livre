@@ -1,11 +1,11 @@
 <?php
 /**********************************************************************************
- Sistema e-SIC Livre: sistema de acesso a informação baseado na lei de acesso.
+ Sistema e-SIC Livre: sistema de acesso a informaÃ§Ã£o baseado na lei de acesso.
  
  Copyright (C) 2014 Prefeitura Municipal do Natal
  
- Este programa é software livre; você pode redistribuí-lo e/ou
- modificá-lo sob os termos da Licença GPL2.
+ Este programa Ã© software livre; vocÃª pode redistribuÃ­-lo e/ou
+ modificÃ¡-lo sob os termos da LicenÃ§a GPL2.
 ***********************************************************************************/
 
 require_once("../inc/security.php");
@@ -69,7 +69,7 @@ include("../inc/topo.php");
 			<div id="caixa_login">
 				<form action="index.php" method="post">
 				<div class="titulo_caixa_login"> Acesse o sistema</div>
-				<span class="Mensagem">Preencha o Nome do Usuário e senha para acessar o Sistema de Informações.</span>
+				<span class="Mensagem">Preencha o Nome do UsuÃ¡rio e senha para acessar o Sistema de InformaÃ§Ãµes.</span>
 				
 				<div id="campos">
 
@@ -81,7 +81,7 @@ include("../inc/topo.php");
 						<tr align="right">
 
 							<td>
-								<span class="labelLogin"><label id="login">Usuário: </label> </span>
+								<span class="labelLogin"><label id="login">UsuÃ¡rio: </label> </span>
 							</td>
 							<td>
 								<span class="inputLogin"><input type="text" name="login" maxlength="20" id="login" > </span>
@@ -101,7 +101,7 @@ include("../inc/topo.php");
                                                         <br>
                                                         <img src="../inc/captcha.php?l=150&a=50&tf=20&ql=5" id="imgcaptcha">
                                                         <img src="../img/refresh.gif" title="Clique aqui para recarregar a imagem" alt="Clique aqui para recarregar a imagem"onclick="getElementById('imgcaptcha').src ='../inc/captcha.php?l=150&a=50&tf=20&ql=5';">
-                                                        <br><span class="labelLogin">Informe o código acima:</span><br><input type="text" name="palavra"  />
+                                                        <br><span class="labelLogin">Informe o cÃ³digo acima:</span><br><input type="text" name="palavra"  />
                                                     </td>
                                                 </tr>
                                                 <?php } ?>
@@ -130,9 +130,9 @@ include("../inc/topo.php");
                         <div id="caixa_login">
 				<span class="Mensagem" ><!--style="color: rgb(0,0,0);" -->
                                     
-                                    Olá; <?php echo getSession("nomeusuario");?>! 
+                                    OlÃ¡; <?php echo getSession("nomeusuario");?>! 
                                     <br><br>
-                                    Caso não seja você; [<a href="../index/logout.php" style="color: #FF0000" class="class_cadastrese">clique aqui</a>]
+                                    Caso nÃ£o seja vocÃª; [<a href="../index/logout.php" style="color: #FF0000" class="class_cadastrese">clique aqui</a>]
                                 </span>                            
                         </div>
                         <?php } ?>
@@ -146,25 +146,25 @@ include("../inc/topo.php");
 				<table  "width: 100%;">
 					<tr>
 						<th  "width: 40%;">
-							SIC - Serviço de informação ao Cidadão	
+							SIC - ServiÃ§o de informaÃ§Ã£o ao CidadÃ£o	
 					  </th>
 						<th  "width: 30%;">
 							Lei de Acesso
 						</th>
 						<th  "width: 30%;">
 
-							Links Úteis
+							Links Ãšteis
 						</th>
 					</tr>
 					<tr>
 						<td>
-							<a href="../manual/informacao.php">Como pedir uma informação</a>
+							<a href="../manual/informacao.php">Como pedir uma informaÃ§Ã£o</a>
 						</td>
 						<td>
 							<a href="../manual/decreto.php">Decreto</a>
 						</td>
 						<td>
-							<a href="http://www.acessoainformacao.gov.br/acessoainformacaogov/">Acesso à informação CGU</a>
+							<a href="http://www.acessoainformacao.gov.br/acessoainformacaogov/">Acesso Ã  informaÃ§Ã£o CGU</a>
 						</td>						
 					</tr>
 					<tr>
@@ -172,10 +172,10 @@ include("../inc/topo.php");
 							<a href="../manual/pedido.php">Como acompanhar seu pedido</a>
 						</td>
 						<td>
-							<a href="../manual/LegislacaoRelacionada.php">Legislação relacionada</a>
+							<a href="../manual/LegislacaoRelacionada.php">LegislaÃ§Ã£o relacionada</a>
 				    </td>
 						<td>
-							<a href="http://portal2.tcu.gov.br/portal/page/portal/TCU/transparencia">Acesso à informação TCU</a>
+							<a href="http://portal2.tcu.gov.br/portal/page/portal/TCU/transparencia">Acesso Ã  informaÃ§Ã£o TCU</a>
 						</td>						
 					</tr>
 					<tr>

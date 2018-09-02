@@ -316,7 +316,7 @@ function getStatus($status) {
 	if ($status == "A")
 		return "Aberto";
 	else if ($status == "T")
-		return "TramitaÁ„o";
+		return "Tramita√ß√£o";
 	else if ($status == "R")
 		return "Respondido";	
 	else if ($status == "N")
@@ -331,12 +331,12 @@ function getOrigem($status) {
 	else if ($status == 3)
 		return "Eu Inspetor";
 	else
-		return "N„o classificado";
+		return "N√£o classificado";
 }
 
 
 /*
-	getEnquete - retorna a pesquisa de satisfaÁ„o do retorno da demanda
+	getEnquete - retorna a pesquisa de satisfa√ß√£o do retorno da demanda
 */
 function getEnquete() {
 	
@@ -360,7 +360,7 @@ function getEnquete() {
 		else if ($reg['resposta']  == 'B')
 			$resposta = 'Bom';
 		else if ($reg['resposta']  == 'O')
-			$resposta = '”tima';
+			$resposta = '√ìtima';
 		
 		$total++;
 		$totais[$reg['resposta']] = $totais[$reg['resposta']] + 1;
@@ -374,7 +374,7 @@ function getEnquete() {
 
 
 /*
-	getFiltroVinculo - retorna o filtro de vÌnculo do usu·rio para query 
+	getFiltroVinculo - retorna o filtro de v√≠nculo do usu√°rio para query 
 */
 function getFiltroVinculo() {
 	

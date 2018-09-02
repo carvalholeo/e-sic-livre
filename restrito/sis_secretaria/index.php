@@ -1,11 +1,11 @@
 <?php
 /**********************************************************************************
- Sistema e-SIC Livre: sistema de acesso a informação baseado na lei de acesso.
+ Sistema e-SIC Livre: sistema de acesso a informaÃ§Ã£o baseado na lei de acesso.
  
  Copyright (C) 2014 Prefeitura Municipal do Natal
  
- Este programa é software livre; você pode redistribuí-lo e/ou
- modificá-lo sob os termos da Licença GPL2.
+ Este programa Ã© software livre; vocÃª pode redistribuÃ­-lo e/ou
+ modificÃ¡-lo sob os termos da LicenÃ§a GPL2.
 ***********************************************************************************/
 
 include("../inc/autenticar.php");
@@ -47,7 +47,7 @@ $result = execQueryPag($sql);
     <header class="header-title">
         <h1>Cadastro de SIC</h1>
         <ol class="breadcrumb">
-            <li><a href="<?php echo URL_BASE_SISTEMA; ?>index/">Início</a></li>
+            <li><a href="<?php echo URL_BASE_SISTEMA; ?>index/">InÃ­cio</a></li>
             <li><a href="<?php echo URL_BASE_SISTEMA; ?>index/?lda_secretaria">Cadastro de SIC</a></li>
             <li class="active">Cadastro de SIC</li>
         </ol>
@@ -124,7 +124,7 @@ $result = execQueryPag($sql);
 					<td onClick="<?php echo $click;?>"><?php echo $registro["idsecretaria"]; ?></td>
 					<td onClick="<?php echo $click;?>"><?php echo $registro["nome"]; ?></td>
 					<td onClick="<?php echo $click;?>"><?php echo $registro["sigla"]; ?></td>
-					<td onClick="<?php echo $click;?>"><?php echo ($registro["siccentral"])?"Sim":"Não"; ?></td>
+					<td onClick="<?php echo $click;?>"><?php echo ($registro["siccentral"])?"Sim":"NÃ£o"; ?></td>
 					<td align="center"><button type="button" class="btn <?php echo ($registro["ativado"]=="1")?"btn-success":"btn-danger";?> waves-effect"  title="<?php echo ($registro["ativado"]=="1")?"Clique para desativar":"Clique para Ativar";?>" value="<?php echo ($registro["ativado"]=="1")?"Ativo":"Inativo";?>" onClick="javascript:mudarStatus('<?php echo $registro["idsecretaria"];?>','<?php echo ($registro["ativado"]=="1")?"0":"1";?>');"><?php echo ($registro["ativado"]=="1")?"Ativo":"Inativo";?></button></td>
 				</tr>
 				<?php 

@@ -1,11 +1,11 @@
 <?php
 /**********************************************************************************
- Sistema e-SIC Livre: sistema de acesso a informação baseado na lei de acesso.
+ Sistema e-SIC Livre: sistema de acesso a informaÃ§Ã£o baseado na lei de acesso.
  
  Copyright (C) 2014 Prefeitura Municipal do Natal
  
- Este programa é software livre; você pode redistribuí-lo e/ou
- modificá-lo sob os termos da Licença GPL2.
+ Este programa Ã© software livre; vocÃª pode redistribuÃ­-lo e/ou
+ modificÃ¡-lo sob os termos da LicenÃ§a GPL2.
 ***********************************************************************************/
 
 require_once("../inc/security.php");
@@ -20,7 +20,7 @@ include("../inc/topo.php");
 	
 	<div id="ouvidoria">
 	<p><br><b>Ouvidoria<br>
-	<span>Faça sua Den&uacute;ncia, Elogio ou Reclama&ccedil;&atilde;o atrav&eacute;s dos seguintes contatos:</span></b><br>
+	<span>FaÃ§a sua Den&uacute;ncia, Elogio ou Reclama&ccedil;&atilde;o atrav&eacute;s dos seguintes contatos:</span></b><br>
 	<i>e-mail : ouvidoria@natal.rn.gov.br<br>
 	Telefone : 3232-6748 e 3232-6389<br>
 	Twitter: https://twitter.com/ogmnatal</i><br></p>

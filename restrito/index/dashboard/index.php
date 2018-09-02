@@ -22,7 +22,7 @@ $resumoSis = getSolResSis($rs_);
 	    <header class="header-title">
 	        <h1>Painel Gerencial</h1>
 	        <ol class="breadcrumb">
-	            <li class="active">InÌcio</li>            
+	            <li class="active">In√≠cio</li>            
 	        </ol>
 	    </header>
 	</div>
@@ -34,8 +34,8 @@ $resumoSis = getSolResSis($rs_);
 						<div class="media">
 							<div class="media-left"><i class="material-icons">feedback</i></div>
 							<div class="media-body">
-								SolicitaÁıes n„o respondidas
-								<div class="number" title="SolicitaÁıes abertas e em tramitaÁ„o"><span class="count"><?= $solAbertas; ?></span></div>					
+								Solicita√ß√µes n√£o respondidas
+								<div class="number" title="Solicita√ß√µes abertas e em tramita√ß√£o"><span class="count"><?= $solAbertas; ?></span></div>					
 							</div>				
 						</div>	
 					</a>		
@@ -47,8 +47,8 @@ $resumoSis = getSolResSis($rs_);
 						<div class="media">
 							<div class="media-left"><i class="material-icons">compare_arrows</i></div>
 							<div class="media-body">
-								Em tramitaÁ„o
-								<div class="number" title="SolicitaÁıes em tramitaÁ„o"><span class="count"><?= $solTramita; ?></span></div>
+								Em tramita√ß√£o
+								<div class="number" title="Solicita√ß√µes em tramita√ß√£o"><span class="count"><?= $solTramita; ?></span></div>
 							</div>
 						</div>
 					</a>
@@ -60,8 +60,8 @@ $resumoSis = getSolResSis($rs_);
 						<div class="media">
 							<div class="media-left"><i class="material-icons">check_circle</i></div>
 							<div class="media-body">
-								SolicitaÁıes respondidas
-								<div class="number" title="SolicitaÁıes respondidas"><span class="count"><?= $solResp; ?></span></div>
+								Solicita√ß√µes respondidas
+								<div class="number" title="Solicita√ß√µes respondidas"><span class="count"><?= $solResp; ?></span></div>
 							</div>
 						</div>
 					</a>
@@ -74,7 +74,7 @@ $resumoSis = getSolResSis($rs_);
 							<div class="media-left"><i class="material-icons">block</i></div>
 							<div class="media-body">
 								Negado
-								<div class="number" title="SolicitaÁıes negadas"><span class="count"><?= $solNegado;  ?></span></div>
+								<div class="number" title="Solicita√ß√µes negadas"><span class="count"><?= $solNegado;  ?></span></div>
 							</div>
 						</div>
 					</a>
@@ -157,14 +157,14 @@ $resumoSis = getSolResSis($rs_);
 		?>
 		<div class="row m-b">
 			<div class="col-md-12">
-				<h4 class="subtitle">Õndice de satisfaÁ„o</h4>
+				<h4 class="subtitle">√çndice de satisfa√ß√£o</h4>
 			</div>
 			<div class="col-md-4 col-xs-12">
 				<div class="boll-table">
 					<table class="table">
 						 <thead>
 							<tr>
-								<th>SatisfaÁ„o</th>
+								<th>Satisfa√ß√£o</th>
 								<th>%</th>
 							</tr>
 						</thead>
@@ -181,12 +181,12 @@ $resumoSis = getSolResSis($rs_);
 							<td><?= (($totais['B']*100)/$total)?:0;?></td>
 						</tr>
 						<tr>
-							<td>”timo</td>
+							<td>√ìtimo</td>
 							<td><?= (($totais['O']*100)/$total)?:0;?></td>
 						</tr>
 					</table>
 				</div>
-				<br>Total de apuraÁıes: <?= $total; ?>
+				<br>Total de apura√ß√µes: <?= $total; ?>
 			</div>
 			<div class="col-md-8 col-xs-12">
 				<div class="boll-table">
@@ -194,7 +194,7 @@ $resumoSis = getSolResSis($rs_);
 						<thead>
 							<tr>
 								<th>Data</th>
-								<th>Coment·rios</th>
+								<th>Coment√°rios</th>
 							</tr>
 						</thead>
 						<?php
@@ -220,7 +220,7 @@ $resumoSis = getSolResSis($rs_);
 						 <thead>
 							<tr>
 								<th>Diretoria</th>
-								<th>SituaÁ„o</th>		
+								<th>Situa√ß√£o</th>		
 								<th>Total</th>				
 								<th>Origem</th>			
 								<th></th>							
@@ -237,7 +237,7 @@ $resumoSis = getSolResSis($rs_);
 		<!--DEMANDA POR MES TALVEZ REMOVER-->
 		<!--div class="row m-b">
 			<div class="col-md-12">
-				<h4 class="subtitle">Demandas por mÍs</h4>
+				<h4 class="subtitle">Demandas por m√™s</h4>
 				<div class="boll-table">
 					<table class="table">
 						<thead>
@@ -266,7 +266,7 @@ $resumoSis = getSolResSis($rs_);
 							</span>
 						</thead>
 						<?php
-						//Demadnas por mÍs
+						//Demadnas por m√™s
 						$demandasMes = getDemandaMes($sicCentral);
 						for ($iSis = 1; $iSis < 4; $iSis++) {							
 						?> 
@@ -291,10 +291,10 @@ $resumoSis = getSolResSis($rs_);
 					</table>
 				</div>
 			</div>
-		</div--> <!--FIM FUN«√O DEMANDA POR MES, TALVEZ REMOVER -->
+		</div--> <!--FIM FUN√á√ÉO DEMANDA POR MES, TALVEZ REMOVER -->
 		<div class="row m-b">
 			<div class="col-md-12">
-				<h4 class="subtitle">⁄ltimas demandas cadastradas</h4>
+				<h4 class="subtitle">√öltimas demandas cadastradas</h4>
 				<div class="boll-table">
 					<table class="table">
 						<thead>
@@ -308,9 +308,9 @@ $resumoSis = getSolResSis($rs_);
 								<th class="text-center">Origem</th>
 								<th class="text-center">Destino</th>
 								<th class="text-center">Prazo Restante</th>
-								<th>Previs„o Resposta</th>
+								<th>Previs√£o Resposta</th>
 								<th width="100">Prorrogado</th>
-								<th>SituaÁ„o</th>
+								<th>Situa√ß√£o</th>
 							</tr>
 						</thead>
 						<?php
@@ -325,11 +325,11 @@ $resumoSis = getSolResSis($rs_);
 							}
 							//se tiver passado do prazo de resposta	sem ter sido respondida				
 							elseif ($registro['prazorestante'] < 0 and (empty($registro['dataresposta']))) {
-								$corLinha = "#ef4e3a"; //vermelho - Urgente! Passou do prazo de resoluÁ„o
+								$corLinha = "#ef4e3a"; //vermelho - Urgente! Passou do prazo de resolu√ß√£o
 							}
 							//se faltar entre 1 e 5 dias para expirar o prazo de resposta
 							elseif ($registro['prazorestante'] >= 0 and $registro['prazorestante'] <= 5) {
-								$corLinha = "#f0b840"; //amarelo - Alerta! Est· perto de expirar
+								$corLinha = "#f0b840"; //amarelo - Alerta! Est√° perto de expirar
 							}
 							
 							//$clickMovimento = $confirmacao . "editar('" . $registro["idsolicitacao"] . "&$parametrosIndex','../lda_solicitacao/visualizar');";
@@ -346,7 +346,7 @@ $resumoSis = getSolResSis($rs_);
 								<td class="text-center" onClick="<?php echo $clickMovimento; ?>"><?php echo strtoupper($registro["secretariadestino"]); ?></td>
 								<td class="text-center" onClick="<?php echo $clickMovimento; ?>"><?php echo $registro["prazorestante"]; ?></td>
 								<td onClick="<?php echo $clickMovimento; ?>"><?php echo bdToDate($registro["dataprevisaoresposta"]); ?></td>
-								<td onClick="<?php echo $clickMovimento; ?>"><?php echo (!empty($registro["dataprorrogacao"])) ? "Sim" : "N„o"; ?></td>
+								<td onClick="<?php echo $clickMovimento; ?>"><?php echo (!empty($registro["dataprorrogacao"])) ? "Sim" : "N√£o"; ?></td>
 								<td onClick="<?php echo $clickMovimento; ?>"><?php echo getStatus($registro["situacao"]); ?></td>
 							</tr>
 						<?php }	?>					
@@ -360,9 +360,9 @@ $resumoSis = getSolResSis($rs_);
 	
     // function notify() {
     //     Notification.requestPermission(function() {
-    //         var notification = new Notification("TÌtulo", {
+    //         var notification = new Notification("T√≠tulo", {
     //             icon: 'http://i.stack.imgur.com/dmHl0.png',
-    //             body: "Texto da notificaÁ„o"
+    //             body: "Texto da notifica√ß√£o"
     //         });
     //         notification.onclick = function() {
     //             window.open("http://stackoverflow.com");

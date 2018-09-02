@@ -1,11 +1,11 @@
 <?php
 /**********************************************************************************
- Sistema e-SIC Livre: sistema de acesso a informação baseado na lei de acesso.
+ Sistema e-SIC Livre: sistema de acesso a informaÃ§Ã£o baseado na lei de acesso.
  
  Copyright (C) 2014 Prefeitura Municipal do Natal
  
- Este programa é software livre; você pode redistribuí-lo e/ou
- modificá-lo sob os termos da Licença GPL2.
+ Este programa Ã© software livre; vocÃª pode redistribuÃ­-lo e/ou
+ modificÃ¡-lo sob os termos da LicenÃ§a GPL2.
 ***********************************************************************************/
 
 require_once("config.php");
@@ -14,7 +14,7 @@ function db_open() {
 
     $mysqli =  new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
     if($mysqli->connect_error) {
-        die('Erro de conexão (' . $mysqli->connect_errno . ')'
+        die('Erro de conexÃ£o (' . $mysqli->connect_errno . ')'
                 . $mysqli->connect_error);
     }
     return $mysqli;
@@ -24,7 +24,7 @@ function db_close($mysqli) {
     $mysqli->close();
 }
 
-//retorna objeto de conexao com o banco para transações
+//retorna objeto de conexao com o banco para transaÃ§Ãµes
 function db_open_trans()
 {
 	//conecta ao mysqli

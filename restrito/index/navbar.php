@@ -39,7 +39,7 @@
                         <a href="#"  class="waves-effect waves-buttons"><i class="material-icons">account_box</i> Editar perfil</a>
                     </li>
                     <li>
-                        <a href="#"  class="waves-effect waves-buttons"><i class="material-icons">tune</i> Configuração</a>
+                        <a href="#"  class="waves-effect waves-buttons"><i class="material-icons">tune</i> ConfiguraÃ§Ã£o</a>
                     </li-->
                     <li>
                         <a href="../index/logout.php"  class="waves-effect waves-buttons"><i class="material-icons">exit_to_app</i> Sair</a>

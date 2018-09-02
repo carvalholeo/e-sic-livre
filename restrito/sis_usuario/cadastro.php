@@ -1,11 +1,11 @@
 <?php
 /**********************************************************************************
- Sistema e-SIC Livre: sistema de acesso a informaÁ„o baseado na lei de acesso.
+ Sistema e-SIC Livre: sistema de acesso a informa√ß√£o baseado na lei de acesso.
  
  Copyright (C) 2014 Prefeitura Municipal do Natal
  
- Este programa È software livre; vocÍ pode redistribuÌ-lo e/ou
- modific·-lo sob os termos da LicenÁa GPL2.
+ Este programa √© software livre; voc√™ pode redistribu√≠-lo e/ou
+ modific√°-lo sob os termos da Licen√ßa GPL2.
 ***********************************************************************************/
 
 	include_once "manutencao.php";
@@ -73,11 +73,11 @@
 </script>
 <div class="container-fluid">
     <header class="header-title">
-        <h1>Cadastro de Usu·rios</h1>
+        <h1>Cadastro de Usu√°rios</h1>
         <ol class="breadcrumb">
-            <li><a href="<?php echo URL_BASE_SISTEMA; ?>index/">InÌcio</a></li>
-            <li><a href="index.php?sis_usuario">Cadasto de Usu·rios</a></li>
-            <li class="active">EdiÁ„o</li>
+            <li><a href="<?php echo URL_BASE_SISTEMA; ?>index/">In√≠cio</a></li>
+            <li><a href="index.php?sis_usuario">Cadasto de Usu√°rios</a></li>
+            <li class="active">Edi√ß√£o</li>
         </ol>
     </header>
 </div>
@@ -91,7 +91,7 @@
                     <div class="col-md-2 col-sm-4 col-xs-12">
                         <div class="form-group">
                             <label for="matricula" class="input-label"><i class="material-icons">account_circle</i></label>
-                            <input type="text" class="form-control icon" id="matricula" name="matricula" value="<?php echo $matricula; ?>" maxlength="8" size="10" title="Informe atÈ 8 dÌgitos de matricula" onkeyup="soNumero(this);" placeholder="MatrÌcula"/>
+                            <input type="text" class="form-control icon" id="matricula" name="matricula" value="<?php echo $matricula; ?>" maxlength="8" size="10" title="Informe at√© 8 d√≠gitos de matricula" onkeyup="soNumero(this);" placeholder="Matr√≠cula"/>
                         </div>
                     </div>
                     <div class="col-md-2 col-sm-4 col-xs-12">
@@ -151,7 +151,7 @@
                             <input type="password" placeholder="**********" id="senha" class="form-control icon" name="chave" value="<?php echo $chave;?>" />
 							<br>
                             <?php
-                                if(!empty($idusuario)) echo "<span class='mensagem'>(SÛ informar se for alterar)</span>";
+                                if(!empty($idusuario)) echo "<span class='mensagem'>(S√≥ informar se for alterar)</span>";
                             ?>
                         </div>
                     </div>
@@ -163,7 +163,7 @@
                 <div class="row">
                     <div class="col-xs-5">
                         <header style="margin:0;" class="text-center">Perfis</header>
-                        <select name="gruposdisponiveis" id="gruposdisponiveis" title="DÍ um duplo clique para selecionar todos" ondblclick="selecionatudo(this.id);" multiple="multiple" style="height: 300px; width: 100%; font-size:10">
+                        <select name="gruposdisponiveis" id="gruposdisponiveis" title="D√™ um duplo clique para selecionar todos" ondblclick="selecionatudo(this.id);" multiple="multiple" style="height: 300px; width: 100%; font-size:10">
                             <?php
                                 $sql="SELECT nome, descricao FROM sis_grupo g ORDER BY nome";
                                 
@@ -190,8 +190,8 @@
                         <button type="button" value="<<" class="btn btn-info waves-circle" title="Retirar" onclick="adicionaItem(document.getElementById('gruposselecionados'),document.getElementById('gruposdisponiveis'));"><i class="material-icons">keyboard_arrow_left</i></button>
                     </div>
                     <div class="col-xs-5">
-                        <header style="margin:0;" class="text-center">Perfis do Usu·rio</header>
-                        <select name="gruposselecionados[]" id="gruposselecionados" title="DÍ um duplo clique para selecionar todos" ondblclick="selecionatudo(this.id);" multiple="multiple" style="height: 300px; width: 100%; font-size:10">
+                        <header style="margin:0;" class="text-center">Perfis do Usu√°rio</header>
+                        <select name="gruposselecionados[]" id="gruposselecionados" title="D√™ um duplo clique para selecionar todos" ondblclick="selecionatudo(this.id);" multiple="multiple" style="height: 300px; width: 100%; font-size:10">
                             <?php
                                 $sql="SELECT nome, descricao FROM sis_grupo g ORDER BY nome";
                                 
@@ -216,7 +216,7 @@
                 <div class="row" style="margin-top:30px;">
                     <div class="col-xs-5">
                         <header  style="margin:0;" class="text-center">SIC's</header>
-                        <select name="sics" id="sics" multiple="multiple" title="DÍ um duplo clique para selecionar todos" ondblclick="selecionatudo(this.id);" style="height: 300px; width: 100%; font-size:10">
+                        <select name="sics" id="sics" multiple="multiple" title="D√™ um duplo clique para selecionar todos" ondblclick="selecionatudo(this.id);" style="height: 300px; width: 100%; font-size:10">
                                     <?php
                                 $sql="SELECT nome, sigla, idsecretaria FROM sis_secretaria ORDER BY sigla";
                                 $result = execQuery($sql);
@@ -242,8 +242,8 @@
                         <button type="button" value="<<" class="btn btn-info waves-circle" title="Retirar" onclick="adicionaItem(document.getElementById('sicselecionados'),document.getElementById('sics'));"><i class="material-icons">keyboard_arrow_left</i></button>
                     </div>
                     <div class="col-xs-5">
-                        <header  style="margin:0;" class="text-center">SIC's Alternativos do Usu·rio</header>
-                        <select name="sicselecionados[]" id="sicselecionados" title="DÍ um duplo clique para selecionar todos" ondblclick="selecionatudo(this.id);" multiple="multiple" style="height: 300px; width: 100%; font-size:10">
+                        <header  style="margin:0;" class="text-center">SIC's Alternativos do Usu√°rio</header>
+                        <select name="sicselecionados[]" id="sicselecionados" title="D√™ um duplo clique para selecionar todos" ondblclick="selecionatudo(this.id);" multiple="multiple" style="height: 300px; width: 100%; font-size:10">
                             <?php
                                 $sql="SELECT nome, sigla, idsecretaria FROM sis_secretaria ORDER BY sigla";
                                 $result = execQuery($sql);

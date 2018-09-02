@@ -1,11 +1,11 @@
 <?php
 /**********************************************************************************
- Sistema e-SIC Livre: sistema de acesso a informaÁ„o baseado na lei de acesso.
+ Sistema e-SIC Livre: sistema de acesso a informa√ß√£o baseado na lei de acesso.
  
  Copyright (C) 2014 Prefeitura Municipal do Natal
  
- Este programa È software livre; vocÍ pode redistribuÌ-lo e/ou
- modific·-lo sob os termos da LicenÁa GPL2.
+ Este programa √© software livre; voc√™ pode redistribu√≠-lo e/ou
+ modific√°-lo sob os termos da Licen√ßa GPL2.
 ***********************************************************************************/
 
 	include_once("../inc/autenticar.php");
@@ -22,10 +22,10 @@
 	$fltsituacao       = $_REQUEST["fltsituacao"];
 	$receber           = $_REQUEST["receber"];
 	
-	$parametrosIndex = "fltnumprotocolo=$fltnumprotocolo&fltsolicitante=$fltsolicitante&fltsituacao=$fltsituacao"; //parametros a ser passado para a pagina de detalhamento, fazendo com que ao voltar para o index traga as informaÁıes passadas anteriormente
+	$parametrosIndex = "fltnumprotocolo=$fltnumprotocolo&fltsolicitante=$fltsolicitante&fltsituacao=$fltsituacao"; //parametros a ser passado para a pagina de detalhamento, fazendo com que ao voltar para o index traga as informa√ß√µes passadas anteriormente
 	//-----
         
-	//se for passado cÛdigo para ediÁ„o e nao tiver sido postado informaÁ„o do formulario busca dados do banco
+	//se for passado c√≥digo para edi√ß√£o e nao tiver sido postado informa√ß√£o do formulario busca dados do banco
 	if(!$_POST['acao'] and !empty($codigo))
 	{
 		$acao = "Alterar";
@@ -119,12 +119,12 @@
 		$uf                         = $_POST['uf'];
 		$sistemaOrigem				= $_POST['origem'];
 	
-		//campos da movimentaÁ„o
+		//campos da movimenta√ß√£o
 		$idsecretariadestino        = $_POST['idsecretariadestino'];
 		$despacho                   = $_POST['despacho'];
 		$anexomovimentacao          = $_FILES["anexomovimentacao"]; 	
 		
-		//campos da finalizaÁ„o
+		//campos da finaliza√ß√£o
 		$txtresposta                = $_POST['txtresposta'];
 		$tiporesposta               = $_POST['tiporesposta'];
 		$arquivos                   = $_FILES["arquivos"]; 	
@@ -136,26 +136,26 @@
 	$erro	= "";
 	$valida = $_GET["tk"];
 	if ($valida <> md5($codigo . SIS_TOKEN)) {
-		//echo "<script>alert('Demanda n„o pertence ao seu SIC - ". getSession("sic")[getSession("idsecretaria")][1] . "')</script>";
+		//echo "<script>alert('Demanda n√£o pertence ao seu SIC - ". getSession("sic")[getSession("idsecretaria")][1] . "')</script>";
 		//echo "<script>javascript:document.location='?lda_consulta';</script>";
 	}
 	
 	if ($_POST['acao'])
 	{
-		//se for uma movimentaÁ„o
+		//se for uma movimenta√ß√£o
 		if ($acao == "Enviar")
 		{
 			checkPerm("LDAMOVIMENTAR");
 			$erro = Solicitacao::movimenta($idsolicitacao, $idsecretariadestino, $despacho, $anexomovimentacao);
 			if (empty($erro))
 			{
-				logger("Movimentou solicitaÁ„o.");
+				logger("Movimentou solicita√ß√£o.");
 				//header("Location: index.php?lda_solicitacao");
 				echo "<meta HTTP-EQUIV='Refresh' CONTENT='0;URL=index.php?lda_solicitacao&$parametrosIndex'>";
 				
 			} 
 		}
-		//se for uma finalizaÁ„o
+		//se for uma finaliza√ß√£o
 		elseif ($acao == "Finalizar")
 		{
 			checkPerm("LDARESPONDER");
@@ -163,11 +163,11 @@
 
 			if (empty($erro))
 			{
-				logger("Finalizou solicitaÁ„o.");
+				logger("Finalizou solicita√ß√£o.");
 				echo "<meta HTTP-EQUIV='Refresh' CONTENT='0;URL=index.php?lda_solicitacao&$parametrosIndex'>";
 			}
 		}
-		//se for uma prorrogaÁ„o
+		//se for uma prorroga√ß√£o
 		elseif ($acao == "Prorrogar")
 		{
 			checkPerm("LDAPRORROGAR");
@@ -175,7 +175,7 @@
 
 			if (empty($erro))
 			{
-				logger("Prorrogou solicitaÁ„o.");
+				logger("Prorrogou solicita√ß√£o.");
 				echo "<meta HTTP-EQUIV='Refresh' CONTENT='0;URL=index.php?lda_solicitacao&$parametrosIndex'>";
 			}
 		}

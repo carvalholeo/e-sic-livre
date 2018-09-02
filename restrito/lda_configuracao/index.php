@@ -1,11 +1,11 @@
 <?php
 /**********************************************************************************
- Sistema e-SIC Livre: sistema de acesso a informaÁ„o baseado na lei de acesso.
+ Sistema e-SIC Livre: sistema de acesso a informa√ß√£o baseado na lei de acesso.
  
  Copyright (C) 2014 Prefeitura Municipal do Natal
  
- Este programa È software livre; vocÍ pode redistribuÌ-lo e/ou
- modific·-lo sob os termos da LicenÁa GPL2.
+ Este programa √© software livre; voc√™ pode redistribu√≠-lo e/ou
+ modific√°-lo sob os termos da Licen√ßa GPL2.
 ***********************************************************************************/
 
 include "manutencao.php";
@@ -13,11 +13,11 @@ include "manutencao.php";
 
 <div class="container-fluid">
     <header class="header-title">
-        <h1>ConfiguraÁ„o do Lei de Acesso</h1>
+        <h1>Configura√ß√£o do Lei de Acesso</h1>
         <ol class="breadcrumb">
             <li><a href="<?php echo URL_BASE_SISTEMA; ?>/">Dashboard</a></li>
-            <li><a href="<?php echo URL_BASE_SISTEMA; ?>/?lda_configuracao">AdministraÁ„o</a></li>
-            <li class="active">ConfiguraÁ„o</li>
+            <li><a href="<?php echo URL_BASE_SISTEMA; ?>/?lda_configuracao">Administra√ß√£o</a></li>
+            <li class="active">Configura√ß√£o</li>
         </ol>
     </header>
 </div>
@@ -26,7 +26,7 @@ include "manutencao.php";
     <form action="index.php?lda_configuracao" method="post">
       <div class="row">
         <div class="col-xs-12">
-          <div class="name">Prazo, em dias, para resposta da solicitaÁ„o:</div>
+          <div class="name">Prazo, em dias, para resposta da solicita√ß√£o:</div>
         </div>
         <div class="col-xs-12">
           <div class="form-group small">
@@ -38,7 +38,7 @@ include "manutencao.php";
       </div>
       <div class="row">
         <div class="col-xs-12">
-          <div class="name">Quantidade de dias que podera ser prorrogada a resposta da solicitaÁ„o:</div>
+          <div class="name">Quantidade de dias que podera ser prorrogada a resposta da solicita√ß√£o:</div>
         </div>
 
         <div class="col-xs-12">
@@ -51,7 +51,7 @@ include "manutencao.php";
       </div>
       <div class="row">
         <div class="col-xs-12">
-          <div class="name">Prazo, em dias, para solicitaÁ„o de recurso apÛs a resposta negada:</div>
+          <div class="name">Prazo, em dias, para solicita√ß√£o de recurso ap√≥s a resposta negada:</div>
         </div>
 
         <div class="col-xs-12">
@@ -78,7 +78,7 @@ include "manutencao.php";
 
       <div class="row">
         <div class="col-xs-12">
-          <div class="name">Quantidade de dias que poder· ser prorrogada resposta ao recurso:</div>
+          <div class="name">Quantidade de dias que poder√° ser prorrogada resposta ao recurso:</div>
         </div>
 
         <div class="col-xs-12">
@@ -104,7 +104,7 @@ include "manutencao.php";
       </div>
       <div class="row">
         <div class="col-xs-12">
-          <div class="name">DiretÛrio onde ser· armazenado os anexos do sistema:</div>
+          <div class="name">Diret√≥rio onde ser√° armazenado os anexos do sistema:</div>
         </div>
 
         <div class="col-xs-12 col-sm-4">
@@ -116,7 +116,7 @@ include "manutencao.php";
       </div>
       <div class="row">
         <div class="col-xs-12">
-          <div class="name">Nome do remetente dos e-mails que ser„o enviados pelo sistema:</div>
+          <div class="name">Nome do remetente dos e-mails que ser√£o enviados pelo sistema:</div>
         </div>
 
         <div class="col-xs-12 col-sm-4">
@@ -143,7 +143,7 @@ include "manutencao.php";
           <button type="submit" name="acao" value="Salvar" class="waves-effect btn btn-success">Salvar</button>
         </li>
         <li>
-          <button type="reset" class="waves-effect btn btn-danger">Apagar alteraÁ„o</button>
+          <button type="reset" class="waves-effect btn btn-danger">Apagar altera√ß√£o</button>
         </li>
       </ul>
     </form>

@@ -1,11 +1,11 @@
 <?php
 /**********************************************************************************
- Sistema e-SIC Livre: sistema de acesso a informação baseado na lei de acesso.
+ Sistema e-SIC Livre: sistema de acesso a informaÃ§Ã£o baseado na lei de acesso.
  
  Copyright (C) 2014 Prefeitura Municipal do Natal
  
- Este programa é software livre; você pode redistribuí-lo e/ou
- modificá-lo sob os termos da Licença GPL2.
+ Este programa Ã© software livre; vocÃª pode redistribuÃ­-lo e/ou
+ modificÃ¡-lo sob os termos da LicenÃ§a GPL2.
 ***********************************************************************************/
 
 require_once("../inc/security.php");
@@ -51,7 +51,7 @@ $row = mysqli_fetch_array($result);
         }
         if(!$existe)
         {
-            echo "Você não tem permissão de acesso a esta página.";
+            echo "VocÃª nÃ£o tem permissÃ£o de acesso a esta pÃ¡gina.";
         }
         ?>
 </div>

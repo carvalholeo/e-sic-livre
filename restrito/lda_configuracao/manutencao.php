@@ -1,17 +1,17 @@
 <?php
 /**********************************************************************************
- Sistema e-SIC Livre: sistema de acesso a informaÁ„o baseado na lei de acesso.
+ Sistema e-SIC Livre: sistema de acesso a informa√ß√£o baseado na lei de acesso.
  
  Copyright (C) 2014 Prefeitura Municipal do Natal
  
- Este programa È software livre; vocÍ pode redistribuÌ-lo e/ou
- modific·-lo sob os termos da LicenÁa GPL2.
+ Este programa √© software livre; voc√™ pode redistribu√≠-lo e/ou
+ modific√°-lo sob os termos da Licen√ßa GPL2.
 ***********************************************************************************/
 
 	include_once("../inc/autenticar.php");
 	checkPerm("LSTLDACONF");
 	
-	//funÁ„o de validaÁ„o dos dados do formulario do cadastro de usuario -------------------
+	//fun√ß√£o de valida√ß√£o dos dados do formulario do cadastro de usuario -------------------
 	function validaDados()
 	{
 		global $erro;
@@ -47,7 +47,7 @@
 	//------------------------------------------------------------------------------------------
 	$erro	= "";
 	
-	//se tiver sido postado informaÁ„o do formulario
+	//se tiver sido postado informa√ß√£o do formulario
 	if ($_POST['acao'])
 	{
 	
@@ -63,7 +63,7 @@
 		$nomeremetenteemail         = $_POST["nomeremetenteemail"];
 		$emailremetente             = $_POST["emailremetente"];		
 		
-		//verifica aÁ„o do usuario
+		//verifica a√ß√£o do usuario
 		if ($acao == "Salvar")
                 {
                         checkPerm("UPTLDACONF");
@@ -84,12 +84,12 @@
 
                                 if (execQuery($sql))
                                 {
-                                        logger("Alterado configuraÁ„o do lei de acesso.");
-                                        echo "<script>alert('ConfiguraÁ„o atualizada com sucesso!');</script>";
+                                        logger("Alterado configura√ß√£o do lei de acesso.");
+                                        echo "<script>alert('Configura√ß√£o atualizada com sucesso!');</script>";
                                 }
                                 else
                                 {
-                                        $erro = "Ocorreu um erro ao atualizar configuraÁ„o.";
+                                        $erro = "Ocorreu um erro ao atualizar configura√ß√£o.";
                                 }
                         }
                                 

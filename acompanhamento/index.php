@@ -1,11 +1,11 @@
 <?php
 /**********************************************************************************
- Sistema e-SIC Livre: sistema de acesso a informação baseado na lei de acesso.
+ Sistema e-SIC Livre: sistema de acesso a informaÃ§Ã£o baseado na lei de acesso.
  
  Copyright (C) 2014 Prefeitura Municipal do Natal
  
- Este programa é software livre; você pode redistribuí-lo e/ou
- modificá-lo sob os termos da Licença GPL2.
+ Este programa Ã© software livre; vocÃª pode redistribuÃ­-lo e/ou
+ modificÃ¡-lo sob os termos da LicenÃ§a GPL2.
 ***********************************************************************************/
 
 include("../inc/autenticar.php");
@@ -19,16 +19,16 @@ $numprotocolo   = $_REQUEST["fltnumprotocolo"];
 $idsolicitante  = getSession("uid");
 $situacao       = $_REQUEST["fltsituacao"];
 
-$parametrosIndex = "fltnumprotocolo=$numprotocolo&fltsituacao=$situacao"; //parametros a ser passado para a pagina de detalhamento, fazendo com que ao voltar para o index traga as informações passadas anteriormente
+$parametrosIndex = "fltnumprotocolo=$numprotocolo&fltsituacao=$situacao"; //parametros a ser passado para a pagina de detalhamento, fazendo com que ao voltar para o index traga as informaÃ§Ãµes passadas anteriormente
 
 if (!empty($numprotocolo)) $filtro.= " AND concat(sol.numprotocolo,'/',sol.anoprotocolo) = '$numprotocolo'";
 if (!empty($situacao)) $filtro.= " AND sol.situacao = '$situacao'";
     
 
 
-//seleciona as solicitações não respondidas e sua ultima movimentação (recupera variaveis de configuracao de prazos)
+//seleciona as solicitaÃ§Ãµes nÃ£o respondidas e sua ultima movimentaÃ§Ã£o (recupera variaveis de configuracao de prazos)
 /*
- * Quando a situação for A ou T, trata da primeira tramitação do processo. 
+ * Quando a situaÃ§Ã£o for A ou T, trata da primeira tramitaÃ§Ã£o do processo. 
  */
 $sql = "SELECT sol.*, tip.nome AS tiposolicitacao
         FROM lda_solicitacao sol, lda_tiposolicitacao tip
@@ -44,7 +44,7 @@ $sql = "SELECT sol.*, tip.nome AS tiposolicitacao
 $result = execQueryPag($sql);
 
 ?>
-<h1>Consulta de Solicitações Realizadas</h1>
+<h1>Consulta de SolicitaÃ§Ãµes Realizadas</h1>
 <br><br>
 <form action="<?php echo SITELNK;?>/acompanhamento/index.php" method="post" id="formulario">
 <input type="hidden" name="pagina" id="pagina" value="<?php echo $pagina?>">
@@ -52,15 +52,15 @@ $result = execQueryPag($sql);
 <legend>Buscar:</legend>
     <table align="center">
         <tr>
-            <td nowrap>Nº do Protocolo (numero/ano):</td>
+            <td nowrap>NÂº do Protocolo (numero/ano):</td>
             <td><input type="text" name="fltnumprotocolo" id="fltnumprotocolo" value="<?php echo $numprotocolo; ?>" maxlength="50" size="30" /></td>
         </tr>
         <tr>
-			<td>Situação:</td>
+			<td>SituaÃ§Ã£o:</td>
 			<td><select name="fltsituacao" id="fltsituacao">
 			  <option value="" <?php echo empty($situacao)?"selected":""; ?>>--Todos--</option>
 			  <option value="A" <?php echo $situacao=="A"?"selected":""; ?>>Aberto</option>
-			  <option value="T" <?php echo $situacao=="T"?"selected":""; ?>>Em tramitação</option>
+			  <option value="T" <?php echo $situacao=="T"?"selected":""; ?>>Em tramitaÃ§Ã£o</option>
 			  <option value="N" <?php echo $situacao=="N"?"selected":""; ?>>Negado</option>
 			  <option value="R" <?php echo $situacao=="R"?"selected":""; ?>>Respondido</option>
 		    </select></td>
@@ -79,11 +79,11 @@ $result = execQueryPag($sql);
 <table class="tabLista" style="width: 100%">
     <tr>
         <th>Protocolo</th>
-        <th>Tipo de Solicitação</th>
-        <th>Data Solicitação</th>
-        <th>Previsão Resposta</th>
+        <th>Tipo de SolicitaÃ§Ã£o</th>
+        <th>Data SolicitaÃ§Ã£o</th>
+        <th>PrevisÃ£o Resposta</th>
         <th>Prorrogado?</th>
-        <th>Situação</th>
+        <th>SituaÃ§Ã£o</th>
         <th>Data Resposta</th>
     </tr>
     <?php
@@ -102,7 +102,7 @@ $result = execQueryPag($sql);
                 <td onClick="<?php echo $click; ?>"><?php echo $registro["tiposolicitacao"]; ?></td>
                 <td onClick="<?php echo $click; ?>"><?php echo bdToDate($registro["datasolicitacao"]); ?></td>
                 <td onClick="<?php echo $click; ?>"><?php echo bdToDate($registro["dataprevisaoresposta"]); ?></td>
-                <td onClick="<?php echo $click; ?>"><?php echo (!empty($registro["dataprorrogacao"]))?"Sim":"Não"; ?></td>
+                <td onClick="<?php echo $click; ?>"><?php echo (!empty($registro["dataprorrogacao"]))?"Sim":"NÃ£o"; ?></td>
                 <td onClick="<?php echo $click; ?>"><?php echo Solicitacao::getDescricaoSituacao($registro["situacao"]); ?></td>
                 <td onClick="<?php echo $click; ?>"><?php echo (!empty($registro["dataresposta"]))?bdToDate($registro["dataresposta"]):"-"; ?></td>
             </tr>

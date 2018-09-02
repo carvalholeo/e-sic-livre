@@ -1,11 +1,11 @@
 <?php
 /**********************************************************************************
- Sistema e-SIC Livre: sistema de acesso a informação baseado na lei de acesso.
+ Sistema e-SIC Livre: sistema de acesso a informaÃ§Ã£o baseado na lei de acesso.
  
  Copyright (C) 2014 Prefeitura Municipal do Natal
  
- Este programa é software livre; você pode redistribuí-lo e/ou
- modificá-lo sob os termos da Licença GPL2.
+ Este programa Ã© software livre; vocÃª pode redistribuÃ­-lo e/ou
+ modificÃ¡-lo sob os termos da LicenÃ§a GPL2.
 ***********************************************************************************/
 
 include_once "manutencao.php";
@@ -17,9 +17,9 @@ include_once "manutencao.php";
     <header class="header-title">
         <h1>Cadastro de SIC</h1>
         <ol class="breadcrumb">
-            <li><a href="<?php echo URL_BASE_SISTEMA; ?>index/">Início</a></li>
+            <li><a href="<?php echo URL_BASE_SISTEMA; ?>index/">InÃ­cio</a></li>
             <li><a href="index.php?sis_secretaria">Cadastro de SIC</a></li>
-            <li class="active">Edição</li>
+            <li class="active">EdiÃ§Ã£o</li>
         </ol>
     </header>
 </div>
@@ -55,7 +55,7 @@ include_once "manutencao.php";
                     <div class="col-md-2 col-sm-4 col-xs-12">
                         <div class="form-group">
                             <label for="responsavel" class="input-label"><i class="material-icons">account_circle</i></label>
-                            <input type="text" class="form-control icon" id="responsavel" name="responsavel" value="<?php echo $responsavel; ?>" maxlength="10" size="10" title="Responsável do SIC" placeholder="Responsável do SIC"/>
+                            <input type="text" class="form-control icon" id="responsavel" name="responsavel" value="<?php echo $responsavel; ?>" maxlength="10" size="10" title="ResponsÃ¡vel do SIC" placeholder="ResponsÃ¡vel do SIC"/>
                         </div>
                     </div>  					
 					<div class="col-sm-4 col-md-4 col-xs-12">

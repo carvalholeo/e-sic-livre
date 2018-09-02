@@ -1,12 +1,12 @@
 <?php
 header("Content-Type: text/html; charset=ISO-8859-1", true);
 /* * ********************************************************************************
-  Sistema e-SIC Livre: sistema de acesso a informaÁ„o baseado na lei de acesso.
+  Sistema e-SIC Livre: sistema de acesso a informa√ß√£o baseado na lei de acesso.
 
   Copyright (C) 2014 Prefeitura Municipal do Natal
 
-  Este programa È software livre; vocÍ pode redistribuÌ-lo e/ou
-  modific·-lo sob os termos da LicenÁa GPL2.
+  Este programa √© software livre; voc√™ pode redistribu√≠-lo e/ou
+  modific√°-lo sob os termos da Licen√ßa GPL2.
  * ********************************************************************************* */
 require_once("../inc/security.php"); 
 include(DIR_CLASSES_LEIACESSO . "solicitacao.class.php");
@@ -19,11 +19,11 @@ $token2 	= $_REQUEST["to2"];
 $notRedir  	= $_REQUEST["red"];
 $msg 		= "";
 
-//usado pra troca de sic, chamado no arquivo topo atravÈs do select de sics
+//usado pra troca de sic, chamado no arquivo topo atrav√©s do select de sics
 $sic = $_GET['sic'];
 if(!empty($sic))
     if(!atualizaUnidadeUsuario($sic))
-        echo "<script>alert('Usu·rio n„o pertence ao SIC que est· tentando acessar!');</script>";
+        echo "<script>alert('Usu√°rio n√£o pertence ao SIC que est√° tentando acessar!');</script>";
 	else
 		Redirect("../index/");
 //----------------------   
@@ -123,12 +123,12 @@ if (!empty($token2)) {
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
 
-        <meta name="E-Sic Livre" content="Portal da Prefeitura Municipal do Natal - SEMPLA - Secretaria de Planejamento, OrÁamento e FinanÁas" />
+        <meta name="E-Sic Livre" content="Portal da Prefeitura Municipal do Natal - SEMPLA - Secretaria de Planejamento, Or√ßamento e Finan√ßas" />
         <meta http-equiv="pragma" content="no-cache" />
         <meta name="revisit-after" content="1" />
         <meta name="classification" content="Internet" />	
-        <meta name="description" content="Portal da Prefeitura Municipal do Natal - SEMPLA - Secretaria de Planejamento, OrÁamento e FinanÁas" />
-        <meta name="keywords" content="Prefeitura do Natal, natal, rn, sempla, natal, rn, noticias, serviÁos" />
+        <meta name="description" content="Portal da Prefeitura Municipal do Natal - SEMPLA - Secretaria de Planejamento, Or√ßamento e Finan√ßas" />
+        <meta name="keywords" content="Prefeitura do Natal, natal, rn, sempla, natal, rn, noticias, servi√ßos" />
         <meta name="robots" content="ALL" />
         <meta name="distribution" content="Global" />
         <meta name="rating" content="General" />
@@ -167,7 +167,7 @@ if (!empty($token2)) {
                                 <form action="index.php" method="post">
                                     <div class="form-group">
                                         <label for="cpf" class="input-label"><i class="material-icons">account_circle</i></label>
-                                        <input placeholder="Usu·rio" class="form-control icon" type="text" name="login" id="cpf" value="" maxlength="13"/>
+                                        <input placeholder="Usu√°rio" class="form-control icon" type="text" name="login" id="cpf" value="" maxlength="13"/>
                                     </div>
                                     <div class="form-group">
                                         <label for="password" class="input-label"><i class="material-icons">lock</i></label>
@@ -181,7 +181,7 @@ if (!empty($token2)) {
                                                     <img style="    position: absolute;bottom: 10px;right: 0;" src="../img/refresh.gif" title="Clique aqui para recarregar a imagem" alt="Clique aqui para recarregar a imagem"onclick="getElementById('imgcaptcha').src = '../inc/captcha.php?l=150&a=50&tf=20&ql=5';">
                                                 </div>
                                                 <div class="col-sm-8 col-xs-12">
-                                                    <input class="form-control" placeholder="Informe o cÛdigo acima:" type="text" name="palavra">
+                                                    <input class="form-control" placeholder="Informe o c√≥digo acima:" type="text" name="palavra">
                                                 </div>
                                             </div>
                                         </div>

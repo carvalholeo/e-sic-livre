@@ -12,7 +12,7 @@ try {
 	unlink("bd.php");
 } catch (Exception $e) {
 ?>
-	<p><strong>Aten&ccedil;&atilde;o!</strong>< N&atilde;o foi poss&iacute;vel remover os arquivos de instala&ccedil;&atilde;o. Para sua segurança, remova manualmente os arquivos <pre><?php echo join(DIRECTORY_SEPARATOR, array(dirname(__FILE__), "index.php")); ?></pre> e <pre><?php echo join(DIRECTORY_SEPARATOR, array(dirname(__FILE__), "bd.php")); ?></pre></p>
+	<p><strong>Aten&ccedil;&atilde;o!</strong>< N&atilde;o foi poss&iacute;vel remover os arquivos de instala&ccedil;&atilde;o. Para sua seguranÃ§a, remova manualmente os arquivos <pre><?php echo join(DIRECTORY_SEPARATOR, array(dirname(__FILE__), "index.php")); ?></pre> e <pre><?php echo join(DIRECTORY_SEPARATOR, array(dirname(__FILE__), "bd.php")); ?></pre></p>
 <?php
 }
 ?>

@@ -1,11 +1,11 @@
 <?php
 /**********************************************************************************
- Sistema e-SIC Livre: sistema de acesso a informação baseado na lei de acesso.
+ Sistema e-SIC Livre: sistema de acesso a informaÃ§Ã£o baseado na lei de acesso.
  
  Copyright (C) 2014 Prefeitura Municipal do Natal
  
- Este programa é software livre; você pode redistribuí-lo e/ou
- modificá-lo sob os termos da Licença GPL2.
+ Este programa Ã© software livre; vocÃª pode redistribuÃ­-lo e/ou
+ modificÃ¡-lo sob os termos da LicenÃ§a GPL2.
 ***********************************************************************************/
 
 //se a classe for chamada pela area restrita do lei de acesso
@@ -283,7 +283,7 @@ class Solicitante {
 						
 		if (empty($this->tipopessoa))
 		{
-			$this->erro = "Tipo de Pessoa não informado.";
+			$this->erro = "Tipo de Pessoa nÃ£o informado.";
 			return false;
 		}
 		
@@ -291,17 +291,17 @@ class Solicitante {
 		{
                         if (empty($this->nome))
                         {
-                                $this->erro = "Nome não informado.";
+                                $this->erro = "Nome nÃ£o informado.";
                                 return false;
                         }
 			elseif (empty($this->cpfcnpj))
 			{
-				$this->erro = "CPF não informado.";
+				$this->erro = "CPF nÃ£o informado.";
 				return false;
 			}
 			elseif (!isCpf($this->cpfcnpj))
 			{
-				$this->erro = "CPF inválido.";
+				$this->erro = "CPF invÃ¡lido.";
 				return false;
 			}
 		}
@@ -309,93 +309,93 @@ class Solicitante {
 		{
                         if (empty($this->nome))
                         {
-                                $this->erro = "Nome não informado.";
+                                $this->erro = "Nome nÃ£o informado.";
                                 return false;
                         }
 			if (empty($this->cpfcnpj))
 			{
-				$this->erro = "CNPJ não informado.";
+				$this->erro = "CNPJ nÃ£o informado.";
 				return false;
 			}
 			elseif (!isCnpj($this->cpfcnpj))
 			{
-				$this->erro = "CNPJ inválido.";
+				$this->erro = "CNPJ invÃ¡lido.";
 				return false;
 			}
 		}
 		
 		if (empty($this->email))
 		{
-			$this->erro = "E-mail não informado";
+			$this->erro = "E-mail nÃ£o informado";
 			return false;
 		}
 		elseif (!isEmail($this->email))
 		{
-			$this->erro = "E-mail inválido";
+			$this->erro = "E-mail invÃ¡lido";
 			return false;
 		}
 		elseif (empty($this->confirmeemail))
 		{
-			$this->erro = "Confirmação do e-mail não informado";
+			$this->erro = "ConfirmaÃ§Ã£o do e-mail nÃ£o informado";
 			return false;
 		}
 		elseif (!isEmail($this->confirmeemail))
 		{
-			$this->erro = "E-mail para confirmação está inválido";
+			$this->erro = "E-mail para confirmaÃ§Ã£o estÃ¡ invÃ¡lido";
 			return false;
 		}
 		elseif ($this->confirmeemail != $this->email)
 		{
-			$this->erro = "E-mail não confere com a confirmação";
+			$this->erro = "E-mail nÃ£o confere com a confirmaÃ§Ã£o";
 			return false;
 		}
 
 		if (empty($this->senha))
 		{
-			$this->erro = "Senha de acesso não informada";
+			$this->erro = "Senha de acesso nÃ£o informada";
 			return false;
 		}
 		elseif (empty($this->confirmasenha))
 		{
-			$this->erro = "Confirmação da senha não informada";
+			$this->erro = "ConfirmaÃ§Ã£o da senha nÃ£o informada";
 			return false;
 		}
 		elseif ($this->confirmasenha != $this->senha)
 		{
-			$this->erro = "Senha não confere com a confirmação";
+			$this->erro = "Senha nÃ£o confere com a confirmaÃ§Ã£o";
 			return false;
 		}
                 
-		//validação de endereço
+		//validaÃ§Ã£o de endereÃ§o
                 /*
 		if (empty($this->cep))
 		{
-			$this->erro = "CEP não informado.";
+			$this->erro = "CEP nÃ£o informado.";
 			return false;
 		}
 		elseif (empty($this->logradouro))
 		{
-			$this->erro = "Logradouro não informado";
+			$this->erro = "Logradouro nÃ£o informado";
 			return false;
 		}
 		elseif (empty($this->bairro))
 		{
-			$this->erro = "Bairro não informado";
+			$this->erro = "Bairro nÃ£o informado";
 			return false;
 		}
 		elseif (empty($this->cidade))
 		{
-			$this->erro = "Cidade não informada";
+			$this->erro = "Cidade nÃ£o informada";
 			return false;
 		}
 		elseif (empty($this->numero))
 		{
-			$this->erro = "Numero não informado";
+			$this->erro = "Numero nÃ£o informado";
 			return false;
 		}
 		elseif (empty($this->uf))
 		{
-			$this->erro = "UF não informada";
+			$this->erro = "UF nÃ£o informada";
 			return false;
 		}
 		*/
@@ -408,7 +408,7 @@ class Solicitante {
 				
 		if(mysqli_num_rows(execQuery($sql)) > 0)
 		{
-			$this->erro = "Cadastro já realizado.";
+			$this->erro = "Cadastro jÃ¡ realizado.";
 			return false;
 		}
 		//-----------------------------------------------------------------------
@@ -475,13 +475,13 @@ class Solicitante {
 					
 				$body="Prezado(a) $this->nome,<br> <br>
                                         
-                                       Você se cadastrou no sistema ".SISTEMA_NOME.". Para confirmar seu cadastro, favor acesse o seguinte endereço: <br/><br>
+                                       VocÃª se cadastrou no sistema ".SISTEMA_NOME.". Para confirmar seu cadastro, favor acesse o seguinte endereÃ§o: <br/><br>
                                        
 									   <a href='".SITELNK."confirmacao/?k=".md5($this->idsolicitante)."'>".SITELNK."confirmacao/?k=".md5($this->idsolicitante)."</a><br><br>
                                             
                                         Mensagem automatica do ".SISTEMA_NOME;
 				
-				if (!sendmail($this->email,'Confirmação de cadastro no '.SISTEMA_NOME,$body))
+				if (!sendmail($this->email,'ConfirmaÃ§Ã£o de cadastro no '.SISTEMA_NOME,$body))
 					$all_query_ok = false;
 				
 
@@ -515,12 +515,12 @@ class Solicitante {
             
                 $body="Prezado(a) ".$row['nome'].",<br> <br>
 
-                        Você precisa completar seu cadastro para ter acesso ao sistema ".SISTEMA_NOME.". Para isso, precisamos da sua confirmação, favor acesse o seguinte endereço: <br/><br>
+                        VocÃª precisa completar seu cadastro para ter acesso ao sistema ".SISTEMA_NOME.". Para isso, precisamos da sua confirmaÃ§Ã£o, favor acesse o seguinte endereÃ§o: <br/><br>
                         ".SITELNK."confirmacao/?k=".md5($this->idsolicitante)."<br><br>
 
                         Mensagem automatica do sistema ".SISTEMA_NOME;
 
-                if (!sendmail($row['email'],'Confirmação de cadastro no '.SISTEMA_NOME,$body))
+                if (!sendmail($row['email'],'ConfirmaÃ§Ã£o de cadastro no '.SISTEMA_NOME,$body))
                         return false;
                 else
                         return true;
@@ -602,8 +602,8 @@ class Solicitante {
 				$body="Prezado(a) $this->nome,<br> <br>
                                         Seu cadastro no ".SISTEMA_NOME." foi confirmado com sucesso. <br>
                                         Link de acesso: ".SITELNK." <br>
-                                        Usuário: $this->cpfcnpj<br><br>
-                                        **A senha de acesso é aquela informada no cadastro. Caso não se lembre, solicite o envio de uma nova senha pelo link \"Esqueci a senha\" no formulário de login do sistema.
+                                        UsuÃ¡rio: $this->cpfcnpj<br><br>
+                                        **A senha de acesso Ã© aquela informada no cadastro. Caso nÃ£o se lembre, solicite o envio de uma nova senha pelo link \"Esqueci a senha\" no formulÃ¡rio de login do sistema.
                                         ";
 				
 				if (!sendmail($email,'Cadastro realizado com sucesso!',$body))
@@ -621,7 +621,7 @@ class Solicitante {
 			}
 			else
 			{
-				$this->erro = "erro na confirmação da solicitação";//.$con->error;			
+				$this->erro = "erro na confirmaÃ§Ã£o da solicitaÃ§Ã£o";//.$con->error;			
 				$con->rollback();
 			}
 			
@@ -629,7 +629,7 @@ class Solicitante {
 		}
 		else
 		{
-			$this->erro = "Sua confirmação de cadastro já foi realizada.";
+			$this->erro = "Sua confirmaÃ§Ã£o de cadastro jÃ¡ foi realizada.";
 			return false;
 		}
 	}
@@ -667,12 +667,12 @@ class Solicitante {
 				if ($con->query($sql)) 
 				{
 					$body="Caro(a) $nome,<br> <br>
-						   Foi solicitado redefinição de senha de acesso ao sistema do ".SISTEMA_NOME.". Para acessar o sistema entre no endereço ".SITELNK." <br>
+						   Foi solicitado redefiniÃ§Ã£o de senha de acesso ao sistema do ".SISTEMA_NOME.". Para acessar o sistema entre no endereÃ§o ".SITELNK." <br>
 						   Dados de acesso: <br>
 						   Login: $cpfcnpj<br>
 						   Senha: $chave";
 					
-					if (!sendmail($email,'Redefinição de Senha',$body))
+					if (!sendmail($email,'RedefiniÃ§Ã£o de Senha',$body))
 					{
 						$this->erro = "Ocorreu um erro no envio do e-mail. Favor tente mais tarde.";
 						$all_query_ok = false;
@@ -680,7 +680,7 @@ class Solicitante {
 				}
 				else
 				{
-					$this->erro = "Ocorreu um erro na redefinição da senha. Favor tente mais tarde.";
+					$this->erro = "Ocorreu um erro na redefiniÃ§Ã£o da senha. Favor tente mais tarde.";
 					$all_query_ok = false;
 				}
 				
@@ -697,23 +697,23 @@ class Solicitante {
 					return false;
 				}
 			}
-			//caso nao tenha confirmado, reenvia email de confirmação
+			//caso nao tenha confirmado, reenvia email de confirmaÃ§Ã£o
 			else
 			{
 				$body="Caro(a) $nome,<br> <br>
-					   Para confirmação do seu cadastro no ".SISTEMA_NOME." efetue os seguintes passos: <br/>
-					     Selecione e Copie o endereço ao lado : ".SITELNK."confirmacao/?k=".md5($idsolicitante).
-						"Cole-o na barra de endereços do navegador
+					   Para confirmaÃ§Ã£o do seu cadastro no ".SISTEMA_NOME." efetue os seguintes passos: <br/>
+					     Selecione e Copie o endereÃ§o ao lado : ".SITELNK."confirmacao/?k=".md5($idsolicitante).
+						"Cole-o na barra de endereÃ§os do navegador
 						 Pressione no teclado a tecla ENTER";
 				
-				if (!sendmail($email,'Solicitação de confirmação de cadastro',$body))
+				if (!sendmail($email,'SolicitaÃ§Ã£o de confirmaÃ§Ã£o de cadastro',$body))
 				{
 					$this->erro = "Ocorreu um erro no envio do e-mail. Favor tente mais tarde.";
 					return false;
 				}
 				else
 				{
-					$this->erro = "Caro(a) $nome, estamos aguardando a confirmação do seu cadastro. Para tanto, reenviamos o pedido de confirmação para o seu email: $email";
+					$this->erro = "Caro(a) $nome, estamos aguardando a confirmaÃ§Ã£o do seu cadastro. Para tanto, reenviamos o pedido de confirmaÃ§Ã£o para o seu email: $email";
 					return false;
 				}
 			}
@@ -721,7 +721,7 @@ class Solicitante {
 		//caso nao tenha sido cadastrado
 		else
 		{
-			$this->erro = "Não existe cadastro para o CPF/CNPJ informado.";
+			$this->erro = "NÃ£o existe cadastro para o CPF/CNPJ informado.";
 			return false;
 		}
 	}
@@ -749,13 +749,13 @@ class Solicitante {
 			
 			if(md5($senhaatual) != $chave)
 			{
-				$this->erro = "Senha atual está incorreta.";
+				$this->erro = "Senha atual estÃ¡ incorreta.";
 				return false;
 			}
 			
 			if($novasenha <> $confirmasenha)
 			{
-				$this->erro = "Nova senha não confere com a confirmação";
+				$this->erro = "Nova senha nÃ£o confere com a confirmaÃ§Ã£o";
 				return false;
 			}
 		}
@@ -771,7 +771,7 @@ class Solicitante {
 		}
 		else
 		{
-			//logger("Alterou senha do Cidadão");  
+			//logger("Alterou senha do CidadÃ£o");  
 			return true;
 		}
 	}	

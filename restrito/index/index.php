@@ -1,5 +1,5 @@
 <?php
-header("Content-Type: text/html; charset=ISO-8859-1", true);
+header("Content-Type: text/html; charset=UTF-8", true);
 /* * ********************************************************************************
   Sistema e-SIC Livre: sistema de acesso a informação baseado na lei de acesso.
 

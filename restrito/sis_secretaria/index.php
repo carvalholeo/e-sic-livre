@@ -109,7 +109,7 @@ $result = execQueryPag($sql);
 				</thead>
 				<?php
 				$cor = false;
-				while($registro = mysqli_fetch_array($rresult)){
+				while($registro = mysqli_fetch_array($result)){
 					$click = "javascript:document.location='?sis_secretaria&p=cadastro&codigo=".$registro["idsecretaria"]."'";
 					if($cor)
 						$corLinha = "#dddddd";

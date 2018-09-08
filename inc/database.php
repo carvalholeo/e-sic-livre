@@ -16,6 +16,9 @@ function db_open() {
     if($mysqli->connect_error) {
         die('Erro de conexão (' . $mysqli->connect_errno . ')'
                 . $mysqli->connect_error);
+    } elseif (!$mysqli->set_charset("utf8")) {
+        printf("Error loading character set utf8: %s\n", $mysqli->error);
+        exit();
     }
     
 
